@@ -16,20 +16,20 @@ Visit the [Official Kernel Website](https://www.kernel.org/) and download the la
 
 ### Step 2: Extract the Source Code
 
-After downloading, it is necessary to extract the source code. So, we will achieve this using `tar` command.
+After downloading, it is necessary to extract the source code. So, we will achieve this using **tar** command.
  > `tar xvf linux-6.13.tar.xz`
 
-If you don't have `tar`, then download it using command:
+If you don't have **tar**, then download it using command:
 
  > `sudo pacman -S tar`  
 
- Note: It is recommended to download the latest kernel source code and write it's version correctly while using `tar` command.
+ Note: It is recommended to download the latest kernel source code and write it's version correctly while using **tar** command.
 
 ---
 
 ### Step 3: Install the Required Packages
 
-Make sure you have additional packages to start compilation. To achieve this, you need to install the following `packages`:
+Make sure you have additional packages to start compilation. To achieve this, you need to install the following **packages**:
 
  > `sudo pacman -S git fakeroot ncurses xz bc flex bison base-devel kmod cpio perl binutils util-linux jfsutils e2fsprogs xfsprogs squashfs-tools quota-tools`
 
@@ -37,15 +37,17 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
 ### Step 4: Configure your kernel
 
-1. Navigate to `linux-6.13` folder:
+1. Navigate to **linux-6.13** folder:
 
  > `cd linux-6.13`
 
 2. Configue your kernel. It is recommended to use your current system's configuration as a base. So write the following commands in order:
 
-  - Use this if you have zcat: `zcat /proc/config.gz > .config`  
+  - Use the following commad if you have zcat:
 
-  - Else you can use following commands to simply copying `config` file:
+   > `zcat /proc/config.gz > .config`  
+
+  - Else you have to use following commands to simply copying **config** file:
     
    - > `cp /proc/config.gz ./`
    - > `gunzip ./config.gz`
@@ -86,7 +88,7 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
 ***And now your Kernel starts compiling***
 
-If any issue persists during or after running `make -jn`, then make a back up of .config file and run the command:
+If any issue persists during or after running **make -jn**, then make a back up of **.config** file and run the command:
 
  > `make mrproper` 
 
@@ -140,11 +142,11 @@ Depending on your bootloader, you will need to add an entry for the new kernel. 
 
 3. Add the following content to the above mentioned file at the end:
 
- > `menuentry 'Custom Linux Kernel' {
-linux    /boot/vmlinuz-linux-custom
-root=UUID=paste-your-root-partition-uuid-here
-initrd /boot/initramfs-linux.img
-}`
+ > `menuentry 'Custom Linux Kernel' {  
+linux    /boot/vmlinuz-linux-custom  
+root=UUID=paste-your-root-partition-uuid-here  
+initrd /boot/initramfs-linux.img  
+}`  
 
 ---
 
