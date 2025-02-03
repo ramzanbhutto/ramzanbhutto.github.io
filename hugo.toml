@@ -2,3 +2,62 @@ baseURL = 'https://ramzan3019.github.io/'
 languageCode = 'en-us'
 title = 'Muhammad Ramzan'
 theme = 'hugo-PaperMod'
+[params.profileMode]
+enabled = true
+title = "Muhammad Ramzan"
+subtitle = "Aspiring Embedded System Engineer · Passionate about C/C++/Python/C#, Open Source, and Linux"
+imageUrl = "https://raw.githubusercontent.com/ramzan3019/ramzan3019.github.io/refs/heads/master/MyPic.jpeg"
+imageTitle = "Profile Picture"
+imageWidth = 200
+imageHeight = 200
+
+[[params.profileMode.buttons]]
+  name = "Posts"
+  url = "/posts"
+
+[[params.profileMode.buttons]]
+  name = "Archive"
+  url = "/archives"
+
+
+[[params.socialIcons]]
+  name = "Github"
+  url = "https://github.com/ramzan3019"
+
+[[params.socialIcons]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/muhammad-ramzan-555230332/"
+
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON" ]
+
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  location = 0
+  distance = 1_000
+  threshold = 0.4
+  minMatchCharLength = 0
+  keys = [ "title", "permalink", "summary", "content" ]
+
+[[menu.main]]
+    name = "Tags"
+    identifier = "tags"
+    weight = 300
+    url = "/tags/"
+
+[[menu.main]]
+  name = "Search"
+  url = "/search"
+
+
+
+[params]
+  ShowShareButtons = true 
+  ShowToc =  true
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  defaultTheme = 'dark'
+  tags = true
