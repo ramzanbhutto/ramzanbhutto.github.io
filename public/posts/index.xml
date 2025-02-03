@@ -2,25 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Muhammad Ramzan</title>
-    <link>https://ramzan3019.github.io/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Muhammad Ramzan</description>
-    <generator>Hugo -- 0.141.0</generator>
+    <generator>Hugo -- 0.142.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Jan 2025 23:17:14 +0500</lastBuildDate>
-    <atom:link href="https://ramzan3019.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Firstgsa</title>
-      <link>https://ramzan3019.github.io/posts/firstgsa/</link>
-      <pubDate>Wed, 22 Jan 2025 23:17:14 +0500</pubDate>
-      <guid>https://ramzan3019.github.io/posts/firstgsa/</guid>
-      <description>&lt;h1 id=&#34;this-my-first-psot&#34;&gt;this my first psot&lt;/h1&gt;</description>
-    </item>
-    <item>
-      <title>First</title>
-      <link>https://ramzan3019.github.io/posts/first/</link>
-      <pubDate>Wed, 22 Jan 2025 23:04:57 +0500</pubDate>
-      <guid>https://ramzan3019.github.io/posts/first/</guid>
-      <description>&lt;h1 id=&#34;post&#34;&gt;post&lt;/h1&gt;</description>
+      <title>Compile and Build Linux Kernel</title>
+      <link>http://localhost:1313/posts/kernel-compilation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/kernel-compilation/</guid>
+      <description>&lt;h2 id=&#34;building-linux-kernel&#34;&gt;Building Linux Kernel&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-1-download-the-source-code&#34;&gt;Step 1: Download the Source Code&lt;/h3&gt;
+&lt;p&gt;Visit the &lt;a href=&#34;https://www.kernel.org/&#34;&gt;Official Kernel Website&lt;/a&gt; and download the latest kernel source code. The downloaded files contains a compressed source code that you need to extract it.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;step-2-extract-the-source-code&#34;&gt;Step 2: Extract the Source Code&lt;/h3&gt;
+&lt;p&gt;After downloading, it is necessary to extract the source code. So, we will achieve this using &lt;strong&gt;tar&lt;/strong&gt; command.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
