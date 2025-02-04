@@ -32,7 +32,7 @@ List available partitions using:
 `ls`
 
 
-### Step 2: Step 2: Locate the Boot Partition
+### Step 2: Locate the Boot Partition
 Check each partition for the /boot/grub directory:
 
 `ls (hdX,msdosY)/boot/grub`
