@@ -2,10 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/arch/</loc>
+    <lastmod>2025-02-05T00:37:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/boot/</loc>
+    <lastmod>2025-02-05T00:37:50+05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/kernel-compilation/</loc>
     <lastmod>2025-02-05T00:37:50+05:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/grub/</loc>
+    <lastmod>2025-02-05T00:37:50+05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/grub-rescue-setup/</loc>
+    <lastmod>2025-02-05T00:37:50+05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/kernel/</loc>
     <lastmod>2025-02-05T00:37:50+05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/linux/</loc>

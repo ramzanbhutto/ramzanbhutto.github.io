@@ -16,6 +16,10 @@ url = "https://www.linkedin.com/in/muhammad-ramzan-555230332?utm_source=share&ut
 name = "Github"
 url = "https://github.com/ramzan3019"
 
+[[params.socialIcons]]
+name = "Discord"
+url = "https://discord.gg/mMThNhSm"
+
 [[menu.main]]
     name = "Tags"
     identifier = "tags"
@@ -30,12 +34,8 @@ url = "https://github.com/ramzan3019"
   name = "Archives"
   url = "/archives"
 
-
-
 [outputs]
 home = [ "HTML", "RSS", "JSON" ]
-
-
 
 [params]
 ShowCodeCopyButtons = true

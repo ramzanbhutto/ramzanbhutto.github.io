@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on Muhammad Ramzan</title>
-    <link>http://localhost:1313/tags/linux/</link>
-    <description>Recent content in Linux on Muhammad Ramzan</description>
+    <title>Kernel on Muhammad Ramzan</title>
+    <link>http://localhost:1313/tags/kernel/</link>
+    <description>Recent content in Kernel on Muhammad Ramzan</description>
     <generator>Hugo -- 0.143.1</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Feb 2025 00:37:50 +0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Compile and Build Linux Kernel</title>
       <link>http://localhost:1313/posts/kernel-compilation/</link>
@@ -21,20 +21,6 @@
 &lt;hr&gt;
 &lt;h3 id=&#34;step-2-extract-the-source-code&#34;&gt;Step 2: Extract the Source Code&lt;/h3&gt;
 &lt;p&gt;After downloading, it is necessary to extract the source code. So, we will achieve this using &lt;strong&gt;tar&lt;/strong&gt; command.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Grub Rescue Setup</title>
-      <link>http://localhost:1313/posts/grub-rescue-setup/</link>
-      <pubDate>Wed, 05 Feb 2025 00:37:50 +0500</pubDate>
-      <guid>http://localhost:1313/posts/grub-rescue-setup/</guid>
-      <description>&lt;h1 id=&#34;understanding-grub-rescue-and-how-to-fix-it&#34;&gt;Understanding GRUB Rescue and How to Fix It&lt;/h1&gt;
-&lt;p&gt;&lt;em&gt;(A Guide to Diagnosing and Resolving Boot Errors)&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;why-does-grub-rescue-appear&#34;&gt;Why Does GRUB Rescue Appear?&lt;/h2&gt;
-&lt;p&gt;The GRUB rescue prompt appears when the bootloader fails to locate critical files or configurations. Common causes include:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
