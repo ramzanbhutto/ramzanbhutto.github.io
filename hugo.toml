@@ -46,10 +46,6 @@ tags = true
 ShowPostNavLinks = true
 ShowShareButtons = true
 
-URL = "https://github.com/ramzan3019/ramzan3019.github.io/discussions/1#discussion-7919308"
-Text = "Suggest Changes"
-appendFilePath = true
-
 
 [params.fuseOpts]
 isCaseSensitive = false
