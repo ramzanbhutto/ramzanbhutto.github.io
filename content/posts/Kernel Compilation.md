@@ -18,12 +18,14 @@ Visit the [Official Kernel Website](https://www.kernel.org/) and download the la
 ### Step 2: Extract the Source Code
 
 After downloading, it is necessary to extract the source code. So, we will achieve this using **tar** command.
- > `tar xvf linux-6.13.tar.xz`
-
+~~~ 
+ tar xvf linux-6.13.tar.xz
+~~~
 If you don't have **tar**, then download it using command:
 
- > `sudo pacman -S tar`  
-
+~~~ 
+ sudo pacman -S tar  
+~~~
  Note: It is recommended to download the latest kernel source code and write it's version correctly while using **tar** command.
 
 ---
@@ -32,43 +34,46 @@ If you don't have **tar**, then download it using command:
 
 Make sure you have additional packages to start compilation. To achieve this, you need to install the following **packages**:
 
- > `sudo pacman -S git fakeroot ncurses xz bc flex bison base-devel kmod cpio perl binutils util-linux jfsutils e2fsprogs xfsprogs squashfs-tools quota-tools`
-
+~~~ 
+ sudo pacman -S git fakeroot ncurses xz bc flex bison base-devel kmod cpio perl binutils util-linux jfsutils e2fsprogs xfsprogs squashfs-tools quota-tools
+~~~
 ---
 
 ### Step 4: Configure your kernel
 
 1. Navigate to **linux-6.13** folder:
 
- > `cd linux-6.13`
-
+~~~ 
+ cd linux-6.13
+~~~
 2. Configue your kernel. It is recommended to use your current system's configuration as a base. So write the following commands in order:
 
   - Use the following commad if you have zcat:
 
-   > `zcat /proc/config.gz > .config`  
-
+~~~   
+ zcat /proc/config.gz > .config
+~~~
   - Else you have to use following commands to simply copying **config** file:
-    
-   - > `cp /proc/config.gz ./`
-   - > `gunzip ./config.gz`
-   - > `mv config .config`
-
+   ~~~ 
+    cp /proc/config.gz ./
+    gunzip ./config.gz
+    mv config .config
+   ~~~
 3. Use the following commands to open a menu-driven interface to customize kernel options: 
-
-   - > `make menuconfig`
-   - > `make xconfig`
-   - > `make oldconfig`
- 
+   ~~~
+    make menuconfig
+    make xconfig
+    `make oldconfig`
+   ~~~
 4. Make some changes in `.config` file: 
    
    - Open it using command(you can use vim, kate, nano or any other text editor):
-
-     > `sudo vim .config`
-
+   ~~~
+   sudo vim .config
+   ~~~
    - Make following changes: 
     
-     > search for `CONFIG_EXT4_FS=m` and set it to `CONFIG_EXT4_FS=y`.
+     > search for `CONFIG_EXT4_FS=m` and set it to   `CONFIG_EXT4_FS=y`.
 
 ---
 
@@ -76,14 +81,16 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
 1. Check for available processing CPU Cores using command: 
 
- > `nproc`
-
-*Note then number of cores shown on the screen*
+~~~
+ nproc
+~~~
+*Note then `n` number of cores shown on the screen*
 
 2. Initiate the compilation process:
 
- > `make -jn`   
-
+~~~
+ make -jn   
+~~~
 **Replace *n* with number of cores that you found using `nproc` command**
 
 
@@ -91,8 +98,9 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
 If any issue persists during or after running **make -jn**, then make a back up of **.config** file and run the command:
 
- > `make mrproper` 
-
+~~~
+ make mrproper 
+~~~
 ***make mrproper** resets your entire broken tree back to the initial state.*
 
 ---
@@ -101,8 +109,9 @@ If any issue persists during or after running **make -jn**, then make a back up 
 
 Insalling Kernel Modules are mandatory and they enhances the kernel's capabilities, hardware support and other features while maintaining system stability and efficiency. You can install kernel modules using commad:
 
- > `sudo make modules_install`
-
+~~~
+ sudo make modules_install
+~~~
 ---
 
 ### Step 7: Install Kernel
@@ -111,22 +120,23 @@ Insalling Kernel Modules are mandatory and they enhances the kernel's capabiliti
 
 1. Directly install through one command:
 
- > `sudo make install`
-
+~~~
+ sudo make install
+~~~
 2. Use three commands properly and carefully: 
  
   - Copy the Kernel Image:
-
-    > `sudo cp arch/x86/boot/bzImage  /boot/vmlinuz-linux-custom`
-
+~~~   
+ sudo cp arch/x86/boot/bzImage  /boot/vmlinuz-linux-custom
+~~~
   - Copy the System.map file:
-
-    > `sudo cp System.map  /boot/System.map-linux-custom`
-
+~~~  
+ sudo cp System.map  /boot/System.map-linux-custom
+~~~
   - Copy the configuration file:
-
-    > `sudo cp .config  /boot/config-linux-custom`
-
+~~~  
+ sudo cp .config  /boot/config-linux-custom
+~~~
 ---
 
 ### Step 8: Update the Bootloader
@@ -135,36 +145,38 @@ Depending on your bootloader, you will need to add an entry for the new kernel. 
 
 1. Run the following command to know the UUID of your root partition (it will be in ext4 file system and have the mounting point as /) and copy it:
 
- > `lsblk -f`
-
+~~~
+ lsblk -f
+~~~
 2. Open the file using command:
 
- > ` sudo nvim /etc/grub.d/40_custom`
-
+~~~
+ sudo nvim /etc/grub.d/40_custom
+~~~
 3. Add the following content to the above mentioned file at the end:
-
- > `menuentry 'Custom Linux Kernel' {  
+~~~
+  menuentry 'Custom Linux Kernel' {  
 linux    /boot/vmlinuz-linux-custom  
 root=UUID=paste-your-root-partition-uuid-here  
 initrd /boot/initramfs-linux.img  
-}`  
-
+}  
+~~~
 ---
 
 ### Step 9: Generate Initramfs 
 
 *Generating Initramfs is necessary as you have compiled a new custom kernel, installed kernel modules, updated kernel configuration and updated bootloader. It is crucial for boot system. Use the command and make sure to input the correct version as I mentioned **6.13**:*
-
- > `sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-custom.img`
-
+~~~
+ sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-custom.img
+~~~
 ---
 
 ### Step 10: Update GRUB configuration
 
 **Use the following command to update it as it will detect our new custom kernel:**
-
- > `sudo grub-mkconfig -o /boot/grub/grub.cfg`
-
+~~~
+ sudo grub-mkconfig -o /boot/grub/grub.cfg
+~~~
 
 **That's it. Configuration, you successfully build, compiled and installed your custom Kernel. Enjoy**
 
