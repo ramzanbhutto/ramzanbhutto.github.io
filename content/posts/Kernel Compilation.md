@@ -1,6 +1,7 @@
 +++
 title = 'Compile and Build Linux Kernel'
 date = '2025-02-05T00:37:50+05:00'
+tags = ["Linux","Kernel","Arch"]
 +++
 
 ## Building Linux Kernel

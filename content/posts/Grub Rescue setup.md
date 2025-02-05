@@ -1,7 +1,7 @@
 +++
 title = 'Grub Rescue Setup'
 date = '2025-02-05T00:37:50+05:00'
-tags = ["Linux"]
+tags = ["Linux","GRUB","boot"]
 +++
 # Understanding GRUB Rescue and How to Fix It  
 *(A Guide to Diagnosing and Resolving Boot Errors)*  
