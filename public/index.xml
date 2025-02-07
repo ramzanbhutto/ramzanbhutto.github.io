@@ -6,8 +6,24 @@
     <description>Recent content on Muhammad Ramzan</description>
     <generator>Hugo -- 0.143.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 05 Feb 2025 00:37:50 +0500</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2025 00:49:53 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones</title>
+      <link>http://localhost:1313/posts/auto-audio-switching/</link>
+      <pubDate>Sat, 08 Feb 2025 00:49:53 +0500</pubDate>
+      <guid>http://localhost:1313/posts/auto-audio-switching/</guid>
+      <description>&lt;h3 id=&#34;automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide&#34;&gt;Automatically Switching Audio Output Between Speakers and Headphones on Arch Linux: A Comprehensive Guide&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;method-1using-pavucontrolgraphical-method&#34;&gt;Method 1:Using Pavucontrol(Graphical Method)&lt;/h2&gt;
+&lt;p&gt;If you prefer a more user friendly environment, then go for pavucontrol.&lt;/p&gt;
+&lt;h3 id=&#34;step-1install-pavucontrol-if-its-not-already-installed&#34;&gt;Step 1:Install &lt;strong&gt;pavucontrol&lt;/strong&gt; if it&amp;rsquo;s not already installed:&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo pacman -S pavucontrol
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-2-launch-pavucontrol&#34;&gt;Step 2: Launch &lt;strong&gt;pavucontrol&lt;/strong&gt;:&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pavucontrol
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-3-navigate-to-the-configuration-tab&#34;&gt;Step 3: Navigate to the &lt;code&gt;Configuration&lt;/code&gt; tab.&lt;/h3&gt;
+&lt;p&gt;In pavucontrol, go to the Configuration tab. This section allows you to manage audio profiles for your devices.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Compile and Build Linux Kernel</title>
       <link>http://localhost:1313/posts/kernel-compilation/</link>
