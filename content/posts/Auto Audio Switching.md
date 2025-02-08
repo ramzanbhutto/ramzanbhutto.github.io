@@ -42,7 +42,7 @@ For those who prefer the command line, you can achieve automatic switching by fo
 ### Step 1: Ensure you have `Pulseaudio` or `Pipewire` installed, if not then achieve it using:
 
 ~~~
-sudo pacman -S pavucontrol
+sudo pacman -S pulseaudio
 ~~~
 **or**
 ~~~
