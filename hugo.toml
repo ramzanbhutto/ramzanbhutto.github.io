@@ -1,4 +1,4 @@
-baseURL = 'https://ramzan3019.github.io/'
+baseURL = 'https://ramzanbhutto.github.io/'
 languageCode = 'en-us'
 title = 'Muhammad Ramzan'
 theme = 'hugo-PaperMod'
@@ -14,7 +14,7 @@ url = "https://www.linkedin.com/in/muhammad-ramzan-555230332?utm_source=share&ut
 
 [[params.socialIcons]]
 name = "Github"
-url = "https://github.com/ramzan3019"
+url = "https://github.com/ramzanbhutto"
 
 [[params.socialIcons]]
 name = "Discord"
