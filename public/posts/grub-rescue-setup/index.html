@@ -235,27 +235,27 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <pre tabindex="0"><code>    ls
 </code></pre><h3 id="step-2-locate-the-boot-partition">Step 2: Locate the Boot Partition<a hidden class="anchor" aria-hidden="true" href="#step-2-locate-the-boot-partition">#</a></h3>
 <p>Check each partition for the /boot/grub directory:</p>
-<pre tabindex="0"><code>ls (hdX,msdosY)/boot/grub
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ls (hdX,msdosY)<span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub
+</span></span></code></pre></div><blockquote>
 <p>Continue this process until you locate the /boot/grub directory. Then, replace X (disk number) and Y (partition number) based on your system.</p></blockquote>
 <h3 id="step-3-set-the-correct-root-and-prefix">Step 3: Set the Correct Root and Prefix<a hidden class="anchor" aria-hidden="true" href="#step-3-set-the-correct-root-and-prefix">#</a></h3>
 <p>Set the correct root and prefix:</p>
-<pre tabindex="0"><code>set root=(hdX,msdosY)  
-</code></pre><pre tabindex="0"><code>set prefix=(hdX,msdosY)/boot/grub
-</code></pre><h3 id="step-4-load-the-normal-modules">Step 4: Load the Normal Modules<a hidden class="anchor" aria-hidden="true" href="#step-4-load-the-normal-modules">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>set root<span style="color:#f92672">=</span>(hdX,msdosY)  
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>set prefix<span style="color:#f92672">=</span>(hdX,msdosY)<span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub
+</span></span></code></pre></div><h3 id="step-4-load-the-normal-modules">Step 4: Load the Normal Modules<a hidden class="anchor" aria-hidden="true" href="#step-4-load-the-normal-modules">#</a></h3>
 <pre tabindex="0"><code>insmod normal
 </code></pre><pre tabindex="0"><code>normal
 </code></pre><blockquote>
 <p>This should bring up the standard GRUB menu, allowing you to boot into your operating system.</p></blockquote>
 <h3 id="step-5-reinstall-grub">Step 5: Reinstall GRUB<a hidden class="anchor" aria-hidden="true" href="#step-5-reinstall-grub">#</a></h3>
 <p>Once booted, it&rsquo;s crucial to reinstall GRUB to prevent future issues:</p>
-<pre tabindex="0"><code>sudo grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>mkconfig <span style="color:#f92672">-</span>o <span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub<span style="color:#f92672">/</span>grub<span style="color:#f92672">.</span>cfg
+</span></span></code></pre></div><blockquote>
 <p>It generated grub configuration file for arch-based distros, for debian based distros, you can use the following command:</p></blockquote>
 <pre tabindex="0"><code>sudo grub-update
 </code></pre><p>Now reinstall the GRUB Bootloader to the specified disk:</p>
-<pre tabindex="0"><code>sudo grub-install /dev/sdaX 
-</code></pre><blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>install <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>sdaX 
+</span></span></code></pre></div><blockquote>
 <p>It is recommended to regenerate the grub configuration after this step.</p></blockquote>
 <hr>
 <h2 id="method-2-grub-setup-using-a-live-usb">Method 2: GRUB Setup using a Live USB<a hidden class="anchor" aria-hidden="true" href="#method-2-grub-setup-using-a-live-usb">#</a></h2>
@@ -270,49 +270,49 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <pre tabindex="0"><code>lsblk
 </code></pre><h3 id="step3-mount-the-root-partition"><strong>Step3: Mount the root partition</strong><a hidden class="anchor" aria-hidden="true" href="#step3-mount-the-root-partition">#</a></h3>
 <p>Mounts the root partition (/dev/nvme0n1p4) to the /mnt directory. Replace /dev/nvme0n1p4 with your actual root partition identifier.</p>
-<pre tabindex="0"><code>sudo mount  /dev/nvme0n1p4 /mnt
-</code></pre><h3 id="step-4-mount-the-boot-partition"><strong>Step 4: Mount the boot partition</strong><a hidden class="anchor" aria-hidden="true" href="#step-4-mount-the-boot-partition">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>nvme0n1p4 <span style="color:#f92672">/</span>mnt
+</span></span></code></pre></div><h3 id="step-4-mount-the-boot-partition"><strong>Step 4: Mount the boot partition</strong><a hidden class="anchor" aria-hidden="true" href="#step-4-mount-the-boot-partition">#</a></h3>
 <p>Mounts the boot partition (/dev/nvme0n1p3) to /mnt/boot. Adjust /dev/nvme0n1p3 to match your boot partition.</p>
-<pre tabindex="0"><code>sudo mount  /dev/nvme0n1p3 /mnt/boot
-</code></pre><h3 id="step-5-bind-mount-system-directories"><strong>Step 5: Bind Mount System Directories</strong><a hidden class="anchor" aria-hidden="true" href="#step-5-bind-mount-system-directories">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>nvme0n1p3 <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>boot
+</span></span></code></pre></div><h3 id="step-5-bind-mount-system-directories"><strong>Step 5: Bind Mount System Directories</strong><a hidden class="anchor" aria-hidden="true" href="#step-5-bind-mount-system-directories">#</a></h3>
 <p>Bind /dev, /proc, /sys, and EFI variables to the chroot environment:</p>
 <h4 id="i--dev-directory"><strong>i:  /dev directory</strong><a hidden class="anchor" aria-hidden="true" href="#i--dev-directory">#</a></h4>
 <p>Bind the /dev directory to /mnt/dev for device access in the chroot environment.</p>
-<pre tabindex="0"><code>sudo mount  - -bind  /dev  /mnt/dev
-</code></pre><h4 id="ii--proc-directory"><strong>ii:  /proc directory</strong><a hidden class="anchor" aria-hidden="true" href="#ii--proc-directory">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>dev  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>dev
+</span></span></code></pre></div><h4 id="ii--proc-directory"><strong>ii:  /proc directory</strong><a hidden class="anchor" aria-hidden="true" href="#ii--proc-directory">#</a></h4>
 <p>Bind the /proc directory to /mnt/proc for process information.</p>
-<pre tabindex="0"><code>sudo mount --bind /proc /mnt/proc
-</code></pre><h4 id="iii--sys-directory"><strong>iii:  /sys directory</strong><a hidden class="anchor" aria-hidden="true" href="#iii--sys-directory">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount <span style="color:#f92672">--</span>bind <span style="color:#f92672">/</span>proc <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>proc
+</span></span></code></pre></div><h4 id="iii--sys-directory"><strong>iii:  /sys directory</strong><a hidden class="anchor" aria-hidden="true" href="#iii--sys-directory">#</a></h4>
 <p>Bind the /sys directory to /mnt/sys for system information.</p>
-<pre tabindex="0"><code>sudo mount  - -bind  /sys  /mnt/sys
-</code></pre><h4 id="iv--efi-variables"><strong>iv:  efi variables</strong><a hidden class="anchor" aria-hidden="true" href="#iv--efi-variables">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>sys  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys
+</span></span></code></pre></div><h4 id="iv--efi-variables"><strong>iv:  efi variables</strong><a hidden class="anchor" aria-hidden="true" href="#iv--efi-variables">#</a></h4>
 <p>Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.</p>
-<pre tabindex="0"><code>sudo mount  - -bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
-</code></pre><h4 id="v--devpts-optional-for-nvme-or-gpt-file-systems"><strong>v:  /dev/pts (optional for nvme or gpt file systems)</strong><a hidden class="anchor" aria-hidden="true" href="#v--devpts-optional-for-nvme-or-gpt-file-systems">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars
+</span></span></code></pre></div><h4 id="v--devpts-optional-for-nvme-or-gpt-file-systems"><strong>v:  /dev/pts (optional for nvme or gpt file systems)</strong><a hidden class="anchor" aria-hidden="true" href="#v--devpts-optional-for-nvme-or-gpt-file-systems">#</a></h4>
 <p>If your system uses the pts filesystem or you want a pseudo-terminal support.</p>
-<pre tabindex="0"><code>sudo mount --bind /dev/pts /mnt/dev/pts
-</code></pre><h3 id="step-6-chroot-into-the-system"><strong>Step 6: Chroot into the System</strong><a hidden class="anchor" aria-hidden="true" href="#step-6-chroot-into-the-system">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount <span style="color:#f92672">--</span>bind <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pts <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pts
+</span></span></code></pre></div><h3 id="step-6-chroot-into-the-system"><strong>Step 6: Chroot into the System</strong><a hidden class="anchor" aria-hidden="true" href="#step-6-chroot-into-the-system">#</a></h3>
 <p>Switches the root directory to /mnt, allowing you to work on the installed system. Enter the chroot environment:</p>
-<pre tabindex="0"><code>sudo chroot /mnt
-</code></pre><h3 id="step-7-reinstall-grub"><strong>Step 7: Reinstall GRUB</strong><a hidden class="anchor" aria-hidden="true" href="#step-7-reinstall-grub">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo chroot <span style="color:#f92672">/</span>mnt
+</span></span></code></pre></div><h3 id="step-7-reinstall-grub"><strong>Step 7: Reinstall GRUB</strong><a hidden class="anchor" aria-hidden="true" href="#step-7-reinstall-grub">#</a></h3>
 <p>Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.</p>
-<pre tabindex="0"><code>sudo grub-install  - -target=x86_64-efi  - -efi-directory=/boot/efi  - -bootloader-id=GRUB
-</code></pre><h3 id="step-8-generate-grub-configuration-file"><strong>Step 8: Generate GRUB Configuration file</strong><a hidden class="anchor" aria-hidden="true" href="#step-8-generate-grub-configuration-file">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>install  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>target<span style="color:#f92672">=</span>x86_64<span style="color:#f92672">-</span>efi  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>efi<span style="color:#f92672">-</span>directory<span style="color:#f92672">=/</span>boot<span style="color:#f92672">/</span>efi  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bootloader<span style="color:#f92672">-</span>id<span style="color:#f92672">=</span>GRUB
+</span></span></code></pre></div><h3 id="step-8-generate-grub-configuration-file"><strong>Step 8: Generate GRUB Configuration file</strong><a hidden class="anchor" aria-hidden="true" href="#step-8-generate-grub-configuration-file">#</a></h3>
 <p>Generate a new GRUB configuration file, detecting available operating systems and kernels.</p>
-<pre tabindex="0"><code>sudo grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre><h3 id="step-9-exit-chroot-environment"><strong>Step 9: Exit chroot Environment</strong><a hidden class="anchor" aria-hidden="true" href="#step-9-exit-chroot-environment">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>mkconfig <span style="color:#f92672">-</span>o <span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub<span style="color:#f92672">/</span>grub<span style="color:#f92672">.</span>cfg
+</span></span></code></pre></div><h3 id="step-9-exit-chroot-environment"><strong>Step 9: Exit chroot Environment</strong><a hidden class="anchor" aria-hidden="true" href="#step-9-exit-chroot-environment">#</a></h3>
 <p>Exits the chroot environment, returning to the Live USB session.</p>
 <pre tabindex="0"><code>exit
 </code></pre><h3 id="step-9-unmount-filesystems"><strong>Step 9: Unmount Filesystems</strong><a hidden class="anchor" aria-hidden="true" href="#step-9-unmount-filesystems">#</a></h3>
 <p>Recursively unmounts all filesystems mounted under /mnt.</p>
-<pre tabindex="0"><code>sudo umount -R /mnt
-</code></pre><h3 id="step-10-reboot-the-system"><strong>Step 10: Reboot the System</strong><a hidden class="anchor" aria-hidden="true" href="#step-10-reboot-the-system">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo umount <span style="color:#f92672">-</span>R <span style="color:#f92672">/</span>mnt
+</span></span></code></pre></div><h3 id="step-10-reboot-the-system"><strong>Step 10: Reboot the System</strong><a hidden class="anchor" aria-hidden="true" href="#step-10-reboot-the-system">#</a></h3>
 <p>Restarts the system. Remove the Live USB to boot into your repaired system.</p>
 <pre tabindex="0"><code>reboot
 </code></pre><h3 id="step-11-regenerate-grub-configuration-file"><strong>Step 11: Regenerate GRUB Configuration File</strong><a hidden class="anchor" aria-hidden="true" href="#step-11-regenerate-grub-configuration-file">#</a></h3>
 <p>After booting into your system, it&rsquo;s advisable to regenerate the GRUB configuration file to ensure all operating systems are detected:</p>
-<pre tabindex="0"><code>sudo grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre><h3 id="step-12-reboot"><strong>Step 12: Reboot</strong><a hidden class="anchor" aria-hidden="true" href="#step-12-reboot">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>mkconfig <span style="color:#f92672">-</span>o <span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub<span style="color:#f92672">/</span>grub<span style="color:#f92672">.</span>cfg
+</span></span></code></pre></div><h3 id="step-12-reboot"><strong>Step 12: Reboot</strong><a hidden class="anchor" aria-hidden="true" href="#step-12-reboot">#</a></h3>
 <pre tabindex="0"><code>sudo reboot now
 </code></pre><hr>
 <blockquote>

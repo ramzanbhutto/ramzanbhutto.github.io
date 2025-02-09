@@ -35,9 +35,9 @@ If you don't have **tar**, then download it using command:
 
 Make sure you have additional packages to start compilation. To achieve this, you need to install the following **packages**:
 
-~~~ 
+```python
  sudo pacman -S git fakeroot ncurses xz bc flex bison base-devel kmod cpio perl binutils util-linux jfsutils e2fsprogs xfsprogs squashfs-tools quota-tools
-~~~
+``` 
 ---
 
 ### Step 4: Configure your kernel
@@ -51,9 +51,9 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
   - Use the following commad if you have zcat:
 
-~~~   
- zcat /proc/config.gz > .config
-~~~
+```python
+zcat /proc/config.gz > .config
+```   
   - Else you have to use following commands to simply copying **config** file:
    ~~~ 
     cp /proc/config.gz ./
@@ -110,9 +110,10 @@ If any issue persists during or after running **make -jn**, then make a back up 
 
 Insalling Kernel Modules are mandatory and they enhances the kernel's capabilities, hardware support and other features while maintaining system stability and efficiency. You can install kernel modules using commad:
 
-~~~
- sudo make modules_install
-~~~
+```python
+sudo make modules_install
+```
+
 ---
 
 ### Step 7: Install Kernel
@@ -127,17 +128,17 @@ Insalling Kernel Modules are mandatory and they enhances the kernel's capabiliti
 2. Use three commands properly and carefully: 
  
   - Copy the Kernel Image:
-~~~   
+```python
  sudo cp arch/x86/boot/bzImage  /boot/vmlinuz-linux-custom
-~~~
+```   
   - Copy the System.map file:
-~~~  
+```python
  sudo cp System.map  /boot/System.map-linux-custom
-~~~
+```  
   - Copy the configuration file:
-~~~  
+```python
  sudo cp .config  /boot/config-linux-custom
-~~~
+```  
 ---
 
 ### Step 8: Update the Bootloader
@@ -150,34 +151,35 @@ Depending on your bootloader, you will need to add an entry for the new kernel. 
  lsblk -f
 ~~~
 2. Open the file using command:
-
-~~~
+```python
  sudo nvim /etc/grub.d/40_custom
-~~~
+```
+
 3. Add the following content to the above mentioned file at the end:
-~~~
+```python
   menuentry 'Custom Linux Kernel' {  
 linux    /boot/vmlinuz-linux-custom  
 root=UUID=paste-your-root-partition-uuid-here  
 initrd /boot/initramfs-linux.img  
-}  
-~~~
+}      
+```
 ---
 
 ### Step 9: Generate Initramfs 
 
 *Generating Initramfs is necessary as you have compiled a new custom kernel, installed kernel modules, updated kernel configuration and updated bootloader. It is crucial for boot system. Use the command and make sure to input the correct version as I mentioned **6.13**:*
-~~~
- sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-custom.img
-~~~
+```python
+sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-custom.img
+```
 ---
 
 ### Step 10: Update GRUB configuration
 
 **Use the following command to update it as it will detect our new custom kernel:**
-~~~
+```python
  sudo grub-mkconfig -o /boot/grub/grub.cfg
-~~~
+```
+---
 
 **That's it. Configuration, you successfully build, compiled and installed your custom Kernel. Enjoy**
 

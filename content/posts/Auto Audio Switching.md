@@ -12,9 +12,11 @@ tags = ["Arch","Pipewire","Pulseaudio"]
 If you prefer a more user friendly environment, then go for pavucontrol.
 
 ### Step 1:Install **pavucontrol** if it's not already installed:
-~~~
+
+```zsh
 sudo pacman -S pavucontrol
-~~~
+```
+
 
 ### Step 2: Launch **pavucontrol**:
 ~~~
@@ -64,11 +66,14 @@ Replace ***bluez_output.56_66_98_EX_56_9X.2*** with the actual sink name of your
 
 ### Step 4: Move Existing Audio Streams:
 To redirect current audio streams to the newly selected default sink (headphones), execute the following script in terminal that will move all active sudio streams to the default sink you set in the previous step.
-~~~
+
+```cpp 
 for stream in $(pactl list short sink-inputs | awk '{print $1}'); do
     pactl move-sink-input $stream $(pactl get-default-sink)
 done
-~~~
+
+```
+
 
 ---
 
