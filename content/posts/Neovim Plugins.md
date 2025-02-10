@@ -215,6 +215,15 @@ source .bashrc
  Locate the following piece of code into init.lua file:
 ```lua
    {
+   "NvChad/NvChad",
+   lazy = false,
+   branch = "v2.5",
+   import = "nvchad.plugins",
+   },
+```
+Then, add the following beautiful text just after it:
+```lua
+     {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -223,10 +232,7 @@ source .bashrc
       "nvim-telescope/telescope.nvim",
       "folke/trouble.nvim",
     },
-```
-Then, add the following beautiful text just after it:
-```lua
-  config = function()
+      config = function()
       require("chatgpt").setup({
         -- Your ChatGPT.nvim configuration
         api_key_cmd = "echo $OPENAI_API_KEY",
