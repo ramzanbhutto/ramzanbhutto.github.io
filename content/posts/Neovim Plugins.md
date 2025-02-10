@@ -117,7 +117,7 @@ lspconfig.clangd.setup({
 })
 ```
 3. `Edit lazy.lua` file to enable plugins and comment the lines after disabled_plugins lines like mentioned below:
- > Address: /home/ramzan/.config/nvim/lua/configs/lazy.lua
+ > Address: /home/username/.config/nvim/lua/configs/lazy.lua
 
 ```lua
   performance = {
