@@ -1,7 +1,7 @@
 +++
 date = '2025-02-08T23:28:37+05:00'
 title = 'Neovim Complete Setup and Integrating ChatGPT'
-tag = ["Neovim","Lua"]
+tag = ["Neovim","Lua","ChatGPT"]
 +++
 ---
 
@@ -169,3 +169,107 @@ lspconfig.clangd.setup({
   :Lazy sync
 ```
 
+---
+
+## Part 2: Integrating ChatGPT into Neovim
+
+### Step 1: Get the API Key
+
+ 1. Click [here](https://platform.openai.com/docs/overview) and Sign up or Login in for OPENAI Platform.
+  
+ 2. Click on the setting ⚙️  option and Navigate to API keys.
+
+ 3. Click on `+ Create new secret key` and fill some sections to generate your key. 
+
+ 4. After generating, copy your key.
+
+### Step 2: Save into your zsh or bash file
+
+ 1. Verify your terminal type by typing following command into your terminal:
+```lua
+echo $0
+```
+>if it indicates `/bin/zsh` or `zsh` then you're a zsh terminal user, if it indicates `/bin/bash` or `bash` then you're bash terminal user.
+
+ 2. If you're a zsh terminal user, open `.zshrc` file or if you're a bash terminal user, open `.bashrc` file into your home directory and add the following lines:
+ ```lua
+  export OPENAI_API_KEY="paste_your_api_key_here"
+```
+
+ 3. Source the file after making changes and pasting your OPENAI_API_KEY key, by running following command into terminal:
+ ```lua
+  source .zshrc
+```
+> or
+```lua
+source .bashrc
+```
+ 4. Verify your API key:
+ ```lua
+ echo $OPENAI_API_KEY
+```
+
+### Step 3: Configuring the init.lua file
+ >Address: /home/username/.config/nvim/init.lua
+
+ Locate the following piece of code into init.lua file:
+```lua
+   {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "folke/trouble.nvim",
+    },
+```
+Then, add the following beautiful text just after it:
+```lua
+  config = function()
+      require("chatgpt").setup({
+        -- Your ChatGPT.nvim configuration
+        api_key_cmd = "echo $OPENAI_API_KEY",
+
+        vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>lua require('chatgpt').submit()<CR>", { noremap = true, silent = true }),-- Submit text in the ChatGPT prompt
+        vim.api.nvim_set_keymap("n", "<C-c>", "<cmd>lua require('chatgpt').close()<CR>", { noremap = true, silent = true }), -- Close ChatGPT window
+        vim.api.nvim_set_keymap("n", "<C-y>", "<cmd>lua require('chatgpt').yank_last()<CR>", { noremap = true, silent = true }), -- Yank last ChatGPT response
+        vim.api.nvim_set_keymap("n", "<C-u>", "<cmd>lua require('chatgpt').scroll_up()<CR>", { noremap = true, silent = true }), -- Scroll up
+        vim.api.nvim_set_keymap("n", "<C-d>", "<cmd>lua require('chatgpt').scroll_down()<CR>", { noremap = true, silent = true }), -- Scroll down
+        vim.api.nvim_set_keymap("n", "<C-e>", "<cmd>lua vim.api.nvim_screenshot('/home/ramzan/screenshot')<CR>", { noremap = true, silent = true}),
+        vim.api.nvim_set_keymap("n", "<C-2>", "<cmd>lua require('chatgpt').goto_next_end()<CR>", { noremap = true, silent = true}),
+        vim.api.nvim_set_keymap("n", "<C-w>", "<cmd>lua require('chatgpt').close()<CR>", { noremap = true, silent = true})
+      })
+    end,
+  },
+```
+
+> This will automatically set the keybindings which are essential to run ChatGPT into it. Save this file and exit.
+
+### Step 4: Final setup
+
+1. Open Neovim and update the lazy package:
+```lua
+ :Lazy update
+```
+```lua
+ :Lazy sync
+```
+2. Shortcuts to run ChatGPT:
+ - Open Neovim
+ - Open ChatGPT menu:
+ ```lua
+ :ChatGPT
+```
+ - It will open a menu inside our terminal, then give any command to it.
+ - Press `Esc` and then press `enter` to submit the command.
+ - Press `Esc` and then press `ctrl+C` or enter `:q` to exit ChatGPT.
+
+ 3. You can further learn neovim Shortcuts by:
+ ```lua
+  :h nvui
+```
+
+---
+
+>That's it. Finally the setup is over and chatgpt is working inside our terminal. If any issue persists like `Incorrect OPENAI_API_KEY` then you just have to source the bash or zsh file `source .zshrc` or `source.bashrc`. Happy coding 💟
