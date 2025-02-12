@@ -160,9 +160,11 @@ lspconfig.pyright.setup({      --For Python
   },
 
 ```
- 4. Open nvim and install lsp for any language, I am doing for C/C++:
+ 4. Open nvim and install lsp for any language, I am doing for C/C++ and Python:
   ```python
    :MasonInstall clangd
+   :MasonIntall python-lsp-server
+   :MasonInstall pyright
 ```
 > In MasonInstall menu, Press U to update and arrow key to scroll and find your required lsp
 
