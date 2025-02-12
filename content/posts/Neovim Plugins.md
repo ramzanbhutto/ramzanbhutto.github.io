@@ -106,15 +106,20 @@ require("lazy").setup({
 }, lazy_config)
 ```
 
-2. For C/C++ development, ensure clangd is installed and configured:
+2. For C/C++ and Python development, ensure clangd and pyright is installed and configured:
 Add the following piece of code to init.lua after the ending of above mentioned code:
 ```lua
 --clangd server setup
 local lspconfig = require('lspconfig')
-lspconfig.clangd.setup({
+lspconfig.clangd.setup({           --For C/C++
   cmd = { "clangd" },  -- Ensure this points to the system-installed clangd
   -- Additional configuration options can be added here
 })
+lspconfig.pyright.setup({      --For Python
+  autoSearchPaths = true,
+  diagnosticMode = "workplace",   --you can also set it to "openFilesOnly" to check errors in only oepned files
+})
+
 ```
 3. `Edit lazy.lua` file to enable plugins and comment the lines after disabled_plugins lines like mentioned below:
  > Address: /home/username/.config/nvim/lua/configs/lazy.lua
