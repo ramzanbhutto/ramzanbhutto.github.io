@@ -6,7 +6,7 @@ tag = ["Neovim","Lua","ChatGPT"]
 ---
 
 ## Part 1: Setting Up NVChad
-
+>Note: I am using Arch Linux. So, use terminal commands as per your Distro.
 ### Step 1: Removing any previous configuration
 
 1. Linux/MacOS Users
@@ -106,7 +106,15 @@ require("lazy").setup({
 }, lazy_config)
 ```
 
-2. For C/C++ and Python development, ensure clangd and pyright is installed and configured:
+2. Before moving further make sure that you have installed `npm` server on your system. If not, then download it using:
+```lua
+ sudo pacman -S nodejs npm
+```
+```lua
+sudo npm install -g pyright
+```
+
+3. For C/C++ and Python development, ensure clangd and pyright is installed and configured:
 Add the following piece of code to init.lua after the ending of above mentioned code:
 ```lua
 --clangd server setup
@@ -121,7 +129,7 @@ lspconfig.pyright.setup({      --For Python
 })
 
 ```
-3. `Edit lazy.lua` file to enable plugins and comment the lines after disabled_plugins lines like mentioned below:
+4. `Edit lazy.lua` file to enable plugins and comment the lines after disabled_plugins lines like mentioned below:
  > Address: /home/username/.config/nvim/lua/configs/lazy.lua
 
 ```lua
@@ -160,7 +168,7 @@ lspconfig.pyright.setup({      --For Python
   },
 
 ```
- 4. Open nvim and install lsp for any language, I am doing for C/C++ and Python:
+ 5. Open nvim and install lsp for any language, I am doing for C/C++ and Python:
   ```python
    :MasonInstall clangd
    :MasonIntall python-lsp-server
@@ -168,7 +176,7 @@ lspconfig.pyright.setup({      --For Python
 ```
 > In MasonInstall menu, Press U to update and arrow key to scroll and find your required lsp
 
- 5. Update packages using:
+ 6. Update packages using:
  ```lua
   :Lazy update    
 ```
