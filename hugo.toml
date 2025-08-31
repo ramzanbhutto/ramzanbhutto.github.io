@@ -6,7 +6,7 @@ theme = 'hugo-PaperMod'
 
 [params.homeInfoParams]
 Title = "Hi, It's Ramzan"
-Content = "Linux Enthusiast - C/C++/Python/Lua - Aspiring Embedded System Engineer"
+Content = "Linux Enthusiast - C/C++/Python - Aspiring System Architect"
 
 [[params.socialIcons]]
 name = "Linkedin"
