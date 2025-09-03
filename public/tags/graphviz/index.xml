@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Graphviz on Muhammad Ramzan</title>
+    <link>http://localhost:1313/tags/graphviz/</link>
+    <description>Recent content in Graphviz on Muhammad Ramzan</description>
+    <generator>Hugo -- 0.149.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/graphviz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</title>
+      <link>http://localhost:1313/posts/doxygen/</link>
+      <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/doxygen/</guid>
+      <description>Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.</description>
+    </item>
+  </channel>
+</rss>
