@@ -112,7 +112,7 @@ Bind /dev, /proc, /sys, and EFI variables to the chroot environment:
 #### **i:  /dev directory**
 Bind the /dev directory to /mnt/dev for device access in the chroot environment.
 ```python
-sudo mount  - -bind  /dev  /mnt/dev
+sudo mount  --bind  /dev  /mnt/dev
 ```
 #### **ii:  /proc directory**
 Bind the /proc directory to /mnt/proc for process information.
@@ -122,12 +122,12 @@ sudo mount --bind /proc /mnt/proc
 #### **iii:  /sys directory**
 Bind the /sys directory to /mnt/sys for system information.
 ```python
-sudo mount  - -bind  /sys  /mnt/sys
+sudo mount  --bind  /sys  /mnt/sys
 ```
 #### **iv:  efi variables**
 Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.
 ```python
-sudo mount  - -bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
+sudo mount  --bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
 ```
 #### **v:  /dev/pts (optional for nvme or gpt file systems)**
 If your system uses the pts filesystem or you want a pseudo-terminal support.
@@ -142,7 +142,7 @@ Switches the root directory to /mnt, allowing you to work on the installed syste
 sudo chroot /mnt
 ```
 ### **Step 7: Reinstall GRUB**
-Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.
+(Arch Based) Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.
 
 ```python
 sudo grub-install  - -target=x86_64-efi  - -efi-directory=/boot/efi  - -bootloader-id=GRUB
