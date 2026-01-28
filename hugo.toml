@@ -6,11 +6,11 @@ theme = 'hugo-PaperMod'
 
 [params.homeInfoParams]
 Title = "Hi, It's Ramzan"
-Content = "Linux Enthusiast - C/C++/Python - Aspiring System Architect"
+Content = "Aspiring System Architect"
 
 [[params.socialIcons]]
 name = "Linkedin"
-url = "https://www.linkedin.com/in/muhammad-ramzan-555230332?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+url = "https://www.linkedin.com/in/muhammad-ramzan-555230332/"
 
 [[params.socialIcons]]
 name = "Github"
@@ -18,7 +18,7 @@ url = "https://github.com/ramzanbhutto"
 
 [[params.socialIcons]]
 name = "Discord"
-url = "https://discord.gg/mMThNhSm"
+url = "https://discord.com/users/1283507507859292210"
 
 [[menu.main]]
     name = "Tags"
@@ -55,6 +55,3 @@ distance = 1_000
 threshold = 0.4
 minMatchCharLength = 0
 keys = [ "title", "permalink", "summary", "content" ]
-
-
-
