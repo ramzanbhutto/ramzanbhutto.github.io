@@ -4,7 +4,7 @@
     <title>Posts on Muhammad Ramzan</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Muhammad Ramzan</description>
-    <generator>Hugo -- 0.149.0</generator>
+    <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
@@ -23,7 +23,8 @@
       <description>&lt;hr&gt;
 &lt;h2 id=&#34;part-1-setting-up-nvchad&#34;&gt;Part 1: Setting Up NVChad&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Note: I am using Arch Linux. So, use terminal commands as per your Distro.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Note: I am using Arch Linux. So, use terminal commands as per your Distro.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id=&#34;step-1-removing-any-previous-configuration&#34;&gt;Step 1: Removing any previous configuration&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Linux/MacOS Users&lt;/li&gt;

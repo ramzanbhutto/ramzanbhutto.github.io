@@ -17,7 +17,7 @@ Why Does GRUB Rescue Appear?
 The GRUB rescue prompt appears when the bootloader fails to locate critical files or configurations. Common causes include:">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/grub-rescue-setup/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.29a3b25a9664d60b8db5aa62e9689f988389786c5afa84be55b684468490de4f.css" integrity="sha256-KaOyWpZk1guNtapi6WifmIOJeGxa&#43;oS&#43;VbaERoSQ3k8=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -237,7 +237,8 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <p>Check each partition for the /boot/grub directory:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ls (hdX,msdosY)<span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub
 </span></span></code></pre></div><blockquote>
-<p>Continue this process until you locate the /boot/grub directory. Then, replace X (disk number) and Y (partition number) based on your system.</p></blockquote>
+<p>Continue this process until you locate the /boot/grub directory. Then, replace X (disk number) and Y (partition number) based on your system.</p>
+</blockquote>
 <h3 id="step-3-set-the-correct-root-and-prefix">Step 3: Set the Correct Root and Prefix<a hidden class="anchor" aria-hidden="true" href="#step-3-set-the-correct-root-and-prefix">#</a></h3>
 <p>Set the correct root and prefix:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>set root<span style="color:#f92672">=</span>(hdX,msdosY)  
@@ -246,17 +247,20 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <pre tabindex="0"><code>insmod normal
 </code></pre><pre tabindex="0"><code>normal
 </code></pre><blockquote>
-<p>This should bring up the standard GRUB menu, allowing you to boot into your operating system.</p></blockquote>
+<p>This should bring up the standard GRUB menu, allowing you to boot into your operating system.</p>
+</blockquote>
 <h3 id="step-5-reinstall-grub">Step 5: Reinstall GRUB<a hidden class="anchor" aria-hidden="true" href="#step-5-reinstall-grub">#</a></h3>
 <p>Once booted, it&rsquo;s crucial to reinstall GRUB to prevent future issues:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>mkconfig <span style="color:#f92672">-</span>o <span style="color:#f92672">/</span>boot<span style="color:#f92672">/</span>grub<span style="color:#f92672">/</span>grub<span style="color:#f92672">.</span>cfg
 </span></span></code></pre></div><blockquote>
-<p>It generated grub configuration file for arch-based distros, for debian based distros, you can use the following command:</p></blockquote>
+<p>It generated grub configuration file for arch-based distros, for debian based distros, you can use the following command:</p>
+</blockquote>
 <pre tabindex="0"><code>sudo grub-update
 </code></pre><p>Now reinstall the GRUB Bootloader to the specified disk:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>install <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>sdaX 
 </span></span></code></pre></div><blockquote>
-<p>It is recommended to regenerate the grub configuration after this step.</p></blockquote>
+<p>It is recommended to regenerate the grub configuration after this step.</p>
+</blockquote>
 <hr>
 <h2 id="method-2-grub-setup-using-a-live-usb">Method 2: GRUB Setup using a Live USB<a hidden class="anchor" aria-hidden="true" href="#method-2-grub-setup-using-a-live-usb">#</a></h2>
 <p>This method involves booting into a Live USB environment, mounting the necessary partitions, and reinstalling GRUB manually. Follow these steps carefully:</p>
@@ -278,16 +282,16 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <p>Bind /dev, /proc, /sys, and EFI variables to the chroot environment:</p>
 <h4 id="i--dev-directory"><strong>i:  /dev directory</strong><a hidden class="anchor" aria-hidden="true" href="#i--dev-directory">#</a></h4>
 <p>Bind the /dev directory to /mnt/dev for device access in the chroot environment.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>dev  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>dev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">--</span>bind  <span style="color:#f92672">/</span>dev  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>dev
 </span></span></code></pre></div><h4 id="ii--proc-directory"><strong>ii:  /proc directory</strong><a hidden class="anchor" aria-hidden="true" href="#ii--proc-directory">#</a></h4>
 <p>Bind the /proc directory to /mnt/proc for process information.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount <span style="color:#f92672">--</span>bind <span style="color:#f92672">/</span>proc <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>proc
 </span></span></code></pre></div><h4 id="iii--sys-directory"><strong>iii:  /sys directory</strong><a hidden class="anchor" aria-hidden="true" href="#iii--sys-directory">#</a></h4>
 <p>Bind the /sys directory to /mnt/sys for system information.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>sys  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">--</span>bind  <span style="color:#f92672">/</span>sys  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys
 </span></span></code></pre></div><h4 id="iv--efi-variables"><strong>iv:  efi variables</strong><a hidden class="anchor" aria-hidden="true" href="#iv--efi-variables">#</a></h4>
 <p>Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bind  <span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount  <span style="color:#f92672">--</span>bind  <span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars  <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>sys<span style="color:#f92672">/</span>firmware<span style="color:#f92672">/</span>efi<span style="color:#f92672">/</span>efivars
 </span></span></code></pre></div><h4 id="v--devpts-optional-for-nvme-or-gpt-file-systems"><strong>v:  /dev/pts (optional for nvme or gpt file systems)</strong><a hidden class="anchor" aria-hidden="true" href="#v--devpts-optional-for-nvme-or-gpt-file-systems">#</a></h4>
 <p>If your system uses the pts filesystem or you want a pseudo-terminal support.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo mount <span style="color:#f92672">--</span>bind <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pts <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>pts
@@ -295,7 +299,7 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <p>Switches the root directory to /mnt, allowing you to work on the installed system. Enter the chroot environment:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo chroot <span style="color:#f92672">/</span>mnt
 </span></span></code></pre></div><h3 id="step-7-reinstall-grub"><strong>Step 7: Reinstall GRUB</strong><a hidden class="anchor" aria-hidden="true" href="#step-7-reinstall-grub">#</a></h3>
-<p>Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.</p>
+<p>(Arch Based) Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sudo grub<span style="color:#f92672">-</span>install  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>target<span style="color:#f92672">=</span>x86_64<span style="color:#f92672">-</span>efi  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>efi<span style="color:#f92672">-</span>directory<span style="color:#f92672">=/</span>boot<span style="color:#f92672">/</span>efi  <span style="color:#f92672">-</span> <span style="color:#f92672">-</span>bootloader<span style="color:#f92672">-</span>id<span style="color:#f92672">=</span>GRUB
 </span></span></code></pre></div><h3 id="step-8-generate-grub-configuration-file"><strong>Step 8: Generate GRUB Configuration file</strong><a hidden class="anchor" aria-hidden="true" href="#step-8-generate-grub-configuration-file">#</a></h3>
 <p>Generate a new GRUB configuration file, detecting available operating systems and kernels.</p>
@@ -316,7 +320,8 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
 <pre tabindex="0"><code>sudo reboot now
 </code></pre><hr>
 <blockquote>
-<p>Facing the &ldquo;grub rescue&rdquo; prompt can be resolved using methods like <code>insmod</code> or a <code>Live USB</code>. Utilize the Arch Linux community, forums, and the Arch Wiki for support. Proactively addressing boot issues and leveraging resources ensures a stable system. Seek help or consult documentation for further assistance.</p></blockquote>
+<p>Facing the &ldquo;grub rescue&rdquo; prompt can be resolved using methods like <code>insmod</code> or a <code>Live USB</code>. Utilize the Arch Linux community, forums, and the Arch Wiki for support. Proactively addressing boot issues and leveraging resources ensures a stable system. Seek help or consult documentation for further assistance.</p>
+</blockquote>
 
 
   </div>
@@ -408,7 +413,7 @@ The GRUB rescue prompt appears when the bootloader fails to locate critical file
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
 
     <span>
         Powered by
