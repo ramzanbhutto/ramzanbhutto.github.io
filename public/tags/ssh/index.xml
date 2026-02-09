@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Linux on Muhammad Ramzan</title>
-    <link>http://localhost:1313/tags/linux/</link>
-    <description>Recent content in Linux on Muhammad Ramzan</description>
+    <title>Ssh&#34; on Muhammad Ramzan</title>
+    <link>http://localhost:1313/tags/ssh/</link>
+    <description>Recent content in Ssh&#34; on Muhammad Ramzan</description>
     <generator>Hugo -- 0.154.5</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Secure Shell (SSH)</title>
       <link>http://localhost:1313/posts/ssh/</link>
@@ -32,34 +32,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl status sshd
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-3-configuring-the-firewall&#34;&gt;Step 3: Configuring the Firewall&lt;/h3&gt;
 &lt;p&gt;If you have a firewall enabled, you need to allow SSH connections through it.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Compile and Build Linux Kernel</title>
-      <link>http://localhost:1313/posts/kernel-compilation/</link>
-      <pubDate>Wed, 05 Feb 2025 00:37:50 +0500</pubDate>
-      <guid>http://localhost:1313/posts/kernel-compilation/</guid>
-      <description>&lt;h2 id=&#34;building-linux-kernel&#34;&gt;Building Linux Kernel&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;step-1-download-the-source-code&#34;&gt;Step 1: Download the Source Code&lt;/h3&gt;
-&lt;p&gt;Visit the &lt;a href=&#34;https://www.kernel.org/&#34;&gt;Official Kernel Website&lt;/a&gt; and download the latest kernel source code. The downloaded files contains a compressed source code that you need to extract it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;step-2-extract-the-source-code&#34;&gt;Step 2: Extract the Source Code&lt;/h3&gt;
-&lt;p&gt;After downloading, it is necessary to extract the source code. So, we will achieve this using &lt;strong&gt;tar&lt;/strong&gt; command.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Grub Rescue Setup</title>
-      <link>http://localhost:1313/posts/grub-rescue-setup/</link>
-      <pubDate>Wed, 05 Feb 2025 00:37:50 +0500</pubDate>
-      <guid>http://localhost:1313/posts/grub-rescue-setup/</guid>
-      <description>&lt;h1 id=&#34;understanding-grub-rescue-and-how-to-fix-it&#34;&gt;Understanding GRUB Rescue and How to Fix It&lt;/h1&gt;
-&lt;p&gt;&lt;em&gt;(A Guide to Diagnosing and Resolving Boot Errors)&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;why-does-grub-rescue-appear&#34;&gt;Why Does GRUB Rescue Appear?&lt;/h2&gt;
-&lt;p&gt;The GRUB rescue prompt appears when the bootloader fails to locate critical files or configurations. Common causes include:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

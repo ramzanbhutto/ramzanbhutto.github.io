@@ -2,7 +2,7 @@
 title: "Doxygen + PlantUML + Graphviz: Build Automated, Beautiful Project Documentation"
 date: 2025-09-02
 tags: ["C++", "Documentation", "Doxygen", "PlantUML", "Graphviz", "Open Source"]
-author: "Ramzan Bhutto"
+author: "Muhammad Ramzan"
 description: "Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure."
 ---
 
