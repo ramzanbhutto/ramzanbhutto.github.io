@@ -9,6 +9,13 @@
     <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Git and Github</title>
+      <link>http://localhost:1313/posts/git/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/git/</guid>
+      <description>A comprehensive guide to using Git and GitHub for version control and collaboration in software development.</description>
+    </item>
+    <item>
       <title>Secure Shell (SSH)</title>
       <link>http://localhost:1313/posts/ssh/</link>
       <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
