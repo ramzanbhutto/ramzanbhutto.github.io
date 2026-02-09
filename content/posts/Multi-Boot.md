@@ -1,14 +1,10 @@
 ---
 title: "Multi-Boot Setup: Ubuntu + Arch Linux + Windows 11"
 date: "2026-02-09"
-draft: false
-showToc: true
 Author: "Muhammad Ramzan"
 tags: ["linux", "ubuntu", "arch-linux", "windows", "multi-boot", "grub"]
 description: "A comprehensive guide to setting up a multi-boot system with Ubuntu, Arch Linux, and Windows 11 on the same machine."
 ---
-
-# Multi-Boot Setup: Ubuntu + Arch Linux + Windows 11
 
 ---
 
