@@ -16,6 +16,13 @@
       <description>A comprehensive guide to using Git and GitHub for version control and collaboration in software development.</description>
     </item>
     <item>
+      <title>Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11</title>
+      <link>http://localhost:1313/posts/multiboot/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/multiboot/</guid>
+      <description>A comprehensive guide to setting up a triple-boot system with Ubuntu, Arch Linux, and Windows 11 on the same machine.</description>
+    </item>
+    <item>
       <title>Secure Shell (SSH)</title>
       <link>http://localhost:1313/posts/ssh/</link>
       <pubDate>Mon, 09 Feb 2026 00:00:00 +0000</pubDate>
