@@ -8,6 +8,8 @@ tags = ["Linux","GRUB","boot"]
 
 ---
 
+#### Disclaimer: This guide is intended for archlinux users, but the principles can be applied to other Linux distributions with some adjustments. Always back up important data before making changes to your system.
+
 ## Introduction  
 GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the **GRUB rescue prompt** can be alarming. This blog explains why this happens and provides two practical methods to resolve it.  
 
@@ -97,13 +99,13 @@ lsblk
 ### **Step3: Mount the root partition**
 Mounts the root partition (/dev/nvme0n1p4) to the /mnt directory. Replace /dev/nvme0n1p4 with your actual root partition identifier.
 ```python
-sudo mount  /dev/nvme0n1p4 /mnt
+sudo mount  /dev/nvme0n1p3 /mnt
 ```
 
 ### **Step 4: Mount the boot partition**
 Mounts the boot partition (/dev/nvme0n1p3) to /mnt/boot. Adjust /dev/nvme0n1p3 to match your boot partition.
 ```python
-sudo mount  /dev/nvme0n1p3 /mnt/boot
+sudo mount  /dev/nvme0n1p2 /mnt/boot
 ```
 
 ### **Step 5: Bind Mount System Directories**
@@ -112,29 +114,28 @@ Bind /dev, /proc, /sys, and EFI variables to the chroot environment:
 #### **i:  /dev directory**
 Bind the /dev directory to /mnt/dev for device access in the chroot environment.
 ```python
-sudo mount  --bind  /dev  /mnt/dev
+sudo mount --bind  /dev  /mnt/dev
 ```
-#### **ii:  /proc directory**
-Bind the /proc directory to /mnt/proc for process information.
-```python
-sudo mount --bind /proc /mnt/proc
-```
-#### **iii:  /sys directory**
-Bind the /sys directory to /mnt/sys for system information.
-```python
-sudo mount  --bind  /sys  /mnt/sys
-```
-#### **iv:  efi variables**
-Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.
-```python
-sudo mount  --bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
-```
-#### **v:  /dev/pts (optional for nvme or gpt file systems)**
+#### **ii:  /dev/pts (for archlinux and nvme/gpt file systems)**
 If your system uses the pts filesystem or you want a pseudo-terminal support.
 ```python
 sudo mount --bind /dev/pts /mnt/dev/pts
 ```
-
+#### **iii:  /proc directory**
+Bind the /proc directory to /mnt/proc for process information.
+```python
+sudo mount --bind /proc /mnt/proc
+```
+#### **iv:  /sys directory**
+Bind the /sys directory to /mnt/sys for system information.
+```python
+sudo mount  --bind  /sys  /mnt/sys
+```
+#### **v:  efi variables**
+Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.
+```python
+sudo mount  --bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
+```
 
 ### **Step 6: Chroot into the System**
 Switches the root directory to /mnt, allowing you to work on the installed system. Enter the chroot environment:
@@ -145,7 +146,7 @@ sudo chroot /mnt
 (Arch Based) Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.
 
 ```python
-sudo grub-install  - -target=x86_64-efi  - -efi-directory=/boot/efi  - -bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
 ### **Step 8: Generate GRUB Configuration file**
@@ -177,12 +178,20 @@ After booting into your system, it's advisable to regenerate the GRUB configurat
 ```python
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
+Then exit the terminal:
+```python
+exit
+```
 
-### **Step 12: Reboot**
-~~~
-sudo reboot now
-~~~
+### **Step 12: Unmount the Boot Partition**
+```python
+sudo umount -R /mnt
+```
+Then reboot the system to apply changes:
+```python
+reboot
+```
+
 ---
 
 > Facing the "grub rescue" prompt can be resolved using methods like `insmod` or a `Live USB`. Utilize the Arch Linux community, forums, and the Arch Wiki for support. Proactively addressing boot issues and leveraging resources ensures a stable system. Seek help or consult documentation for further assistance.
-
