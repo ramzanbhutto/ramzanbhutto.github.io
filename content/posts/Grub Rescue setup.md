@@ -178,16 +178,9 @@ After booting into your system, it's advisable to regenerate the GRUB configurat
 ```python
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-Then exit the terminal:
-```python
-exit
-```
 
-### **Step 12: Unmount the Boot Partition**
-```python
-sudo umount -R /mnt
-```
-Then reboot the system to apply changes:
+### **Step 12: Reboot**
+Reboot the system to apply changes and verify that GRUB is functioning correctly.
 ```python
 reboot
 ```
