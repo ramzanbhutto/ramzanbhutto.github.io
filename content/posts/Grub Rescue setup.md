@@ -173,8 +173,13 @@ Restarts the system. Remove the Live USB to boot into your repaired system.
 reboot
 ~~~
 
-### **Step 11: Regenerate GRUB Configuration File**
-After booting into your system, it's advisable to regenerate the GRUB configuration file to ensure all operating systems are detected:
+### **Step 11: Reinstall GRUB and Regenerate GRUB Configuration File**
+After booting into your system, it's crucial to ensure that GRUB is properly installed and configured. Reinstall GRUB to the specified disk:
+```python
+sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+```
+
+Then regenerate the GRUB configuration file to ensure all operating systems are detected:
 ```python
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
