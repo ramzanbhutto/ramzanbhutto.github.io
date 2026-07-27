@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="en" dir="auto" data-theme="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
 <meta name="description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.">
 <meta name="author" content="Muhammad Ramzan">
 <link rel="canonical" href="http://localhost:1313/posts/doxygen/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.45e028aa8ce0961349adf411b013ee39406be2c0bc80d4ea3fc04555f7f4611a.css" integrity="sha256-ReAoqozglhNJrfQRsBPuOUBr4sC8gNTqP8BFVff0YRo=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -39,49 +39,46 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+            .toc {
+                background: var(--entry);
             }
         }
 
     </style>
 </noscript>
-</head>
-
-<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
 </script>
-
-<header class="header">
-    <nav class="nav">
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Muhammad Ramzan (Alt + H)">Muhammad Ramzan</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -97,7 +94,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
@@ -120,74 +117,85 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
     <h1 class="post-title entry-hint-parent">
       Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation
     </h1>
     <div class="post-description">
       Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.
     </div>
-    <div class="post-meta"><span title='2025-09-02 00:00:00 +0000 UTC'>September 2, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;Muhammad Ramzan
+    <div class="post-meta">
+
+<span title='2025-09-02 00:00:00 +0000 UTC'>September 2, 2025</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span>
 
 </div>
-  </header> <div class="toc">
-    <details >
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> <details class="toc" >
+    <summary accesskey="c" title="(Alt + C)">
+        <span class="title">Table of Contents</span>
+    </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#-what-is-doxygen" aria-label="🔹 What is Doxygen?">🔹 What is Doxygen?</a></li>
-                <li>
-                    <a href="#-what-is-a-doxyfile" aria-label="🔹 What is a Doxyfile?">🔹 What is a Doxyfile?</a></li>
-                <li>
-                    <a href="#-why-use-plantuml-and-graphviz-with-doxygen" aria-label="🔹 Why Use PlantUML and Graphviz with Doxygen?">🔹 Why Use PlantUML and Graphviz with Doxygen?</a></li>
-                <li>
-                    <a href="#-installing-doxygen-plantuml-and-graphviz" aria-label="🔹 Installing Doxygen, PlantUML and Graphviz">🔹 Installing Doxygen, PlantUML and Graphviz</a><ul>
-                        
-                <li>
-                    <a href="#step-1-install-doxygen" aria-label="Step 1: Install doxygen">Step 1: Install doxygen</a></li>
-                <li>
-                    <a href="#step-2-install-graphviz" aria-label="Step 2: Install Graphviz">Step 2: Install Graphviz</a></li>
-                <li>
-                    <a href="#step-3-install-plantuml" aria-label="Step 3: Install PlantUML">Step 3: Install PlantUML</a></li></ul>
-                </li>
-                <li>
-                    <a href="#-why-write-and-configure-your-own-doxyfile" aria-label="🔹 Why Write and Configure Your Own Doxyfile?">🔹 Why Write and Configure Your Own Doxyfile?</a></li>
-                <li>
-                    <a href="#-understanding-doxyfile-configuration" aria-label="🔹 Understanding Doxyfile configuration">🔹 Understanding Doxyfile configuration</a><ul>
-                        
-                <li>
-                    <a href="#1-project-information" aria-label="1. Project Information">1. Project Information</a></li>
-                <li>
-                    <a href="#2-input-sources" aria-label="2. Input Sources">2. Input Sources</a></li>
-                <li>
-                    <a href="#3-build-options" aria-label="3. Build Options">3. Build Options</a></li>
-                <li>
-                    <a href="#4-output-formats" aria-label="4. Output Formats">4. Output Formats</a></li>
-                <li>
-                    <a href="#5-graphs-and-diagrams" aria-label="5. Graphs and Diagrams">5. Graphs and Diagrams</a></li>
-                <li>
-                    <a href="#6-plantuml-integration" aria-label="6. PlantUML Integration">6. PlantUML Integration</a></li>
-                <li>
-                    <a href="#7-complete-doxyfile-example" aria-label="7. Complete Doxyfile Example">7. Complete Doxyfile Example</a></li>
-                <li>
-                    <a href="#7-running-doxygen" aria-label="7. Running Doxygen">7. Running Doxygen</a></li></ul>
-                </li>
-                <li>
-                    <a href="#-how-it-works" aria-label="🔹 How it works">🔹 How it works</a></li>
-                <li>
-                    <a href="#-conclusion" aria-label="🔹 Conclusion">🔹 Conclusion</a></li>
-                <li>
-                    <a href="#-additional-resources" aria-label="🔹 Additional Resources">🔹 Additional Resources</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
+    <div class="inner"><ul>
+            <li>
+                <a href="#-what-is-doxygen" aria-label="🔹 What is Doxygen?">🔹 What is Doxygen?</a></li>
+            <li>
+                <a href="#-what-is-a-doxyfile" aria-label="🔹 What is a Doxyfile?">🔹 What is a Doxyfile?</a></li>
+            <li>
+                <a href="#-why-use-plantuml-and-graphviz-with-doxygen" aria-label="🔹 Why Use PlantUML and Graphviz with Doxygen?">🔹 Why Use PlantUML and Graphviz with Doxygen?</a></li>
+            <li>
+                <a href="#-installing-doxygen-plantuml-and-graphviz" aria-label="🔹 Installing Doxygen, PlantUML and Graphviz">🔹 Installing Doxygen, PlantUML and Graphviz</a><ul>
+                    
+            <li>
+                <a href="#step-1-install-doxygen" aria-label="Step 1: Install doxygen">Step 1: Install doxygen</a></li>
+            <li>
+                <a href="#step-2-install-graphviz" aria-label="Step 2: Install Graphviz">Step 2: Install Graphviz</a></li>
+            <li>
+                <a href="#step-3-install-plantuml" aria-label="Step 3: Install PlantUML">Step 3: Install PlantUML</a></li></ul>
+            </li>
+            <li>
+                <a href="#-why-write-and-configure-your-own-doxyfile" aria-label="🔹 Why Write and Configure Your Own Doxyfile?">🔹 Why Write and Configure Your Own Doxyfile?</a></li>
+            <li>
+                <a href="#-understanding-doxyfile-configuration" aria-label="🔹 Understanding Doxyfile configuration">🔹 Understanding Doxyfile configuration</a><ul>
+                    
+            <li>
+                <a href="#1-project-information" aria-label="1. Project Information">1. Project Information</a></li>
+            <li>
+                <a href="#2-input-sources" aria-label="2. Input Sources">2. Input Sources</a></li>
+            <li>
+                <a href="#3-build-options" aria-label="3. Build Options">3. Build Options</a></li>
+            <li>
+                <a href="#4-output-formats" aria-label="4. Output Formats">4. Output Formats</a></li>
+            <li>
+                <a href="#5-graphs-and-diagrams" aria-label="5. Graphs and Diagrams">5. Graphs and Diagrams</a></li>
+            <li>
+                <a href="#6-plantuml-integration" aria-label="6. PlantUML Integration">6. PlantUML Integration</a></li>
+            <li>
+                <a href="#7-complete-doxyfile-example" aria-label="7. Complete Doxyfile Example">7. Complete Doxyfile Example</a></li>
+            <li>
+                <a href="#7-running-doxygen" aria-label="7. Running Doxygen">7. Running Doxygen</a></li></ul>
+            </li>
+            <li>
+                <a href="#-how-it-works" aria-label="🔹 How it works">🔹 How it works</a></li>
+            <li>
+                <a href="#-conclusion" aria-label="🔹 Conclusion">🔹 Conclusion</a></li>
+            <li>
+                <a href="#-additional-resources" aria-label="🔹 Additional Resources">🔹 Additional Resources</a>
+            </li>
+        </ul>
+    </div>
+</details>
 
-  <div class="post-content"><h2 id="-what-is-doxygen">🔹 What is Doxygen?<a hidden class="anchor" aria-hidden="true" href="#-what-is-doxygen">#</a></h2>
+  <div class="post-content md-content"><h2 id="-what-is-doxygen">🔹 What is Doxygen?<a hidden class="anchor" aria-hidden="true" href="#-what-is-doxygen">#</a></h2>
 <p><a href="https://www.doxygen.nl/">Doxygen</a> is a documentation generator tool that:</p>
 <ul>
 <li>Parses your code (C++, Python, Java, JavaScript, and many other languages).</li>
@@ -432,12 +440,10 @@ If you want your code to speak for itself, <strong>Doxygen is one of the best in
 <nav class="paginav">
   <a class="prev" href="http://localhost:1313/posts/ssh/">
     <span class="title">« Prev</span>
-    <br>
     <span>Secure Shell (SSH)</span>
   </a>
   <a class="next" href="http://localhost:1313/posts/neovim-plugins/">
     <span class="title">Next »</span>
-    <br>
     <span>Neovim Complete Setup and Integrating ChatGPT</span>
   </a>
 </nav>
@@ -517,22 +523,31 @@ If you want your code to speak for itself, <strong>Doxygen is one of the best in
 <footer class="footer">
         <span>&copy; 2026 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -559,25 +574,25 @@ If you want your code to speak for itself, <strong>Doxygen is one of the best in
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

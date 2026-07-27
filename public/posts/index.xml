@@ -4,10 +4,31 @@
     <title>Posts on Muhammad Ramzan</title>
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on Muhammad Ramzan</description>
-    <generator>Hugo -- 0.154.5</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Part 1: Setting Up DomJudge with Docker</title>
+      <link>http://localhost:1313/posts/domjudge1/</link>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/domjudge1/</guid>
+      <description>Learn how to setup DomJudge to host competitive programming competitions using Docker on Linux</description>
+    </item>
+    <item>
+      <title>Part 2: Running Your First Contest on DomJudge</title>
+      <link>http://localhost:1313/posts/domjudge2/</link>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/domjudge2/</guid>
+      <description>Learn how to run and host competitive programming contests</description>
+    </item>
+    <item>
+      <title>Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough</title>
+      <link>http://localhost:1313/posts/polygon/</link>
+      <pubDate>Sun, 26 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/polygon/</guid>
+      <description>Learn how to prepare a Codeforces problem on Polygon, from statement and validator to checker, generators, stress testing, and interactors.</description>
+    </item>
     <item>
       <title>Git and Github: A Comprehensive Guide</title>
       <link>http://localhost:1313/posts/git/</link>
@@ -39,9 +60,9 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;setting-up-an-ssh-server&#34;&gt;Setting Up an SSH Server&lt;/h2&gt;
 &lt;h3 id=&#34;step-1-installing-ssh&#34;&gt;Step 1: Installing SSH&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -Sy openssh
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -Sy openssh
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-2-enable-start-and-verify-ssh-daemon&#34;&gt;Step 2: Enable, Start and Verify SSH Daemon&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl enable sshd
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl enable sshd
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl start sshd
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo systemctl status sshd
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-3-configuring-the-firewall&#34;&gt;Step 3: Configuring the Firewall&lt;/h3&gt;
@@ -68,13 +89,13 @@
 &lt;ol&gt;
 &lt;li&gt;Linux/MacOS Users&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;local&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;state&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;local&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;share&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Flatpak(Linux) Users&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;data&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rf &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/.&lt;/span&gt;local&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;state&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
@@ -82,11 +103,11 @@
 &lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;CMD
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; rd &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; rd &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; rd &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;r &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;data
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;Powershell
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;Force &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;Force &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;Force &lt;span style=&#34;color:#f92672&#34;&gt;~&lt;/span&gt;\AppData\Local\nvim&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;data
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -97,19 +118,19 @@
 &lt;ul&gt;
 &lt;li&gt;Linux/MacOS:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Flatpak:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; flatpak run io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;~/.&lt;/span&gt;var&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;app&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;config&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; flatpak run io&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;neovim&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Windows (CMD):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;USERPROFILE&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;\AppData\Local\nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;USERPROFILE&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;\AppData\Local\nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;Windows (Powershell):&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt;ENV:USERPROFILE\AppData\Local\nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone https:&lt;span style=&#34;color:#f92672&#34;&gt;//&lt;/span&gt;github&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;com&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;NvChad&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;starter &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt;ENV:USERPROFILE\AppData\Local\nvim &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-3-basic-neovim-commands-to-attempt-further-processes&#34;&gt;Step 3: Basic Neovim commands to attempt further processes&lt;/h3&gt;
 &lt;p&gt;Type &lt;code&gt;nvim&lt;/code&gt; or &lt;code&gt;neovim&lt;/code&gt; on the terminal before any file name(optional) to enter into neovim environment.&lt;/p&gt;</description>
     </item>
@@ -123,7 +144,7 @@
 &lt;h2 id=&#34;method-1using-pavucontrolgraphical-method&#34;&gt;Method 1:Using Pavucontrol(Graphical Method)&lt;/h2&gt;
 &lt;p&gt;If you prefer a more user friendly environment, then go for pavucontrol.&lt;/p&gt;
 &lt;h3 id=&#34;step-1install-pavucontrol-if-its-not-already-installed&#34;&gt;Step 1:Install &lt;strong&gt;pavucontrol&lt;/strong&gt; if it&amp;rsquo;s not already installed:&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S pavucontrol
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S pavucontrol
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-2-launch-pavucontrol&#34;&gt;Step 2: Launch &lt;strong&gt;pavucontrol&lt;/strong&gt;:&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pavucontrol
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-3-navigate-to-the-configuration-tab&#34;&gt;Step 3: Navigate to the &lt;code&gt;Configuration&lt;/code&gt; tab.&lt;/h3&gt;
@@ -151,11 +172,9 @@
       <description>&lt;h1 id=&#34;understanding-grub-rescue-and-how-to-fix-it&#34;&gt;Understanding GRUB Rescue and How to Fix It&lt;/h1&gt;
 &lt;p&gt;&lt;em&gt;(A Guide to Diagnosing and Resolving Boot Errors)&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h4 id=&#34;disclaimer-this-guide-is-intended-for-archlinux-users-but-the-principles-can-be-applied-to-other-linux-distributions-with-some-adjustments-always-back-up-important-data-before-making-changes-to-your-system&#34;&gt;Disclaimer: This guide is intended for archlinux users, but the principles can be applied to other Linux distributions with some adjustments. Always back up important data before making changes to your system.&lt;/h4&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;why-does-grub-rescue-appear&#34;&gt;Why Does GRUB Rescue Appear?&lt;/h2&gt;
-&lt;p&gt;The GRUB rescue prompt appears when the bootloader fails to locate critical files or configurations. Common causes include:&lt;/p&gt;</description>
+&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

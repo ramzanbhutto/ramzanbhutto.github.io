@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>GRUB on Muhammad Ramzan</title>
+    <title>Grub on Muhammad Ramzan</title>
     <link>http://localhost:1313/tags/grub/</link>
-    <description>Recent content in GRUB on Muhammad Ramzan</description>
-    <generator>Hugo -- 0.154.5</generator>
+    <description>Recent content in Grub on Muhammad Ramzan</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/grub/index.xml" rel="self" type="application/rss+xml" />
@@ -23,11 +23,9 @@
       <description>&lt;h1 id=&#34;understanding-grub-rescue-and-how-to-fix-it&#34;&gt;Understanding GRUB Rescue and How to Fix It&lt;/h1&gt;
 &lt;p&gt;&lt;em&gt;(A Guide to Diagnosing and Resolving Boot Errors)&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h4 id=&#34;disclaimer-this-guide-is-intended-for-archlinux-users-but-the-principles-can-be-applied-to-other-linux-distributions-with-some-adjustments-always-back-up-important-data-before-making-changes-to-your-system&#34;&gt;Disclaimer: This guide is intended for archlinux users, but the principles can be applied to other Linux distributions with some adjustments. Always back up important data before making changes to your system.&lt;/h4&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;why-does-grub-rescue-appear&#34;&gt;Why Does GRUB Rescue Appear?&lt;/h2&gt;
-&lt;p&gt;The GRUB rescue prompt appears when the bootloader fails to locate critical files or configurations. Common causes include:&lt;/p&gt;</description>
+&lt;p&gt;GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the &lt;strong&gt;GRUB rescue prompt&lt;/strong&gt; can be alarming. This blog explains why this happens and provides two practical methods to resolve it.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
