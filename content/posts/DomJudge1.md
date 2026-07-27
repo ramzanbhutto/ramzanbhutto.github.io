@@ -490,4 +490,4 @@ Be careful with the last line. It deletes your database completely, including al
 
 ## Next Part of this blog
 
-In the next post, I'll cover how to make your contest available to people outside your own WiFi, using a free tool called Cloudflare Tunnel.
+In next blog, I will cover how to run and host your first contest on DomJudge. [Click here](https://ramzanbhutto.github.io/posts/domjudge2/)
