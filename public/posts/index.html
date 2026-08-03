@@ -1,374 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>All Posts - Technical Blogs</title><meta name="author" content="Muhammad Ramzan">
+<meta name="description" content="">
+	<meta itemprop="name" content="Posts">
+	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-07-27T19:42:52+05:00"><meta property="og:url" content="http://localhost:1313/posts/">
+	<meta property="og:site_name" content="Technical Blogs">
+	<meta property="og:title" content="Posts">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="website">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Posts | Muhammad Ramzan</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - Muhammad Ramzan">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body class="list" id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Muhammad Ramzan (Alt + H)">Muhammad Ramzan</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-        </ul>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Posts">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#151b23" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/" title="Posts - Technical Blogs" /><link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="Posts - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-instant-intensity="viewport" data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives">Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/search">Search</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" role="button" aria-label="Switch Theme" title="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></li></ul>
     </nav>
-</header>
-<main class="main"> 
-<header class="page-header"><nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-        <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-</nav>
-  <h1>
-    Posts
-  </h1>
-</header>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Part 1: Setting Up DomJudge with Docker
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>If you run a coding club or want to host your own programming contest, DomJudge is the tool for it. It is the same judge used in ICPC contests around the world.
-In this post, I will show you how to set it up on your own computer using Docker. I will also show you two problems I faced (port conflicts and cgroups) and how I fixed them.
-This guide is based on my own setup on Arch Linux. I also used this blog as a starting reference: Setting up DomJudge with Docker
-...</p>
   </div>
-  <footer class="entry-footer">
-
-<span title='2026-07-27 00:00:00 +0000 UTC'>July 27, 2026</span>&nbsp;·&nbsp;<span>14 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Part 1: Setting Up DomJudge with Docker" href="http://localhost:1313/posts/domjudge1/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Part 2: Running Your First Contest on DomJudge
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> Prerequisite: This is Part 2 of the DomJudge Docker series. If you haven’t set up DomJudge yet, start with Part 1 — Setting Up DomJudge with Docker first.
-Repository that we’ll follow: domjudge-files TL;DR - DomJudge is running. Now we make it actually host a contest. By the end of this post you’ll have teams registered, problems uploaded, a live scoreboard, and the whole thing accessible from the internet via Cloudflare Tunnel.
-...</p>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+      <div class="theme-switch" role="button" aria-label="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></div>
+      <div class="menu-toggle" id="menu-toggle-mobile" role="button" aria-labelledby="menu-mobile">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item"><a class="menu-link" href="/archives">Archives</a></li><li class="menu-item"><a class="menu-link" href="/search">Search</a></li><li class="menu-item menu-system"></li>
+      </ul>
+    </nav>
   </div>
-  <footer class="entry-footer">
-
-<span title='2026-07-27 00:00:00 +0000 UTC'>July 27, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Part 2: Running Your First Contest on DomJudge" href="http://localhost:1313/posts/domjudge2/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Git and Github: A Comprehensive Guide
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Introduction Git is a version control system that tracks changes in code and helps developers collaborate efficiently. GitHub is an online platform that hosts Git repositories, making it easier to share code, manage projects, and work on open-source projects.
-Getting Started Initial Configuration git config --global user.name &#34;your-name&#34; git config --global user.email &#34;your-email&#34; git config --global core.editor &#34;code&#34; # Set default editor git config --list # View all configurations Creating Repositories git init # Initialize a new repository git clone &lt;repo-url&gt; # Clone an existing repository git clone &lt;repo-url&gt; &lt;folder-name&gt; # Clone into specific folder Basic Workflow Staging Changes git status # Check current status git add &lt;file&gt; # Stage a specific file git add . # Stage all files git add *.js # Stage all JavaScript files git rm &lt;file&gt; # Remove file and stage deletion git mv &lt;old-name&gt; &lt;new-name&gt; # Rename file and stage change Committing Changes git commit -m &#34;Describe your changes here&#34; git commit -am &#34;Add and commit tracked files&#34; git commit --amend -m &#34;Update last commit message&#34; git commit --amend --no-edit # Add staged changes to last commit Viewing History git log # View commit history git log --oneline # Compact commit history git log --graph --oneline --all # Visual branch history git log -p # Show changes in each commit git log -n 5 # Show last 5 commits git show &lt;commit-hash&gt; # Show specific commit details git diff # Show unstaged changes git diff --staged # Show staged changes git diff &lt;branch1&gt; &lt;branch2&gt; # Compare branches Branching &amp; Merging Managing Branches git branch # List all local branches git branch -a # List all branches (local and remote) git branch &lt;branch-name&gt; # Create a new branch git checkout &lt;branch-name&gt; # Switch to a branch git checkout -b &lt;branch-name&gt; # Create and switch to new branch git switch &lt;branch-name&gt; # Modern way to switch branches git switch -c &lt;branch-name&gt; # Create and switch to new branch git branch -d &lt;branch-name&gt; # Delete branch (safe) git branch -D &lt;branch-name&gt; # Force delete branch git branch -m &lt;new-name&gt; # Rename current branch Merging git merge &lt;branch-name&gt; # Merge branch into current branch git merge --no-ff &lt;branch-name&gt; # Merge with merge commit git merge --squash &lt;branch-name&gt; # Squash commits before merging git merge --abort # Abort merge in case of conflicts Rebasing git rebase &lt;branch-name&gt; # Rebase current branch git rebase -i HEAD~3 # Interactive rebase last 3 commits git rebase --continue # Continue after resolving conflicts git rebase --abort # Abort rebase operation Working with Remotes Remote Management git remote # List remote connections git remote -v # List remotes with URLs git remote add origin &lt;repo-url&gt; # Add remote repository git remote set-url origin &lt;new-url&gt; # Change remote URL git remote rename &lt;old-name&gt; &lt;new-name&gt; # Rename remote git remote remove &lt;remote-name&gt; # Remove remote git remote show origin # Show remote details Syncing with Remotes git fetch # Download remote changes (no merge) git fetch origin # Fetch from specific remote git fetch --all # Fetch from all remotes git pull # Fetch and merge remote changes git pull --rebase # Fetch and rebase instead of merge git push # Push changes to remote git push -u origin &lt;branch-name&gt; # Push and set upstream git push origin --delete &lt;branch-name&gt; # Delete remote branch git push --force # Force push (use with caution!) git push --force-with-lease # Safer force push git push --tags # Push all tags to remote Undoing Changes Working Directory &amp; Staging git checkout -- &lt;file&gt; # Discard changes in working directory git restore &lt;file&gt; # Modern way to discard changes git restore --staged &lt;file&gt; # Unstage file git reset &lt;file&gt; # Unstage file (keep changes) git reset --hard # Discard all local changes git clean -fd # Remove untracked files and directories git clean -n # Preview files to be removed Commits git reset --soft HEAD~1 # Undo last commit (keep changes staged) git reset --mixed HEAD~1 # Undo last commit (keep changes unstaged) git reset --hard HEAD~1 # Undo last commit (discard changes) git reset --hard &lt;commit-hash&gt; # Reset to specific commit git revert &lt;commit-hash&gt; # Create new commit that undoes changes git revert HEAD # Revert last commit Stashing Temporary Storage git stash # Stash current changes git stash save &#34;message&#34; # Stash with description git stash list # List all stashes git stash show # Show latest stash changes git stash show stash@{0} # Show specific stash git stash apply # Apply latest stash (keep in list) git stash apply stash@{2} # Apply specific stash git stash pop # Apply latest stash and remove from list git stash drop # Delete latest stash git stash drop stash@{1} # Delete specific stash git stash clear # Delete all stashes git stash branch &lt;branch-name&gt; # Create branch from stash Tagging Version Marking git tag # List all tags git tag &lt;tag-name&gt; # Create lightweight tag git tag -a v1.0 -m &#34;Version 1.0&#34; # Create annotated tag git tag -a v1.0 &lt;commit-hash&gt; -m &#34;Tag old commit&#34; # Tag specific commit git show &lt;tag-name&gt; # Show tag details git push origin &lt;tag-name&gt; # Push specific tag git push origin --tags # Push all tags git tag -d &lt;tag-name&gt; # Delete local tag git push origin --delete &lt;tag-name&gt; # Delete remote tag Advanced Features Submodules git submodule add &lt;repo-url&gt; &lt;path&gt; # Add submodule git submodule init # Initialize submodules git submodule update # Update submodules git submodule update --init --recursive # Initialize and update all git submodule foreach git pull origin main # Update all submodules git submodule deinit &lt;path&gt; # Deinitialize submodule git rm &lt;submodule-path&gt; # Remove submodule Cherry-Picking git cherry-pick &lt;commit-hash&gt; # Apply specific commit to current branch git cherry-pick &lt;hash1&gt; &lt;hash2&gt; # Apply multiple commits git cherry-pick --continue # Continue after resolving conflicts git cherry-pick --abort # Abort cherry-pick operation Searching &amp; Finding git grep &#34;search-term&#34; # Search in working directory git grep &#34;search-term&#34; &lt;branch-name&gt; # Search in specific branch git log -S &#34;search-term&#34; # Find commits with specific content git log --grep=&#34;pattern&#34; # Search commit messages git bisect start # Start binary search for bug git bisect bad # Mark current commit as bad git bisect good &lt;commit-hash&gt; # Mark commit as good git bisect reset # End bisect session git blame &lt;file&gt; # Show who changed each line git reflog # Show reference logs (recover lost commits) Aliases git config --global alias.co checkout # Create alias git config --global alias.br branch git config --global alias.st status git config --global alias.unstage &#39;reset HEAD --&#39; git config --global alias.last &#39;log -1 HEAD&#39; git config --global alias.visual &#39;log --graph --oneline --all&#39; GitHub-Specific Features Pull Requests &amp; Collaboration # Fetch PR for local testing git fetch origin pull/123/head:pr-123 git checkout pr-123 # Working with forks git remote add upstream &lt;original-repo-url&gt; git fetch upstream git merge upstream/main GitHub CLI (gh) gh repo clone &lt;repo-name&gt; # Clone repository gh pr create # Create pull request gh pr list # List pull requests gh pr checkout &lt;pr-number&gt; # Checkout pull request gh issue create # Create issue gh issue list # List issues Practical Example: Push a Project to GitHub Configure Git: git config --global user.name &#34;your-name&#34; git config --global user.email &#34;your-email&#34; Initialize repository: git init Link to GitHub: git remote add origin &lt;repo-url&gt; Stage and commit: git add . git commit -m &#34;Initial commit&#34; Push to GitHub: git push -u origin main Your project is now live on GitHub!
-...</p>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
   </div>
-  <footer class="entry-footer">
-
-<span title='2026-02-09 00:00:00 +0000 UTC'>February 9, 2026</span>&nbsp;·&nbsp;<span>7 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Git and Github: A Comprehensive Guide" href="http://localhost:1313/posts/git/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> Introduction Multi-booting allows you to run multiple operating systems on a single computer, giving you the flexibility to switch between different environments. This guide will walk you through setting up Ubuntu on a laptop that already has Arch Linux and Windows 11 installed.
-Why Multi-Boot? Flexibility: Access different OS features and tools Development: Test software across multiple platforms Learning: Explore different Linux distributions Compatibility: Use Windows-only software when needed Backup: Have alternative systems if one fails Prerequisites Before You Start Backup your data: Always backup important files before partitioning Ubuntu ISO: Download from ubuntu.com Bootable USB: At least 4GB USB drive Free disk space: Minimum 25GB (50GB&#43; recommended) UEFI system: Modern systems use UEFI instead of legacy BIOS Secure Boot: May need to disable for Linux installations Internet connection: For updates and troubleshooting Tools Needed Rufus (Windows) or Etcher (Linux) for creating bootable USB GParted or built-in partition manager Booted USB of Ubuntu for installation Understanding Your Current Setup Check Existing Partitions From your existing Arch Linux or Windows system, check current partition layout:
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-02-09 00:00:00 +0000 UTC'>February 9, 2026</span>&nbsp;·&nbsp;<span>5 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11" href="http://localhost:1313/posts/multi-boot/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Secure Shell (SSH)
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Overview SSH (Secure Shell) allows you to securely connect to a remote computer over the internet. It encrypts your connection, letting you execute commands safely on another machine without physical access. SSH enables remote management, secure file transfers, and automation. It encrypts communication to prevent unauthorized access.
-Requirements Linux distribution (server and client) Sudo privileges on the server Internet connection Setting Up an SSH Server Step 1: Installing SSH sudo pacman -Sy openssh Step 2: Enable, Start and Verify SSH Daemon sudo systemctl enable sshd sudo systemctl start sshd sudo systemctl status sshd Step 3: Configuring the Firewall If you have a firewall enabled, you need to allow SSH connections through it.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2026-02-09 00:00:00 +0000 UTC'>February 9, 2026</span>&nbsp;·&nbsp;<span>3 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Secure Shell (SSH)" href="http://localhost:1313/posts/ssh/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🔹 What is Doxygen? Doxygen is a documentation generator tool that:
-Parses your code (C&#43;&#43;, Python, Java, JavaScript, and many other languages). Extracts specially formatted comments. Automatically generates documentation in multiple formats: HTML (viewable in any browser) PDF / LaTeX Man pages Graphs and diagrams (with Graphviz) It’s like having a personal technical writer who works directly from your source code.
-🔹 What is a Doxyfile? The Doxyfile is the configuration file Doxygen uses to determine:
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-09-02 00:00:00 +0000 UTC'>September 2, 2025</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span></footer>
-  <a class="entry-link" aria-label="post link to Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation" href="http://localhost:1313/posts/doxygen/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Neovim Complete Setup and Integrating ChatGPT
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> Part 1: Setting Up NVChad Note: I am using Arch Linux. So, use terminal commands as per your Distro.
-Step 1: Removing any previous configuration Linux/MacOS Users rm -rf ~/.config/nvim rm -rf ~/.local/state/nvim rm -rf ~/.local/share/nvim Flatpak(Linux) Users rm -rf ~/.var/app/io.neovim.nvim/config/nvim rm -rf ~/.var/app/io.neovim.nvim/data/nvim rm -rf ~/.var/app/io.neovim.nvim/.local/state/nvim Window Users CMD rd -r ~\AppData\Local\nvim rd -r ~\AppData\Local\nvim-data Powershell rm -Force ~\AppData\Local\nvim rm -Force ~\AppData\Local\nvim-data Step 2: Installing NVChad Clone the NVChad repository Linux/MacOS: git clone https://github.com/NvChad/starter ~/.config/nvim &amp;&amp; nvim Flatpak: git clone https://github.com/NvChad/starter ~/.var/app/io.neovim.nvim/config/nvim &amp;&amp; flatpak run io.neovim.nvim Windows (CMD): git clone https://github.com/NvChad/starter %USERPROFILE%\AppData\Local\nvim &amp;&amp; nvim Windows (Powershell): git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim &amp;&amp; nvim Step 3: Basic Neovim commands to attempt further processes Type nvim or neovim on the terminal before any file name(optional) to enter into neovim environment.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-02-08 23:28:37 +0500 PKT'>February 8, 2025</span>&nbsp;·&nbsp;<span>5 min</span></footer>
-  <a class="entry-link" aria-label="post link to Neovim Complete Setup and Integrating ChatGPT" href="http://localhost:1313/posts/neovim-plugins/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Automatically Switching Audio Output Between Speakers and Headphones on Arch Linux: A Comprehensive Guide Method 1:Using Pavucontrol(Graphical Method) If you prefer a more user friendly environment, then go for pavucontrol.
-Step 1:Install pavucontrol if it’s not already installed: sudo pacman -S pavucontrol Step 2: Launch pavucontrol: pavucontrol Step 3: Navigate to the Configuration tab. In pavucontrol, go to the Configuration tab. This section allows you to manage audio profiles for your devices.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-02-08 00:49:53 +0500 PKT'>February 8, 2025</span>&nbsp;·&nbsp;<span>2 min</span></footer>
-  <a class="entry-link" aria-label="post link to Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones" href="http://localhost:1313/posts/auto-audio-switching/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Compile and Build Linux Kernel
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Building Linux Kernel The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.
-Step 1: Download the Source Code Visit the Official Kernel Website and download the latest kernel source code. The downloaded files contains a compressed source code that you need to extract it.
-Step 2: Extract the Source Code After downloading, it is necessary to extract the source code. So, we will achieve this using tar command.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-02-05 00:37:50 +0500 PKT'>February 5, 2025</span>&nbsp;·&nbsp;<span>4 min</span></footer>
-  <a class="entry-link" aria-label="post link to Compile and Build Linux Kernel" href="http://localhost:1313/posts/kernel-compilation/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Grub Rescue Setup
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Understanding GRUB Rescue and How to Fix It (A Guide to Diagnosing and Resolving Boot Errors)
-Disclaimer: This guide is intended for archlinux users, but the principles can be applied to other Linux distributions with some adjustments. Always back up important data before making changes to your system. Introduction GRUB (Grand Unified Bootloader) is a critical component of Linux systems, responsible for loading the operating system. However, encountering the GRUB rescue prompt can be alarming. This blog explains why this happens and provides two practical methods to resolve it.
-...</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2025-02-05 00:37:50 +0500 PKT'>February 5, 2025</span>&nbsp;·&nbsp;<span>4 min</span></footer>
-  <a class="entry-link" aria-label="post link to Grub Rescue Setup" href="http://localhost:1313/posts/grub-rescue-setup/"></a>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
-
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="fi-container"><div class="page archive">
+    <div class="header"><h1 class="single-title animate__animated animate__pulse animate__faster"><i class="fa-solid fa-feather me-1" aria-hidden="true"></i>All Posts <sup>11</sup>
+      </h1><p class="single-subtitle total-word-count" title='Total 16070 words'><i class="fa-regular fa-keyboard" aria-hidden="true"></i> Total 16.07K words</p></div><h2 class="group-title"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i>Recently Updated</h2><article class="archive-item">
+          <a href="/posts/domjudge1/" class="archive-item-link">Part 1: Setting Up DomJudge With Docker</a>
+          <span class="archive-item-date" title='2026-07-27 19:42:52'>Updated on 07-27</span>
+        </article><article class="archive-item">
+          <a href="/posts/polygon/" class="archive-item-link">Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough</a>
+          <span class="archive-item-date" title='2026-07-27 19:28:08'>Updated on 07-27</span>
+        </article><article class="archive-item">
+          <a href="/posts/domjudge2/" class="archive-item-link">Part 2: Running Your First Contest on DomJudge</a>
+          <span class="archive-item-date" title='2026-07-27 19:28:08'>Updated on 07-27</span>
+        </article><h2 class="group-title"><i class="fa-regular fa-calendar me-1" aria-hidden="true"></i>2026</h2><article class="archive-item">
+            <a href="/posts/domjudge2/" class="archive-item-link">Part 2: Running Your First Contest on DomJudge</a>
+            <span class="archive-item-date" title='2026-07-27 00:00:00'>07-27</span>
+          </article><article class="archive-item">
+            <a href="/posts/domjudge1/" class="archive-item-link">Part 1: Setting Up DomJudge With Docker</a>
+            <span class="archive-item-date" title='2026-07-27 00:00:00'>07-27</span>
+          </article><article class="archive-item">
+            <a href="/posts/polygon/" class="archive-item-link">Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough</a>
+            <span class="archive-item-date" title='2026-07-26 00:00:00'>07-26</span>
+          </article><article class="archive-item">
+            <a href="/posts/ssh/" class="archive-item-link">Secure Shell (SSH)</a>
+            <span class="archive-item-date" title='2026-02-09 00:00:00'>02-09</span>
+          </article><article class="archive-item">
+            <a href="/posts/multi-boot/" class="archive-item-link">Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11</a>
+            <span class="archive-item-date" title='2026-02-09 00:00:00'>02-09</span>
+          </article><article class="archive-item">
+            <a href="/posts/git/" class="archive-item-link">Git and Github: A Comprehensive Guide</a>
+            <span class="archive-item-date" title='2026-02-09 00:00:00'>02-09</span>
+          </article><h2 class="group-title"><i class="fa-regular fa-calendar me-1" aria-hidden="true"></i>2025</h2><article class="archive-item">
+            <a href="/posts/doxygen/" class="archive-item-link">Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</a>
+            <span class="archive-item-date" title='2025-09-02 00:00:00'>09-02</span>
+          </article><article class="archive-item">
+            <a href="/posts/neovim-plugins/" class="archive-item-link">Neovim Complete Setup and Integrating ChatGPT</a>
+            <span class="archive-item-date" title='2025-02-08 23:28:37'>02-08</span>
+          </article><article class="archive-item">
+            <a href="/posts/auto-audio-switching/" class="archive-item-link">Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones</a>
+            <span class="archive-item-date" title='2025-02-08 00:49:53'>02-08</span>
+          </article><article class="archive-item">
+            <a href="/posts/grub-rescue-setup/" class="archive-item-link">Grub Rescue Setup</a>
+            <span class="archive-item-date" title='2025-02-05 00:37:50'>02-05</span>
+          </article><article class="archive-item">
+            <a href="/posts/kernel-compilation/" class="archive-item-link">Compile and Build Linux Kernel</a>
+            <span class="archive-item-date" title='2025-02-05 00:37:50'>02-05</span>
+          </article></div></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.164.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.4.5"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://github.com/ramzanbhutto" target="_blank" rel="external nofollow noopener noreferrer">Muhammad Ramzan</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons"><div class="fixed-button back-to-top animate__faster d-none" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/cell-tooltip/cell-tooltip.umd.js" defer></script><script>window.config={"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"print":{"expandAdmonition":true,"expandCode":true,"expandDetails":true,"expandFileTree":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/search.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"tooltip":true,"version":"v0.4.5"};console.log('Page config:', window.config);</script><script src="/js/theme.min.js" defer></script></body>
 </html>

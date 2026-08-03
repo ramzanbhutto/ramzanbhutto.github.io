@@ -1,202 +1,162 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation - Technical Blogs</title><meta name="author" content="Muhammad Ramzan">
+<meta name="description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure."><meta name="keywords" content='C&#43;&#43;, Documentation, Doxygen, PlantUML, Graphviz, Open Source'>
+	<meta itemprop="name" content="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation">
+	<meta itemprop="description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.">
+	<meta itemprop="datePublished" content="2025-09-02T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-02-09T23:17:45+05:00">
+	<meta itemprop="wordCount" content="1214">
+	<meta itemprop="keywords" content="C&#43;&#43;,Documentation,Doxygen,PlantUML,Graphviz,Open Source"><meta property="og:url" content="http://localhost:1313/posts/doxygen/">
+	<meta property="og:site_name" content="Technical Blogs">
+	<meta property="og:title" content="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation">
+	<meta property="og:description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-09-02T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-02-09T23:17:45+05:00">
+		<meta property="article:tag" content="C&#43;&#43;">
+		<meta property="article:tag" content="Documentation">
+		<meta property="article:tag" content="Doxygen">
+		<meta property="article:tag" content="PlantUML">
+		<meta property="article:tag" content="Graphviz">
+		<meta property="article:tag" content="Open Source">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation | Muhammad Ramzan</title>
-<meta name="keywords" content="C&#43;&#43;, Documentation, Doxygen, PlantUML, Graphviz, Open Source">
-<meta name="description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.">
-<meta name="author" content="Muhammad Ramzan">
-<link rel="canonical" href="http://localhost:1313/posts/doxygen/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/doxygen/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Muhammad Ramzan (Alt + H)">Muhammad Ramzan</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-        </ul>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation">
+	<meta name="twitter:description" content="Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#151b23" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/doxygen/" title="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/neovim-plugins/" title="Neovim Complete Setup and Integrating ChatGPT" /><link rel="next" type="text/html" href="http://localhost:1313/posts/ssh/" title="Secure Shell (SSH)" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/doxygen/index.md" title="Doxygen + PlantUML + Graphviz: Build Automated, Beautiful Project Documentation - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Doxygen + PlantUML + Graphviz: Build Automated, Beautiful Project Documentation",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/doxygen\/"
+    },"genre": "posts","keywords": "C\u002b\u002b, Documentation, Doxygen, PlantUML, Graphviz, Open Source","wordcount":  1214 ,
+    "url": "http:\/\/localhost:1313\/posts\/doxygen\/","datePublished": "2025-09-02T00:00:00+00:00","dateModified": "2026-02-09T23:17:45+05:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Muhammad Ramzan"
+      },"description": "Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure."
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-instant-intensity="viewport" data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives">Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/search">Search</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" role="button" aria-label="Switch Theme" title="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></li></ul>
     </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <a href="/posts/">Posts</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-        <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-</nav>
-    <h1 class="post-title entry-hint-parent">
-      Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation
-    </h1>
-    <div class="post-description">
-      Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+      <div class="theme-switch" role="button" aria-label="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></div>
+      <div class="menu-toggle" id="menu-toggle-mobile" role="button" aria-labelledby="menu-mobile">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <div class="post-meta">
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item"><a class="menu-link" href="/archives">Archives</a></li><li class="menu-item"><a class="menu-link" href="/search">Search</a></li><li class="menu-item menu-system"></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="fi-container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"></aside>
 
-<span title='2025-09-02 00:00:00 +0000 UTC'>September 2, 2025</span>&nbsp;·&nbsp;<span>6 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span>
-
-</div>
-  </header> <details class="toc" >
-    <summary accesskey="c" title="(Alt + C)">
-        <span class="title">Table of Contents</span>
-    </summary>
-
-    <div class="inner"><ul>
-            <li>
-                <a href="#-what-is-doxygen" aria-label="🔹 What is Doxygen?">🔹 What is Doxygen?</a></li>
-            <li>
-                <a href="#-what-is-a-doxyfile" aria-label="🔹 What is a Doxyfile?">🔹 What is a Doxyfile?</a></li>
-            <li>
-                <a href="#-why-use-plantuml-and-graphviz-with-doxygen" aria-label="🔹 Why Use PlantUML and Graphviz with Doxygen?">🔹 Why Use PlantUML and Graphviz with Doxygen?</a></li>
-            <li>
-                <a href="#-installing-doxygen-plantuml-and-graphviz" aria-label="🔹 Installing Doxygen, PlantUML and Graphviz">🔹 Installing Doxygen, PlantUML and Graphviz</a><ul>
-                    
-            <li>
-                <a href="#step-1-install-doxygen" aria-label="Step 1: Install doxygen">Step 1: Install doxygen</a></li>
-            <li>
-                <a href="#step-2-install-graphviz" aria-label="Step 2: Install Graphviz">Step 2: Install Graphviz</a></li>
-            <li>
-                <a href="#step-3-install-plantuml" aria-label="Step 3: Install PlantUML">Step 3: Install PlantUML</a></li></ul>
-            </li>
-            <li>
-                <a href="#-why-write-and-configure-your-own-doxyfile" aria-label="🔹 Why Write and Configure Your Own Doxyfile?">🔹 Why Write and Configure Your Own Doxyfile?</a></li>
-            <li>
-                <a href="#-understanding-doxyfile-configuration" aria-label="🔹 Understanding Doxyfile configuration">🔹 Understanding Doxyfile configuration</a><ul>
-                    
-            <li>
-                <a href="#1-project-information" aria-label="1. Project Information">1. Project Information</a></li>
-            <li>
-                <a href="#2-input-sources" aria-label="2. Input Sources">2. Input Sources</a></li>
-            <li>
-                <a href="#3-build-options" aria-label="3. Build Options">3. Build Options</a></li>
-            <li>
-                <a href="#4-output-formats" aria-label="4. Output Formats">4. Output Formats</a></li>
-            <li>
-                <a href="#5-graphs-and-diagrams" aria-label="5. Graphs and Diagrams">5. Graphs and Diagrams</a></li>
-            <li>
-                <a href="#6-plantuml-integration" aria-label="6. PlantUML Integration">6. PlantUML Integration</a></li>
-            <li>
-                <a href="#7-complete-doxyfile-example" aria-label="7. Complete Doxyfile Example">7. Complete Doxyfile Example</a></li>
-            <li>
-                <a href="#7-running-doxygen" aria-label="7. Running Doxygen">7. Running Doxygen</a></li></ul>
-            </li>
-            <li>
-                <a href="#-how-it-works" aria-label="🔹 How it works">🔹 How it works</a></li>
-            <li>
-                <a href="#-conclusion" aria-label="🔹 Conclusion">🔹 Conclusion</a></li>
-            <li>
-                <a href="#-additional-resources" aria-label="🔹 Additional Resources">🔹 Additional Resources</a>
-            </li>
-        </ul>
-    </div>
-</details>
-
-  <div class="post-content md-content"><h2 id="-what-is-doxygen">🔹 What is Doxygen?<a hidden class="anchor" aria-hidden="true" href="#-what-is-doxygen">#</a></h2>
-<p><a href="https://www.doxygen.nl/">Doxygen</a> is a documentation generator tool that:</p>
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2025-09-02 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2025-09-02">2025-09-02</time></span>&nbsp;<span title="Updated on 2026-02-09 23:17:45"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-02-09">2026-02-09</time></span>&nbsp;<span title="1214 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 1300 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>6 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-what-is-doxygen">🔹 What is Doxygen?</a></li>
+    <li><a href="#-what-is-a-doxyfile">🔹 What is a Doxyfile?</a></li>
+    <li><a href="#-why-use-plantuml-and-graphviz-with-doxygen">🔹 Why Use PlantUML and Graphviz with Doxygen?</a></li>
+    <li><a href="#-installing-doxygen-plantuml-and-graphviz">🔹 Installing Doxygen, PlantUML and Graphviz</a>
+      <ul>
+        <li><a href="#step-1-install-doxygen">Step 1: Install doxygen</a></li>
+        <li><a href="#step-2-install-graphviz">Step 2: Install Graphviz</a></li>
+        <li><a href="#step-3-install-plantuml">Step 3: Install PlantUML</a></li>
+      </ul>
+    </li>
+    <li><a href="#-why-write-and-configure-your-own-doxyfile">🔹 Why Write and Configure Your Own Doxyfile?</a></li>
+    <li><a href="#-understanding-doxyfile-configuration">🔹 Understanding Doxyfile configuration</a>
+      <ul>
+        <li><a href="#1-project-information">1. Project Information</a></li>
+        <li><a href="#2-input-sources">2. Input Sources</a></li>
+        <li><a href="#3-build-options">3. Build Options</a></li>
+        <li><a href="#4-output-formats">4. Output Formats</a></li>
+        <li><a href="#5-graphs-and-diagrams">5. Graphs and Diagrams</a></li>
+        <li><a href="#6-plantuml-integration">6. PlantUML Integration</a></li>
+        <li><a href="#7-complete-doxyfile-example">7. Complete Doxyfile Example</a></li>
+        <li><a href="#7-running-doxygen">7. Running Doxygen</a></li>
+      </ul>
+    </li>
+    <li><a href="#-how-it-works">🔹 How it works</a></li>
+    <li><a href="#-conclusion">🔹 Conclusion</a></li>
+    <li><a href="#-additional-resources">🔹 Additional Resources</a></li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><h2 class="heading-element" id="-what-is-doxygen"><span>🔹 What is Doxygen?</span>
+  <a href="#-what-is-doxygen" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p><a href="https://www.doxygen.nl/" target="_blank" rel="external nofollow noopener noreferrer">Doxygen</a> is a documentation generator tool that:</p>
 <ul>
 <li>Parses your code (C++, Python, Java, JavaScript, and many other languages).</li>
 <li>Extracts specially formatted comments.</li>
@@ -211,8 +171,11 @@
 </ul>
 <p>It’s like having a personal technical writer who works directly from your source code.</p>
 <hr>
-<h2 id="-what-is-a-doxyfile">🔹 What is a Doxyfile?<a hidden class="anchor" aria-hidden="true" href="#-what-is-a-doxyfile">#</a></h2>
-<p>The <code>Doxyfile</code> is the <strong>configuration file</strong> Doxygen uses to determine:</p>
+<h2 class="heading-element" id="-what-is-a-doxyfile"><span>🔹 What is a Doxyfile?</span>
+  <a href="#-what-is-a-doxyfile" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>The <code>Doxyfile</code> is the <strong>configuration file</strong> Doxygen uses to determine:</p>
 <ul>
 <li>Which files to document</li>
 <li>Which languages to parse</li>
@@ -220,11 +183,20 @@
 <li>What output format to use (HTML, PDF, etc.)</li>
 </ul>
 <p>You can generate a default <code>Doxyfile</code> with:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>doxygen -g
-</span></span></code></pre></div><p>This creates a <code>Doxyfile</code> in your current directory, which you can then edit to customize your documentation.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">doxygen -g</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>This creates a <code>Doxyfile</code> in your current directory, which you can then edit to customize your documentation.</p>
 <hr>
-<h2 id="-why-use-plantuml-and-graphviz-with-doxygen">🔹 Why Use PlantUML and Graphviz with Doxygen?<a hidden class="anchor" aria-hidden="true" href="#-why-use-plantuml-and-graphviz-with-doxygen">#</a></h2>
-<p>While Doxygen can generate basic diagrams, integrating <strong>PlantUML</strong> and <strong>Graphviz</strong> allows you to create <strong>more complex and visually appealing diagrams</strong>.</p>
+<h2 class="heading-element" id="-why-use-plantuml-and-graphviz-with-doxygen"><span>🔹 Why Use PlantUML and Graphviz with Doxygen?</span>
+  <a href="#-why-use-plantuml-and-graphviz-with-doxygen" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>While Doxygen can generate basic diagrams, integrating <strong>PlantUML</strong> and <strong>Graphviz</strong> allows you to create <strong>more complex and visually appealing diagrams</strong>.</p>
 <ul>
 <li><strong>PlantUML</strong> lets you create UML diagrams using a simple text-based syntax.</li>
 <li><strong>Graphviz</strong> generates graphs and diagrams from DOT files, which Doxygen can produce.
@@ -236,40 +208,97 @@ This combination enhances your documentation with:</li>
 <li>Collaboration diagrams</li>
 </ul>
 <hr>
-<h2 id="-installing-doxygen-plantuml-and-graphviz">🔹 Installing Doxygen, PlantUML and Graphviz<a hidden class="anchor" aria-hidden="true" href="#-installing-doxygen-plantuml-and-graphviz">#</a></h2>
-<h3 id="step-1-install-doxygen">Step 1: Install doxygen<a hidden class="anchor" aria-hidden="true" href="#step-1-install-doxygen">#</a></h3>
+<h2 class="heading-element" id="-installing-doxygen-plantuml-and-graphviz"><span>🔹 Installing Doxygen, PlantUML and Graphviz</span>
+  <a href="#-installing-doxygen-plantuml-and-graphviz" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="step-1-install-doxygen"><span>Step 1: Install doxygen</span>
+  <a href="#step-1-install-doxygen" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>Ubuntu</li>
+</ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install doxygen</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
+<li>Arch Linux</li>
+</ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S doxygen </span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 class="heading-element" id="step-2-install-graphviz"><span>Step 2: Install Graphviz</span>
+  <a href="#step-2-install-graphviz" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>Ubuntu</li>
+</ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install graphviz </span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
+<li>Arch Linux</li>
+</ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S graphviz </span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 class="heading-element" id="step-3-install-plantuml"><span>Step 3: Install PlantUML</span>
+  <a href="#step-3-install-plantuml" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>PlantUML requires Java to run. Make sure you have Java installed, then install PlantUML:</p>
 <ul>
 <li>Ubuntu</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install doxygen
-</span></span></code></pre></div><ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install plantuml </span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li>Arch Linux</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S doxygen 
-</span></span></code></pre></div><h3 id="step-2-install-graphviz">Step 2: Install Graphviz<a hidden class="anchor" aria-hidden="true" href="#step-2-install-graphviz">#</a></h3>
-<ul>
-<li>Ubuntu</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install graphviz 
-</span></span></code></pre></div><ul>
-<li>Arch Linux</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S graphviz 
-</span></span></code></pre></div><h3 id="step-3-install-plantuml">Step 3: Install PlantUML<a hidden class="anchor" aria-hidden="true" href="#step-3-install-plantuml">#</a></h3>
-<p>PlantUML requires Java to run. Make sure you have Java installed, then install PlantUML:</p>
-<ul>
-<li>Ubuntu</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install plantuml 
-</span></span></code></pre></div><ul>
-<li>Arch Linux</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S plantuml 
-</span></span></code></pre></div><hr>
-<h2 id="-why-write-and-configure-your-own-doxyfile">🔹 Why Write and Configure Your Own Doxyfile?<a hidden class="anchor" aria-hidden="true" href="#-why-write-and-configure-your-own-doxyfile">#</a></h2>
-<p>When you run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>doxygen -g
-</span></span></code></pre></div><p>After running this, Doxygen generates a default Doxyfile with nearly 3000 lines of configuration.While it contains every possible option, it can be overwhelming and cluttered, especially for beginners. It includes many settings that you may never use, making it hard to find the options you actually need.
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo pacman -S plantuml </span></span></code></pre></td></tr></table></div>
+</div>
+</div><hr>
+<h2 class="heading-element" id="-why-write-and-configure-your-own-doxyfile"><span>🔹 Why Write and Configure Your Own Doxyfile?</span>
+  <a href="#-why-write-and-configure-your-own-doxyfile" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>When you run:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">doxygen -g</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>After running this, Doxygen generates a default Doxyfile with nearly 3000 lines of configuration.While it contains every possible option, it can be overwhelming and cluttered, especially for beginners. It includes many settings that you may never use, making it hard to find the options you actually need.
 By writing your own Doxyfile from scratch, you can:</p>
 <ul>
 <li><strong>Keep it clean and simple</strong>: Only include the settings you actually need.</li>
@@ -277,65 +306,131 @@ By writing your own Doxyfile from scratch, you can:</p>
 <li><strong>Tailor it to your project</strong>: Focus on the specific features and outputs that matter to you.</li>
 </ul>
 <hr>
-<h2 id="-understanding-doxyfile-configuration">🔹 Understanding Doxyfile configuration<a hidden class="anchor" aria-hidden="true" href="#-understanding-doxyfile-configuration">#</a></h2>
-<p>Now, let’s go through each important section of a Doxyfile step-by-step.
+<h2 class="heading-element" id="-understanding-doxyfile-configuration"><span>🔹 Understanding Doxyfile configuration</span>
+  <a href="#-understanding-doxyfile-configuration" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Now, let’s go through each important section of a Doxyfile step-by-step.
 First, create a new file named <code>Doxyfile</code> in your project directory and open it in your favorite text editor.</p>
-<h3 id="1-project-information">1. Project Information<a hidden class="anchor" aria-hidden="true" href="#1-project-information">#</a></h3>
-<p>The first section defines basic metadata about your project.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PROJECT_NAME           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyProject&#34;</span>
-</span></span><span style="display:flex;"><span>PROJECT_BRIEF          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A brief description of MyProject&#34;</span>
-</span></span><span style="display:flex;"><span>PROJECT_LOGO           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;path/to/logo.png&#34;</span>
-</span></span><span style="display:flex;"><span>OUTPUT_DIRECTORY       <span style="color:#f92672">=</span> docs
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="1-project-information"><span>1. Project Information</span>
+  <a href="#1-project-information" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>The first section defines basic metadata about your project.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">PROJECT_NAME</span>           <span class="o">=</span> <span class="s2">&#34;MyProject&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROJECT_BRIEF</span>          <span class="o">=</span> <span class="s2">&#34;A brief description of MyProject&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROJECT_LOGO</span>           <span class="o">=</span> <span class="s2">&#34;path/to/logo.png&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OUTPUT_DIRECTORY</span>       <span class="o">=</span> docs</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>PROJECT_NAME</code>: The name of your project.</li>
 <li><code>PROJECT_BRIEF</code>: A short description of your project.</li>
 <li><code>PROJECT_LOGO</code>: Path to a logo image to include in the documentation.</li>
 <li><code>OUTPUT_DIRECTORY</code>: Where the generated documentation will be saved.</li>
 </ul>
-<h3 id="2-input-sources">2. Input Sources<a hidden class="anchor" aria-hidden="true" href="#2-input-sources">#</a></h3>
-<p>This section specifies which files and directories to include in the documentation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>INPUT                  <span style="color:#f92672">=</span> .
-</span></span><span style="display:flex;"><span>FILE_PATTERNS          <span style="color:#f92672">=</span> *.cpp *.h *.py 
-</span></span><span style="display:flex;"><span>RECURSIVE              <span style="color:#f92672">=</span> YES
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="2-input-sources"><span>2. Input Sources</span>
+  <a href="#2-input-sources" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>This section specifies which files and directories to include in the documentation.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">INPUT</span>                  <span class="o">=</span> .
+</span></span><span class="line"><span class="cl"><span class="nv">FILE_PATTERNS</span>          <span class="o">=</span> *.cpp *.h *.py 
+</span></span><span class="line"><span class="cl"><span class="nv">RECURSIVE</span>              <span class="o">=</span> YES</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>INPUT</code>: The directories or files to scan for documentation.</li>
 <li><code>FILE_PATTERNS</code>: File extensions as per language used in the project.</li>
 <li><code>RECURSIVE</code>: If set to <code>YES</code>, Doxygen will search subdirectories. If <code>NO</code>, it will only scan the root directory.</li>
 </ul>
-<h3 id="3-build-options">3. Build Options<a hidden class="anchor" aria-hidden="true" href="#3-build-options">#</a></h3>
-<p>This section controls how Doxygen processes the input files.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>EXTRACT_ALL            <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_PRIVATE        <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_STATIC         <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_LOCAL_CLASSES  <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_LOCAL_METHODS  <span style="color:#f92672">=</span> YES
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="3-build-options"><span>3. Build Options</span>
+  <a href="#3-build-options" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>This section controls how Doxygen processes the input files.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">EXTRACT_ALL</span>            <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_PRIVATE</span>        <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_STATIC</span>         <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_LOCAL_CLASSES</span>  <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_LOCAL_METHODS</span>  <span class="o">=</span> YES</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>EXTRACT_ALL</code>: If <code>YES</code>, Doxygen will document all entities, even those without comments.</li>
 <li><code>EXTRACT_PRIVATE</code>: If <code>YES</code>, private class members will be included in the documentation.</li>
 <li><code>EXTRACT_STATIC</code>: If <code>YES</code>, static members will be documented.</li>
 <li><code>EXTRACT_LOCAL_CLASSES</code>: If <code>YES</code>, local classes (defined within functions) will be documented.</li>
 <li><code>EXTRACT_LOCAL_METHODS</code>: If <code>YES</code>, local methods (defined within functions) will be documented.</li>
 </ul>
-<h3 id="4-output-formats">4. Output Formats<a hidden class="anchor" aria-hidden="true" href="#4-output-formats">#</a></h3>
-<p>This section specifies which output formats to generate.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GENERATE_HTML          <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>GENERATE_LATEX         <span style="color:#f92672">=</span> NO 
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="4-output-formats"><span>4. Output Formats</span>
+  <a href="#4-output-formats" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>This section specifies which output formats to generate.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GENERATE_HTML</span>          <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">GENERATE_LATEX</span>         <span class="o">=</span> NO </span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>GENERATE_HTML</code>: If <code>YES</code>, Doxygen will generate HTML documentation.</li>
 <li><code>GENERATE_LATEX</code>: If <code>YES</code>, Doxygen will generate LaTeX documentation (useful for creating PDFs).</li>
 </ul>
-<h3 id="5-graphs-and-diagrams">5. Graphs and Diagrams<a hidden class="anchor" aria-hidden="true" href="#5-graphs-and-diagrams">#</a></h3>
-<p>This section enables the generation of graphs and diagrams using Graphviz and PlantUML.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HAVE_DOT               <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>DOT_PATH              <span style="color:#f92672">=</span> 
-</span></span><span style="display:flex;"><span>DOT_IMAGE_FORMAT       <span style="color:#f92672">=</span> svg
-</span></span><span style="display:flex;"><span>CALL_GRAPH             <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>CALLER_GRAPH           <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>CLASS_DIAGRAMS        <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>UML_LOOK               <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>DOT_GRAPH_MAX_NODES <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
-</span></span><span style="display:flex;"><span>INTERACTIVE_SVG     <span style="color:#f92672">=</span> YES
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="5-graphs-and-diagrams"><span>5. Graphs and Diagrams</span>
+  <a href="#5-graphs-and-diagrams" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>This section enables the generation of graphs and diagrams using Graphviz and PlantUML.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">HAVE_DOT</span>               <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_PATH</span>              <span class="o">=</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_IMAGE_FORMAT</span>       <span class="o">=</span> svg
+</span></span><span class="line"><span class="cl"><span class="nv">CALL_GRAPH</span>             <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">CALLER_GRAPH</span>           <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">CLASS_DIAGRAMS</span>        <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">UML_LOOK</span>               <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_GRAPH_MAX_NODES</span> <span class="o">=</span> <span class="m">50</span>
+</span></span><span class="line"><span class="cl"><span class="nv">INTERACTIVE_SVG</span>     <span class="o">=</span> YES</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>HAVE_DOT</code>: If <code>YES</code>, enables Graphviz support for generating graphs.</li>
 <li><code>DOT_PATH</code>: Path to the Graphviz <code>dot</code> executable (if not in your system PATH).</li>
 <li><code>DOT_IMAGE_FORMAT</code>: The format for generated graph images (e.g., <code>svg</code>, <code>png</code>).</li>
@@ -349,302 +444,236 @@ First, create a new file named <code>Doxyfile</code> in your project directory a
 <blockquote>
 <p>Tip : If your graphs are too cluttered, try reducing <code>DOT_GRAPH_MAX_NODES</code> or simplifying your code structure.</p>
 </blockquote>
-<h3 id="6-plantuml-integration">6. PlantUML Integration<a hidden class="anchor" aria-hidden="true" href="#6-plantuml-integration">#</a></h3>
-<p>To integrate PlantUML, you need to specify the path to the PlantUML jar file.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>PLANTUML_JAR_PATH     <span style="color:#f92672">=</span> /path/to/plantuml.jar
-</span></span></code></pre></div><ul>
+<h3 class="heading-element" id="6-plantuml-integration"><span>6. PlantUML Integration</span>
+  <a href="#6-plantuml-integration" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>To integrate PlantUML, you need to specify the path to the PlantUML jar file.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">PLANTUML_JAR_PATH</span>     <span class="o">=</span> /path/to/plantuml.jar</span></span></code></pre></td></tr></table></div>
+</div>
+</div><ul>
 <li><code>PLANTUML_JAR_PATH</code>: Path to the PlantUML jar file. This allows Doxygen to generate UML diagrams using PlantUML.</li>
 </ul>
-<h3 id="7-complete-doxyfile-example">7. Complete Doxyfile Example<a hidden class="anchor" aria-hidden="true" href="#7-complete-doxyfile-example">#</a></h3>
-<p>Here’s a complete example of a simple Doxyfile with the above configurations:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># --- Project Information ---</span>
-</span></span><span style="display:flex;"><span>PROJECT_NAME           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;MyProject&#34;</span>
-</span></span><span style="display:flex;"><span>PROJECT_BRIEF          <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A brief description of MyProject&#34;</span>
-</span></span><span style="display:flex;"><span>PROJECT_LOGO           <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;path/to/logo.png&#34;</span>
-</span></span><span style="display:flex;"><span>OUTPUT_DIRECTORY       <span style="color:#f92672">=</span> docs
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Input Sources ---</span>
-</span></span><span style="display:flex;"><span>INPUT                  <span style="color:#f92672">=</span> .
-</span></span><span style="display:flex;"><span>FILE_PATTERNS          <span style="color:#f92672">=</span> *.cpp *.h *.hpp *.py *.java *.js *.ts *.go *.cs
-</span></span><span style="display:flex;"><span>RECURSIVE              <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Build Options ---</span>
-</span></span><span style="display:flex;"><span>EXTRACT_ALL            <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_PRIVATE        <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_STATIC         <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_LOCAL_CLASSES  <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>EXTRACT_LOCAL_METHODS  <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Documentation Output ---</span>
-</span></span><span style="display:flex;"><span>GENERATE_HTML          <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>GENERATE_LATEX         <span style="color:#f92672">=</span> NO
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- Diagrams &amp; Graphs ---</span>
-</span></span><span style="display:flex;"><span>HAVE_DOT               <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>DOT_PATH              <span style="color:#f92672">=</span> 
-</span></span><span style="display:flex;"><span>DOT_IMAGE_FORMAT       <span style="color:#f92672">=</span> svg
-</span></span><span style="display:flex;"><span>CALL_GRAPH             <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>CALLER_GRAPH           <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>CLASS_DIAGRAMS        <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>UML_LOOK               <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>DOT_GRAPH_MAX_NODES <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
-</span></span><span style="display:flex;"><span>INTERACTIVE_SVG     <span style="color:#f92672">=</span> YES
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># --- PlantUML Integration ---</span>
-</span></span><span style="display:flex;"><span>PLANTUML_JAR_PATH      <span style="color:#f92672">=</span> /path/to/plantuml.jar
-</span></span></code></pre></div><h3 id="7-running-doxygen">7. Running Doxygen<a hidden class="anchor" aria-hidden="true" href="#7-running-doxygen">#</a></h3>
-<p>Once your Doxyfile is configured, you can generate the documentation by running in your terminal:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>doxygen Doxyfile
-</span></span></code></pre></div><p>Then, open the generated HTML documentation in your web browser:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xdg-open docs/html/index.html  <span style="color:#75715e"># Linux</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>open docs/html/index.html       <span style="color:#75715e"># macOS</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>start docs<span style="color:#ae81ff">\h</span>tml<span style="color:#ae81ff">\i</span>ndex.html      <span style="color:#75715e"># Windows</span>
-</span></span></code></pre></div><blockquote>
+<h3 class="heading-element" id="7-complete-doxyfile-example"><span>7. Complete Doxyfile Example</span>
+  <a href="#7-complete-doxyfile-example" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Here’s a complete example of a simple Doxyfile with the above configurations:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># --- Project Information ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROJECT_NAME</span>           <span class="o">=</span> <span class="s2">&#34;MyProject&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROJECT_BRIEF</span>          <span class="o">=</span> <span class="s2">&#34;A brief description of MyProject&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PROJECT_LOGO</span>           <span class="o">=</span> <span class="s2">&#34;path/to/logo.png&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OUTPUT_DIRECTORY</span>       <span class="o">=</span> docs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Input Sources ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">INPUT</span>                  <span class="o">=</span> .
+</span></span><span class="line"><span class="cl"><span class="nv">FILE_PATTERNS</span>          <span class="o">=</span> *.cpp *.h *.hpp *.py *.java *.js *.ts *.go *.cs
+</span></span><span class="line"><span class="cl"><span class="nv">RECURSIVE</span>              <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Build Options ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_ALL</span>            <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_PRIVATE</span>        <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_STATIC</span>         <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_LOCAL_CLASSES</span>  <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">EXTRACT_LOCAL_METHODS</span>  <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Documentation Output ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GENERATE_HTML</span>          <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">GENERATE_LATEX</span>         <span class="o">=</span> NO
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- Diagrams &amp; Graphs ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">HAVE_DOT</span>               <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_PATH</span>              <span class="o">=</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_IMAGE_FORMAT</span>       <span class="o">=</span> svg
+</span></span><span class="line"><span class="cl"><span class="nv">CALL_GRAPH</span>             <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">CALLER_GRAPH</span>           <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">CLASS_DIAGRAMS</span>        <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">UML_LOOK</span>               <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl"><span class="nv">DOT_GRAPH_MAX_NODES</span> <span class="o">=</span> <span class="m">50</span>
+</span></span><span class="line"><span class="cl"><span class="nv">INTERACTIVE_SVG</span>     <span class="o">=</span> YES
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># --- PlantUML Integration ---</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PLANTUML_JAR_PATH</span>      <span class="o">=</span> /path/to/plantuml.jar</span></span></code></pre></td></tr></table></div><div class="code-expand-btn" aria-label="Expand or collapse code block" role="button"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></div>
+</div>
+</div><h3 class="heading-element" id="7-running-doxygen"><span>7. Running Doxygen</span>
+  <a href="#7-running-doxygen" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Once your Doxyfile is configured, you can generate the documentation by running in your terminal:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">doxygen Doxyfile</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>Then, open the generated HTML documentation in your web browser:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xdg-open docs/html/index.html  <span class="c1"># Linux</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">open docs/html/index.html       <span class="c1"># macOS</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">start docs<span class="se">\h</span>tml<span class="se">\i</span>ndex.html      <span class="c1"># Windows</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><blockquote>
 <p>It will open the main page of your generated documentation, there you can navigate through classes, files, and diagrams. Following is the sample output of the documentation:
-<img alt="Doxygen Sample Output" loading="lazy" src="/doxygen-document.png"></p>
+<img loading="lazy" src='/doxygen-document.png' alt="Doxygen Sample Output"></p>
 </blockquote>
 <hr>
-<h2 id="-how-it-works">🔹 How it works<a hidden class="anchor" aria-hidden="true" href="#-how-it-works">#</a></h2>
-<p>Below is a visual representation of how Doxygen, Graphviz, and PlantUML work together:</p>
-<p><img alt="Doxygen Flowchart" loading="lazy" src="/doxygen-working.png"></p>
+<h2 class="heading-element" id="-how-it-works"><span>🔹 How it works</span>
+  <a href="#-how-it-works" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Below is a visual representation of how Doxygen, Graphviz, and PlantUML work together:</p>
+<p><img loading="lazy" src='/doxygen-working.png' alt="Doxygen Flowchart"></p>
 <hr>
-<h2 id="-conclusion">🔹 Conclusion<a hidden class="anchor" aria-hidden="true" href="#-conclusion">#</a></h2>
-<p>Using Doxygen with PlantUML and Graphviz allows you to create <strong>comprehensive, visually appealing documentation</strong> for your projects with minimal effort. By writing a clean and tailored Doxyfile, you can ensure that your documentation meets your specific needs and showcases your code effectively. It can save you time, improve code maintainability, and enhance collaboration within your team.</p>
+<h2 class="heading-element" id="-conclusion"><span>🔹 Conclusion</span>
+  <a href="#-conclusion" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Using Doxygen with PlantUML and Graphviz allows you to create <strong>comprehensive, visually appealing documentation</strong> for your projects with minimal effort. By writing a clean and tailored Doxyfile, you can ensure that your documentation meets your specific needs and showcases your code effectively. It can save you time, improve code maintainability, and enhance collaboration within your team.</p>
 <blockquote>
 <p><strong>In short:</strong> Well-documented projects are easier to <strong>maintain</strong>, <strong>scale</strong>, and <strong>share</strong>.<br>
 If you want your code to speak for itself, <strong>Doxygen is one of the best investments you can make</strong>.</p>
 </blockquote>
 <hr>
-<h2 id="-additional-resources">🔹 Additional Resources<a hidden class="anchor" aria-hidden="true" href="#-additional-resources">#</a></h2>
-<ul>
-<li><a href="https://www.doxygen.nl/manual/index.html">Doxygen Official Documentation</a></li>
-<li><a href="https://plantuml.com/">PlantUML Official Website</a></li>
-<li><a href="https://graphviz.org/">Graphviz Official Website</a></li>
+<h2 class="heading-element" id="-additional-resources"><span>🔹 Additional Resources</span>
+  <a href="#-additional-resources" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><ul>
+<li><a href="https://www.doxygen.nl/manual/index.html" target="_blank" rel="external nofollow noopener noreferrer">Doxygen Official Documentation</a></li>
+<li><a href="https://plantuml.com/" target="_blank" rel="external nofollow noopener noreferrer">PlantUML Official Website</a></li>
+<li><a href="https://graphviz.org/" target="_blank" rel="external nofollow noopener noreferrer">Graphviz Official Website</a></li>
 </ul>
 <hr>
 <p>Happy Documenting! 🚀</p>
+</div><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod"><span title="Updated on 2026-02-09 23:17:45">Updated on 2026-02-09&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/doxygen/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file//home/ramzan/website/ramzan/content/posts/Doxygen.md" title="Open in editor" target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/doxygen/" data-title="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation" data-hashtags="C&#43;&#43;,Documentation,Doxygen,PlantUML,Graphviz,Open Source"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/doxygen/" data-hashtag="C&#43;&#43;"><i class="fa-brands fa-facebook-square" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/doxygen/" data-title="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation"><i class="fa-brands fa-weibo" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
 
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/c&#43;&#43;/">C&#43;&#43;</a></li>
-      <li><a href="http://localhost:1313/tags/documentation/">Documentation</a></li>
-      <li><a href="http://localhost:1313/tags/doxygen/">Doxygen</a></li>
-      <li><a href="http://localhost:1313/tags/plantuml/">PlantUML</a></li>
-      <li><a href="http://localhost:1313/tags/graphviz/">Graphviz</a></li>
-      <li><a href="http://localhost:1313/tags/open-source/">Open Source</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/ssh/">
-    <span class="title">« Prev</span>
-    <span>Secure Shell (SSH)</span>
-  </a>
-  <a class="next" href="http://localhost:1313/posts/neovim-plugins/">
-    <span class="title">Next »</span>
-    <span>Neovim Complete Setup and Integrating ChatGPT</span>
-  </a>
-</nav>
-
-
-<ul class="share-buttons">
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on x"
-            href="https://x.com/intent/tweet/?text=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f&amp;hashtags=C%2b%2b%2cDocumentation%2cDoxygen%2cPlantUML%2cGraphviz%2cOpenSource">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f&amp;title=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation&amp;summary=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f&title=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on whatsapp"
-            href="https://api.whatsapp.com/send?text=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on telegram"
-            href="https://telegram.me/share/url?text=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f">
-            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Doxygen%20%2b%20PlantUML%20%2b%20Graphviz%3a%20Build%20Automated%2c%20Beautiful%20Project%20Documentation&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fdoxygen%2f">
-            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-                <path
-                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-            </svg>
-        </a>
-    </li>
-</ul>
-
-  </footer>
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href="/tags/c&#43;&#43;/" class="post-tag" title="Tags - C&#43;&#43;">C&#43;&#43;</a><a href="/tags/documentation/" class="post-tag" title="Tags - Documentation">Documentation</a><a href="/tags/doxygen/" class="post-tag" title="Tags - Doxygen">Doxygen</a><a href="/tags/plantuml/" class="post-tag" title="Tags - PlantUML">PlantUML</a><a href="/tags/graphviz/" class="post-tag" title="Tags - Graphviz">Graphviz</a><a href="/tags/open-source/" class="post-tag" title="Tags - Open Source">Open Source</a></section>
+    <section><span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/neovim-plugins/" class="post-nav-item" rel="prev" title="Neovim Complete Setup and Integrating ChatGPT"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Neovim Complete Setup and Integrating ChatGPT</a><a href="/posts/ssh/" class="post-nav-item" rel="next" title="Secure Shell (SSH)">Secure Shell (SSH)<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
 </article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
 
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
-
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside><dialog id="toc-dialog" aria-labelledby="toc-dialog-title" role="dialog">
+      <div class="toc">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-drawer"><nav >
+  <ul>
+    <li><a href="#-what-is-doxygen">🔹 What is Doxygen?</a></li>
+    <li><a href="#-what-is-a-doxyfile">🔹 What is a Doxyfile?</a></li>
+    <li><a href="#-why-use-plantuml-and-graphviz-with-doxygen">🔹 Why Use PlantUML and Graphviz with Doxygen?</a></li>
+    <li><a href="#-installing-doxygen-plantuml-and-graphviz">🔹 Installing Doxygen, PlantUML and Graphviz</a>
+      <ul>
+        <li><a href="#step-1-install-doxygen">Step 1: Install doxygen</a></li>
+        <li><a href="#step-2-install-graphviz">Step 2: Install Graphviz</a></li>
+        <li><a href="#step-3-install-plantuml">Step 3: Install PlantUML</a></li>
+      </ul>
+    </li>
+    <li><a href="#-why-write-and-configure-your-own-doxyfile">🔹 Why Write and Configure Your Own Doxyfile?</a></li>
+    <li><a href="#-understanding-doxyfile-configuration">🔹 Understanding Doxyfile configuration</a>
+      <ul>
+        <li><a href="#1-project-information">1. Project Information</a></li>
+        <li><a href="#2-input-sources">2. Input Sources</a></li>
+        <li><a href="#3-build-options">3. Build Options</a></li>
+        <li><a href="#4-output-formats">4. Output Formats</a></li>
+        <li><a href="#5-graphs-and-diagrams">5. Graphs and Diagrams</a></li>
+        <li><a href="#6-plantuml-integration">6. PlantUML Integration</a></li>
+        <li><a href="#7-complete-doxyfile-example">7. Complete Doxyfile Example</a></li>
+        <li><a href="#7-running-doxygen">7. Running Doxygen</a></li>
+      </ul>
+    </li>
+    <li><a href="#-how-it-works">🔹 How it works</a></li>
+    <li><a href="#-conclusion">🔹 Conclusion</a></li>
+    <li><a href="#-additional-resources">🔹 Additional Resources</a></li>
+  </ul>
+</nav></div>
+      </div>
+    </dialog></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.164.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.4.5"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://github.com/ramzanbhutto" target="_blank" rel="external nofollow noopener noreferrer">Muhammad Ramzan</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons"><div class="fixed-button back-to-top animate__faster d-none" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></div><div id="toc-drawer-button" class="fixed-button toc-drawer-button d-none" role="button" aria-label="Contents"><i class="fa-solid fa-bars" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/cell-tooltip/cell-tooltip.umd.js" defer></script><script src="/js/config/ad128c73aef8442bf59f5c4610ade94c.js" defer></script><script src="/js/theme.min.js" defer></script></body>
 </html>

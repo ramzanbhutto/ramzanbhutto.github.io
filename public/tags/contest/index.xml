@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Contest on Muhammad Ramzan</title>
+    <title>Contest - Tag - Technical Blogs</title>
     <link>http://localhost:1313/tags/contest/</link>
-    <description>Recent content in Contest on Muhammad Ramzan</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 27 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <description>Technical Blogs</description>
+    <generator>Hugo 0.164.0 &amp; FixIt v0.4.5</generator>
+    <language>en</language>
+    <managingEditor>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</managingEditor>
+    <webMaster>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</webMaster>
+    <lastBuildDate>Mon, 27 Jul 2026 19:42:52 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/contest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Part 1: Setting Up DomJudge with Docker</title>
       <link>http://localhost:1313/posts/domjudge1/</link>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate><author>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</author>
       <guid>http://localhost:1313/posts/domjudge1/</guid>
-      <description>Learn how to setup DomJudge to host competitive programming competitions using Docker on Linux</description>
+      <description>&lt;p&gt;If you run a coding club or want to host your own programming contest, DomJudge is the tool for it. It is the same judge used in ICPC contests around the world.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will show you how to set it up on your own computer using Docker. I will also show you two problems I faced (port conflicts and cgroups) and how I fixed them.&lt;/p&gt;&#xA;&lt;p&gt;This guide is based on my own setup on Arch Linux. I also used this blog as a starting reference: &lt;a href=&#34;https://medium.com/@TrainedPro/setting-up-domjudge-with-docker-a-complete-guide-0c4fdf24bb7d&#34; target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;Setting up DomJudge with Docker&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Part 2: Running Your First Contest on DomJudge</title>
       <link>http://localhost:1313/posts/domjudge2/</link>
-      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Jul 2026 00:00:00 +0000</pubDate><author>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</author>
       <guid>http://localhost:1313/posts/domjudge2/</guid>
-      <description>Learn how to run and host competitive programming contests</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Prerequisite&lt;/strong&gt;: This is Part 2 of the DomJudge Docker series. If you haven&amp;rsquo;t set up DomJudge yet, start with &lt;a href=&#34;https://ramzanbhutto.github.io/domjudge1&#34; target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;Part 1 — Setting Up DomJudge with Docker&lt;/a&gt; first.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h3 class=&#34;heading-element&#34; id=&#34;repository-that-well-follow-domjudge-files&#34;&gt;&lt;span&gt;Repository that we&amp;rsquo;ll follow: &lt;a href=&#34;https://github.com/TrainedPro/domjudge-files.git&#34; target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;domjudge-files&lt;/a&gt;&lt;/span&gt;&#xA;  &lt;a href=&#34;#repository-that-well-follow-domjudge-files&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; - DomJudge is running. Now we make it actually host a contest. By the end of this post you&amp;rsquo;ll have teams registered, problems uploaded, a live scoreboard, and the whole thing accessible from the internet via Cloudflare Tunnel.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

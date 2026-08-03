@@ -1,42 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Arch on Muhammad Ramzan</title>
+    <title>Arch - Tag - Technical Blogs</title>
     <link>http://localhost:1313/tags/arch/</link>
-    <description>Recent content in Arch on Muhammad Ramzan</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 08 Feb 2025 00:49:53 +0500</lastBuildDate>
+    <description>Technical Blogs</description>
+    <generator>Hugo 0.164.0 &amp; FixIt v0.4.5</generator>
+    <language>en</language>
+    <managingEditor>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</managingEditor>
+    <webMaster>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</webMaster>
+    <lastBuildDate>Sun, 09 Feb 2025 18:19:29 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/arch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones</title>
       <link>http://localhost:1313/posts/auto-audio-switching/</link>
-      <pubDate>Sat, 08 Feb 2025 00:49:53 +0500</pubDate>
+      <pubDate>Sat, 08 Feb 2025 00:49:53 +0500</pubDate><author>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</author>
       <guid>http://localhost:1313/posts/auto-audio-switching/</guid>
-      <description>&lt;h3 id=&#34;automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide&#34;&gt;Automatically Switching Audio Output Between Speakers and Headphones on Arch Linux: A Comprehensive Guide&lt;/h3&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;method-1using-pavucontrolgraphical-method&#34;&gt;Method 1:Using Pavucontrol(Graphical Method)&lt;/h2&gt;
-&lt;p&gt;If you prefer a more user friendly environment, then go for pavucontrol.&lt;/p&gt;
-&lt;h3 id=&#34;step-1install-pavucontrol-if-its-not-already-installed&#34;&gt;Step 1:Install &lt;strong&gt;pavucontrol&lt;/strong&gt; if it&amp;rsquo;s not already installed:&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-zsh&#34; data-lang=&#34;zsh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo pacman -S pavucontrol
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;step-2-launch-pavucontrol&#34;&gt;Step 2: Launch &lt;strong&gt;pavucontrol&lt;/strong&gt;:&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pavucontrol
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;step-3-navigate-to-the-configuration-tab&#34;&gt;Step 3: Navigate to the &lt;code&gt;Configuration&lt;/code&gt; tab.&lt;/h3&gt;
-&lt;p&gt;In pavucontrol, go to the Configuration tab. This section allows you to manage audio profiles for your devices.&lt;/p&gt;</description>
+      <description>&lt;h3 class=&#34;heading-element&#34; id=&#34;automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide&#34;&gt;&lt;span&gt;Automatically Switching Audio Output Between Speakers and Headphones on Arch Linux: A Comprehensive Guide&lt;/span&gt;&#xA;  &lt;a href=&#34;#automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&lt;hr&gt;&#xA;&lt;h2 class=&#34;heading-element&#34; id=&#34;method-1using-pavucontrolgraphical-method&#34;&gt;&lt;span&gt;Method 1:Using Pavucontrol(Graphical Method)&lt;/span&gt;&#xA;  &lt;a href=&#34;#method-1using-pavucontrolgraphical-method&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;p&gt;If you prefer a more user friendly environment, then go for pavucontrol.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Compile and Build Linux Kernel</title>
       <link>http://localhost:1313/posts/kernel-compilation/</link>
-      <pubDate>Wed, 05 Feb 2025 00:37:50 +0500</pubDate>
+      <pubDate>Wed, 05 Feb 2025 00:37:50 +0500</pubDate><author>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</author>
       <guid>http://localhost:1313/posts/kernel-compilation/</guid>
-      <description>&lt;h2 id=&#34;building-linux-kernel&#34;&gt;Building Linux Kernel&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;step-1-download-the-source-code&#34;&gt;Step 1: Download the Source Code&lt;/h3&gt;
-&lt;p&gt;Visit the &lt;a href=&#34;https://www.kernel.org/&#34;&gt;Official Kernel Website&lt;/a&gt; and download the latest kernel source code. The downloaded files contains a compressed source code that you need to extract it.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;step-2-extract-the-source-code&#34;&gt;Step 2: Extract the Source Code&lt;/h3&gt;
-&lt;p&gt;After downloading, it is necessary to extract the source code. So, we will achieve this using &lt;strong&gt;tar&lt;/strong&gt; command.&lt;/p&gt;</description>
+      <description>&lt;h2 class=&#34;heading-element&#34; id=&#34;building-linux-kernel&#34;&gt;&lt;span&gt;Building Linux Kernel&lt;/span&gt;&#xA;  &lt;a href=&#34;#building-linux-kernel&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

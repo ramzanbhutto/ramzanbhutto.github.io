@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Graphviz on Muhammad Ramzan</title>
+    <title>Graphviz - Tag - Technical Blogs</title>
     <link>http://localhost:1313/tags/graphviz/</link>
-    <description>Recent content in Graphviz on Muhammad Ramzan</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 02 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <description>Technical Blogs</description>
+    <generator>Hugo 0.164.0 &amp; FixIt v0.4.5</generator>
+    <language>en</language>
+    <managingEditor>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</managingEditor>
+    <webMaster>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</webMaster>
+    <lastBuildDate>Mon, 09 Feb 2026 23:17:45 +0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/graphviz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</title>
       <link>http://localhost:1313/posts/doxygen/</link>
-      <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate><author>mr.ramzan.bhutto@gmail.com (Muhammad Ramzan)</author>
       <guid>http://localhost:1313/posts/doxygen/</guid>
-      <description>Learn how to use Doxygen to generate stunning project documentation, complete with diagrams, graphs, and professional structure.</description>
+      <description>&lt;h2 class=&#34;heading-element&#34; id=&#34;-what-is-doxygen&#34;&gt;&lt;span&gt;🔹 What is Doxygen?&lt;/span&gt;&#xA;  &lt;a href=&#34;#-what-is-doxygen&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;https://www.doxygen.nl/&#34; target=&#34;_blank&#34; rel=&#34;external nofollow noopener noreferrer&#34;&gt;Doxygen&lt;/a&gt; is a documentation generator tool that:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

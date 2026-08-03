@@ -1,305 +1,312 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto" data-theme="auto">
+<html itemscope itemtype="http://schema.org/WebPage" lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <meta name="robots" content="noodp" />
+    <title>Part 2: Running Your First Contest on DomJudge - Technical Blogs</title><meta name="author" content="Muhammad Ramzan">
+<meta name="description" content="Learn how to run and host competitive programming contests"><meta name="keywords" content='Docker, DomJudge, MariaDB, contest, Linux'>
+	<meta itemprop="name" content="Part 2: Running Your First Contest on DomJudge">
+	<meta itemprop="description" content="Learn how to run and host competitive programming contests">
+	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-07-27T19:28:08+05:00">
+	<meta itemprop="wordCount" content="2477">
+	<meta itemprop="keywords" content="Docker,DomJudge,MariaDB,Contest,Linux"><meta property="og:url" content="http://localhost:1313/posts/domjudge2/">
+	<meta property="og:site_name" content="Technical Blogs">
+	<meta property="og:title" content="Part 2: Running Your First Contest on DomJudge">
+	<meta property="og:description" content="Learn how to run and host competitive programming contests">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2026-07-27T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-07-27T19:28:08+05:00">
+		<meta property="article:tag" content="Docker">
+		<meta property="article:tag" content="DomJudge">
+		<meta property="article:tag" content="MariaDB">
+		<meta property="article:tag" content="Contest">
+		<meta property="article:tag" content="Linux">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Part 2: Running Your First Contest on DomJudge | Muhammad Ramzan</title>
-<meta name="keywords" content="Docker, DomJudge, MariaDB, contest, Linux">
-<meta name="description" content="Learn how to run and host competitive programming contests">
-<meta name="author" content="Muhammad Ramzan">
-<link rel="canonical" href="http://localhost:1313/posts/domjudge2/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/domjudge2/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-                color-scheme: dark;
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .toc {
-                background: var(--entry);
-            }
-        }
-
-    </style>
-</noscript>
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else if (localStorage.getItem("pref-theme") === "light") {
-       document.querySelector("html").dataset.theme = 'light';
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector("html").dataset.theme = 'dark';
-    } else {
-        document.querySelector("html").dataset.theme = 'light';
-    }
-
-</script>
-</head>
-<body id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Muhammad Ramzan (Alt + H)">Muhammad Ramzan</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives" title="Archives">
-                    <span>Archives</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/search" title="Search (Alt &#43; /)" accesskey=/>
-                    <span>Search</span>
-                </a>
-            </li>
-        </ul>
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Part 2: Running Your First Contest on DomJudge">
+	<meta name="twitter:description" content="Learn how to run and host competitive programming contests">
+<meta name="application-name" content="FixIt">
+<meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#151b23" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/domjudge2/" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/polygon/" title="Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough" /><link rel="next" type="text/html" href="http://localhost:1313/posts/domjudge1/" title="Part 1: Setting Up DomJudge with Docker" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/domjudge2/index.md" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Part 2: Running Your First Contest on DomJudge",
+    "inLanguage": "en",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/posts\/domjudge2\/"
+    },"genre": "posts","keywords": "Docker, DomJudge, MariaDB, contest, Linux","wordcount":  2477 ,
+    "url": "http:\/\/localhost:1313\/posts\/domjudge2\/","datePublished": "2026-07-27T00:00:00+00:00","dateModified": "2026-07-27T19:28:08+05:00","publisher": {
+      "@type": "Organization",
+      "name": ""},"author": {
+        "@type": "Person",
+        "name": "Muhammad Ramzan"
+      },"description": "Learn how to run and host competitive programming contests"
+  }
+  </script><script src="/js/head/color-scheme.min.js"></script></head>
+  <body data-instant-intensity="viewport" data-header-desktop="sticky" data-header-mobile="auto"><div class="wrapper" data-page-style="normal"><header class="desktop animate__faster" id="header-desktop">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+    <nav>
+      <ul class="menu"><li class="menu-item">
+              <a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item">
+              <a class="menu-link" href="/archives">Archives</a></li><li class="menu-item">
+              <a class="menu-link" href="/search">Search</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id="search-desktop">
+            <input type="text" placeholder="Search titles or contents ..." id="search-input-desktop">
+            <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+              <i class="fa-solid fa-search" aria-hidden="true"></i>
+            </a>
+            <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+              <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+            </a>
+            <span class="search-button search-loading" id="search-loading-desktop">
+              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+            </span>
+          </li><li class="menu-item theme-switch" role="button" aria-label="Switch Theme" title="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></li></ul>
     </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-                <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-            <a href="/posts/">Posts</a>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
-        <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-</nav>
-    <h1 class="post-title entry-hint-parent">
-      Part 2: Running Your First Contest on DomJudge
-    </h1>
-    <div class="post-description">
-      Learn how to run and host competitive programming contests
+  </div>
+</header><header class="mobile animate__faster" id="header-mobile">
+  <div class="header-container">
+    <div class="header-wrapper">
+      <div class="header-title">
+        <a href="/" title="Technical Blogs"><span class="header-title-text">Technical Blogs</span></a><span class="header-subtitle"></span></div>
+      <div class="theme-switch" role="button" aria-label="Switch Theme"><i class="fa-solid fa-adjust" aria-hidden="true"></i></div>
+      <div class="menu-toggle" id="menu-toggle-mobile" role="button" aria-labelledby="menu-mobile">
+        <span></span><span></span><span></span>
+      </div>
     </div>
-    <div class="post-meta">
+    <nav>
+      <ul class="menu" id="menu-mobile"><li class="search-wrapper">
+            <div class="search mobile" id="search-mobile">
+              <input type="text" placeholder="Search titles or contents ..." id="search-input-mobile">
+              <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                <i class="fa-solid fa-search" aria-hidden="true"></i>
+              </a>
+              <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                <i class="fa-solid fa-times-circle" aria-hidden="true"></i>
+              </a>
+              <span class="search-button search-loading" id="search-loading-mobile">
+                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+              </span>
+            </div>
+            <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+              Cancel
+            </a>
+          </li><li class="menu-item"><a class="menu-link" href="/tags/">Tags</a></li><li class="menu-item"><a class="menu-link" href="/archives">Archives</a></li><li class="menu-item"><a class="menu-link" href="/search">Search</a></li><li class="menu-item menu-system"></li>
+      </ul>
+    </nav>
+  </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+  </div>
+  <div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+  </div><main class="fi-container"><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label="Collections"><div class="details related-details open">
+      <div class="details-summary related-summary">
+        <i class="fa-solid fa-fire fa-fade text-danger" aria-hidden="true"></i>
+        <span class="related-title">Related Content</span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></div>
+      <div class="details-content related-content">
+        <ul class="related-list"><li class="related-item">
+              <a href="/posts/domjudge1/" title="Part 1: Setting Up DomJudge With Docker">Part 1: Setting Up DomJudge With Docker</a></li><li class="related-item">
+              <a href="/posts/kernel-compilation/" title="Compile and Build Linux Kernel">Compile and Build Linux Kernel</a></li><li class="related-item">
+              <a href="/posts/grub-rescue-setup/" title="Grub Rescue Setup">Grub Rescue Setup</a></li></ul>
+      </div>
+    </div></aside>
 
-<span title='2026-07-27 00:00:00 +0000 UTC'>July 27, 2026</span>&nbsp;·&nbsp;<span>12 min</span>&nbsp;·&nbsp;<span>Muhammad Ramzan</span>
-
-</div>
-  </header> <details class="toc" >
-    <summary accesskey="c" title="(Alt + C)">
-        <span class="title">Table of Contents</span>
-    </summary>
-
-    <div class="inner"><ul><ul>
-            <li>
-                <a href="#repository-that-well-follow-domjudge-files" aria-label="Repository that we&rsquo;ll follow: domjudge-files">Repository that we&rsquo;ll follow: domjudge-files</a></li></ul>
-                
-            <li>
-                <a href="#1-how-domjudge-thinks-about-a-contest" aria-label="1. How DomJudge thinks about a contest">1. How DomJudge thinks about a contest</a></li>
-            <li>
-                <a href="#2-contestyaml" aria-label="2. contest.yaml">2. contest.yaml</a><ul>
-                    
-            <li>
-                <a href="#fields-explained" aria-label="Fields explained">Fields explained</a></li>
-            <li>
-                <a href="#the-timezone-trap---read-this-carefully" aria-label="The timezone trap - read this carefully">The timezone trap - read this carefully</a></li></ul>
-            </li>
-            <li>
-                <a href="#3-groupsjson" aria-label="3. groups.json">3. groups.json</a><ul>
-                    
-            <li>
-                <a href="#-ids-15-are-reserved" aria-label="⚠️ IDs 1–5 are reserved">⚠️ IDs 1–5 are reserved</a></li></ul>
-            </li>
-            <li>
-                <a href="#4-organizationsjson" aria-label="4. organizations.json">4. organizations.json</a><ul>
-                    
-            <li>
-                <a href="#fields-reference" aria-label="Fields reference:">Fields reference:</a></li>
-            <li>
-                <a href="#file" aria-label="File:">File:</a></li></ul>
-            </li>
-            <li>
-                <a href="#5-teamsjson" aria-label="5. teams.json">5. teams.json</a><ul>
-                    
-            <li>
-                <a href="#field-reference" aria-label="Field reference">Field reference</a></li>
-            <li>
-                <a href="#-ids-1-and-2-are-reserved" aria-label="⚠️ IDs 1 and 2 are reserved">⚠️ IDs 1 and 2 are reserved</a></li></ul>
-            </li>
-            <li>
-                <a href="#teams" aria-label=""></a></li>
-            <li>
-                <a href="#6-accountsjson" aria-label="6. accounts.json">6. accounts.json</a><ul>
-                    
-            <li>
-                <a href="#field-reference-1" aria-label="Field reference">Field reference</a></li>
-            <li>
-                <a href="#the-link-that-must-match" aria-label="The link that must match">The link that must match</a></li>
-            <li>
-                <a href="#offset-of-3-or-5" aria-label="offset of 3 or 5">offset of 3 or 5</a></li>
-            <li>
-                <a href="#-user-ids-02-are-reserved" aria-label="⚠️ User IDs 0–2 are reserved">⚠️ User IDs 0–2 are reserved</a></li></ul>
-            </li>
-            <li>
-                <a href="#users" aria-label=""></a></li>
-            <li>
-                <a href="#7-problems" aria-label="7. Problems">7. Problems</a><ul>
-                    
-            <li>
-                <a href="#problemyaml" aria-label="problem.yaml">problem.yaml</a></li>
-            <li>
-                <a href="#problemyaml-1" aria-label="problem.yaml">problem.yaml</a></li>
-            <li>
-                <a href="#domjudge-problemini" aria-label="domjudge-problem.ini">domjudge-problem.ini</a></li>
-            <li>
-                <a href="#domjudge-problemini-fields" aria-label="domjudge-problem.ini fields">domjudge-problem.ini fields</a></li>
-            <li>
-                <a href="#validatorcpp" aria-label="validator.cpp">validator.cpp</a></li>
-            <li>
-                <a href="#packaging" aria-label="Packaging">Packaging</a></li></ul>
-            </li>
-            <li>
-                <a href="#8-importing-everything" aria-label="8. Importing everything">8. Importing everything</a><ul>
-                    
-            <li>
-                <a href="#method-1---gui-jury---import--export" aria-label="Method 1 - GUI (Jury -&gt; Import / Export)">Method 1 - GUI (Jury -&gt; Import / Export)</a></li>
-            <li>
-                <a href="#method-2---import-contest-one-shot" aria-label="Method 2 - import-contest (one shot)">Method 2 - import-contest (one shot)</a></li></ul>
-            </li>
-            <li>
-                <a href="#9-dry-run-checklist" aria-label="9. Dry run checklist">9. Dry run checklist</a></li>
-            <li>
-                <a href="#10-going-live-with-cloudflare-tunnel" aria-label="10. Going live with Cloudflare Tunnel">10. Going live with Cloudflare Tunnel</a><ul>
-                    
-            <li>
-                <a href="#install-cloudflared" aria-label="Install cloudflared">Install cloudflared</a></li>
-            <li>
-                <a href="#quick-tunnel-no-account-needed---temporary-url" aria-label="Quick tunnel (no account needed - temporary URL)">Quick tunnel (no account needed - temporary URL)</a>
-            </li>
-        </ul>
-        </li>
-        </ul>
-    </div>
-</details>
-
-  <div class="post-content md-content"><blockquote>
-<p><strong>Prerequisite</strong>: This is Part 2 of the DomJudge Docker series. If you haven&rsquo;t set up DomJudge yet, start with <a href="https://ramzanbhutto.github.io/domjudge1">Part 1 — Setting Up DomJudge with Docker</a> first.</p>
+  <article class="page single">
+    <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Part 2: Running Your First Contest on DomJudge</span>
+      </h1></div><div class="post-meta">
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-07-27 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="Updated on 2026-07-27 19:28:08"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="2477 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 2500 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>12 minutes</span>&nbsp;</div>
+    </div><div class="details toc" id="toc-static" data-kept="false">
+        <div class="details-summary toc-title">
+          <span>Contents</span>
+          <span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></span>
+        </div>
+        <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#repository-that-well-follow-domjudge-files">Repository that we’ll follow: domjudge-files</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-how-domjudge-thinks-about-a-contest">1. How DomJudge thinks about a contest</a></li>
+    <li><a href="#2-contestyaml">2. contest.yaml</a>
+      <ul>
+        <li><a href="#fields-explained">Fields explained</a></li>
+        <li><a href="#the-timezone-trap---read-this-carefully">The timezone trap - read this carefully</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-groupsjson">3. groups.json</a>
+      <ul>
+        <li><a href="#-ids-15-are-reserved">⚠️ IDs 1–5 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-organizationsjson">4. organizations.json</a>
+      <ul>
+        <li><a href="#fields-reference">Fields reference:</a></li>
+        <li><a href="#file">File:</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-teamsjson">5. teams.json</a>
+      <ul>
+        <li><a href="#field-reference">Field reference</a></li>
+        <li><a href="#-ids-1-and-2-are-reserved">⚠️ IDs 1 and 2 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#teams"><img src="/domjudgeBlog2-teams.png" alt="Teams"></a></li>
+    <li><a href="#6-accountsjson">6. accounts.json</a>
+      <ul>
+        <li><a href="#field-reference-1">Field reference</a></li>
+        <li><a href="#the-link-that-must-match">The link that must match</a></li>
+        <li><a href="#offset-of-3-or-5">offset of 3 or 5</a></li>
+        <li><a href="#-user-ids-02-are-reserved">⚠️ User IDs 0–2 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#users"><img src="/domjudgeBlog2-users.png" alt="Users"></a></li>
+    <li><a href="#7-problems">7. Problems</a>
+      <ul>
+        <li><a href="#problemyaml">problem.yaml</a></li>
+        <li><a href="#problemyaml-1">problem.yaml</a></li>
+        <li><a href="#domjudge-problemini">domjudge-problem.ini</a></li>
+        <li><a href="#domjudge-problemini-fields">domjudge-problem.ini fields</a></li>
+        <li><a href="#validatorcpp">validator.cpp</a></li>
+        <li><a href="#packaging">Packaging</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-importing-everything">8. Importing everything</a>
+      <ul>
+        <li><a href="#method-1---gui-jury---import--export">Method 1 - GUI (Jury -&gt; Import / Export)</a></li>
+        <li><a href="#method-2---import-contest-one-shot">Method 2 - import-contest (one shot)</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-dry-run-checklist">9. Dry run checklist</a></li>
+    <li><a href="#10-going-live-with-cloudflare-tunnel">10. Going live with Cloudflare Tunnel</a>
+      <ul>
+        <li><a href="#install-cloudflared">Install cloudflared</a></li>
+        <li><a href="#quick-tunnel-no-account-needed---temporary-url">Quick tunnel (no account needed - temporary URL)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div><div class="content" id="content"><blockquote>
+<p><strong>Prerequisite</strong>: This is Part 2 of the DomJudge Docker series. If you haven&rsquo;t set up DomJudge yet, start with <a href="https://ramzanbhutto.github.io/domjudge1" target="_blank" rel="external nofollow noopener noreferrer">Part 1 — Setting Up DomJudge with Docker</a> first.</p>
 </blockquote>
-<h3 id="repository-that-well-follow-domjudge-files">Repository that we&rsquo;ll follow: <a href="https://github.com/TrainedPro/domjudge-files.git">domjudge-files</a><a hidden class="anchor" aria-hidden="true" href="#repository-that-well-follow-domjudge-files">#</a></h3>
-<p><strong>TL;DR</strong> - DomJudge is running. Now we make it actually host a contest. By the end of this post you&rsquo;ll have teams registered, problems uploaded, a live scoreboard, and the whole thing accessible from the internet via Cloudflare Tunnel.</p>
+<h3 class="heading-element" id="repository-that-well-follow-domjudge-files"><span>Repository that we&rsquo;ll follow: <a href="https://github.com/TrainedPro/domjudge-files.git" target="_blank" rel="external nofollow noopener noreferrer">domjudge-files</a></span>
+  <a href="#repository-that-well-follow-domjudge-files" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p><strong>TL;DR</strong> - DomJudge is running. Now we make it actually host a contest. By the end of this post you&rsquo;ll have teams registered, problems uploaded, a live scoreboard, and the whole thing accessible from the internet via Cloudflare Tunnel.</p>
 <hr>
-<h2 id="1-how-domjudge-thinks-about-a-contest">1. How DomJudge thinks about a contest<a hidden class="anchor" aria-hidden="true" href="#1-how-domjudge-thinks-about-a-contest">#</a></h2>
-<p>Understand the hierarchy before touching any file. DomJudge separates <em>when</em> the contest runs, <em>who</em> participates and <em>what</em> they solve into distinct pieces:</p>
-<pre tabindex="0"><code>contest.yaml        -&gt; timeline, scoring rules
-groups.json         -&gt; categories (e.g. &#34;Participants&#34;, &#34;Guests&#34;)
-organizations.json  -&gt; universities / affiliations
-teams.json          -&gt; scoreboard entities (reference groups + orgs)
-accounts.json       -&gt; login credentials (reference teams)
-problems/           -&gt; ZIP packages with test cases
-</code></pre><p><strong>Import order is not optional.</strong> Teams reference group IDs so groups must exist first. Accounts reference team IDs so teams must exist before accounts. Get this wrong and the import either fails silently or creates orphaned records.</p>
-<pre tabindex="0"><code>contest → groups → organizations → teams → accounts → problems
-</code></pre><hr>
-<h2 id="2-contestyaml">2. contest.yaml<a hidden class="anchor" aria-hidden="true" href="#2-contestyaml">#</a></h2>
-<p>This file defines when the contest starts, how long it runs and the scoring rules. Here&rsquo;s the format used for the demo contest:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">id</span>: <span style="color:#ae81ff">demo-26</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Demo Contest 2026</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">start_time</span>: <span style="color:#e6db74">&#39;2026-06-30T14:30:00+05:00&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">duration</span>: <span style="color:#e6db74">&#39;4:00:00&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">scoreboard_freeze_duration</span>: <span style="color:#e6db74">&#39;1:00:00&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">penalty_time</span>: <span style="color:#ae81ff">20</span>
-</span></span></code></pre></div><h3 id="fields-explained">Fields explained<a hidden class="anchor" aria-hidden="true" href="#fields-explained">#</a></h3>
-<table>
-  <thead>
-      <tr>
-          <th>Field</th>
-          <th>What it does</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>name</code></td>
-          <td>Full display name shown on the scoreboard</td>
-      </tr>
-      <tr>
-          <td><code>start_time</code></td>
-          <td>When submissions open - <strong>must include timezone</strong></td>
-      </tr>
-      <tr>
-          <td><code>duration</code></td>
-          <td>Contest length in HH:MM:SS</td>
-      </tr>
-      <tr>
-          <td><code>scoreboard_freeze_duration</code></td>
-          <td>Offset from total time to freeze the scoreboard. <code>&quot;1:00:00&quot;</code> on a 4h contest hides the last 1 hour</td>
-      </tr>
-      <tr>
-          <td><code>penalty_time</code></td>
-          <td>Minutes added per wrong submission. ICPC standard is 20</td>
-      </tr>
-  </tbody>
-</table>
-<h3 id="the-timezone-trap---read-this-carefully">The timezone trap - read this carefully<a hidden class="anchor" aria-hidden="true" href="#the-timezone-trap---read-this-carefully">#</a></h3>
-<p>DomJudge stores everything in UTC internally. If you don&rsquo;t specify a timezone offset in <code>start_time</code>, your contest starts at the wrong time locally. And make sure to set the same timezone for the all times(like start_time, end_time, etc) as domjudge doesn&rsquo;t allow different timezones in the same contest.</p>
+<h2 class="heading-element" id="1-how-domjudge-thinks-about-a-contest"><span>1. How DomJudge thinks about a contest</span>
+  <a href="#1-how-domjudge-thinks-about-a-contest" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Understand the hierarchy before touching any file. DomJudge separates <em>when</em> the contest runs, <em>who</em> participates and <em>what</em> they solve into distinct pieces:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">contest.yaml        -&gt; timeline, scoring rules
+</span></span><span class="line"><span class="cl">groups.json         -&gt; categories (e.g. &#34;Participants&#34;, &#34;Guests&#34;)
+</span></span><span class="line"><span class="cl">organizations.json  -&gt; universities / affiliations
+</span></span><span class="line"><span class="cl">teams.json          -&gt; scoreboard entities (reference groups + orgs)
+</span></span><span class="line"><span class="cl">accounts.json       -&gt; login credentials (reference teams)
+</span></span><span class="line"><span class="cl">problems/           -&gt; ZIP packages with test cases</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p><strong>Import order is not optional.</strong> Teams reference group IDs so groups must exist first. Accounts reference team IDs so teams must exist before accounts. Get this wrong and the import either fails silently or creates orphaned records.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">contest → groups → organizations → teams → accounts → problems</span></span></code></pre></td></tr></table></div>
+</div>
+</div><hr>
+<h2 class="heading-element" id="2-contestyaml"><span>2. contest.yaml</span>
+  <a href="#2-contestyaml" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>This file defines when the contest starts, how long it runs and the scoring rules. Here&rsquo;s the format used for the demo contest:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-yaml"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">demo-26</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Demo Contest 2026</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">start_time</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2026-06-30T14:30:00+05:00&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">duration</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;4:00:00&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">scoreboard_freeze_duration</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1:00:00&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">penalty_time</span><span class="p">:</span><span class="w"> </span><span class="m">20</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 class="heading-element" id="fields-explained"><span>Fields explained</span>
+  <a href="#fields-explained" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>What it does</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>name</code></td>
+            <td>Full display name shown on the scoreboard</td>
+        </tr>
+        <tr>
+            <td><code>start_time</code></td>
+            <td>When submissions open - <strong>must include timezone</strong></td>
+        </tr>
+        <tr>
+            <td><code>duration</code></td>
+            <td>Contest length in HH:MM:SS</td>
+        </tr>
+        <tr>
+            <td><code>scoreboard_freeze_duration</code></td>
+            <td>Offset from total time to freeze the scoreboard. <code>&quot;1:00:00&quot;</code> on a 4h contest hides the last 1 hour</td>
+        </tr>
+        <tr>
+            <td><code>penalty_time</code></td>
+            <td>Minutes added per wrong submission. ICPC standard is 20</td>
+        </tr>
+    </tbody>
+  </table>
+</div><h3 class="heading-element" id="the-timezone-trap---read-this-carefully"><span>The timezone trap - read this carefully</span>
+  <a href="#the-timezone-trap---read-this-carefully" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>DomJudge stores everything in UTC internally. If you don&rsquo;t specify a timezone offset in <code>start_time</code>, your contest starts at the wrong time locally. And make sure to set the same timezone for the all times(like start_time, end_time, etc) as domjudge doesn&rsquo;t allow different timezones in the same contest.</p>
 <p>After importing, go to <strong>Jury -&gt; Contests</strong> and confirm the displayed activate/start/end times are what you intended.</p>
-<p><img alt="Contest-Time" loading="lazy" src="/domjudgeBlog2-contest-time.png"></p>
+<p><img loading="lazy" src='/domjudgeBlog2-contest-time.png' alt="Contest-Time"></p>
 <hr>
-<h2 id="3-groupsjson">3. groups.json<a hidden class="anchor" aria-hidden="true" href="#3-groupsjson">#</a></h2>
-<p>Groups are categories that teams belong to. They are how you split a scoreboard into divisions - for example &ldquo;Universities&rdquo; vs &ldquo;High Schools&rdquo;, or &ldquo;Seniors&rdquo; vs &ldquo;Juniors&rdquo;. Teams in the same group compete against each other. You can also hide a group entirely from the public scoreboard if you have internal/test teams.It should be a JSON array with objects, each object should contain the following fields:</p>
+<h2 class="heading-element" id="3-groupsjson"><span>3. groups.json</span>
+  <a href="#3-groupsjson" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Groups are categories that teams belong to. They are how you split a scoreboard into divisions - for example &ldquo;Universities&rdquo; vs &ldquo;High Schools&rdquo;, or &ldquo;Seniors&rdquo; vs &ldquo;Juniors&rdquo;. Teams in the same group compete against each other. You can also hide a group entirely from the public scoreboard if you have internal/test teams.It should be a JSON array with objects, each object should contain the following fields:</p>
 <ul>
 <li>
 <p><code>id</code>: the category ID to use. Must be unique</p>
@@ -318,26 +325,26 @@ problems/           -&gt; ZIP packages with test cases
 </li>
 </ul>
 <p>In the demo contest we use <strong>University</strong> category:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;6&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;University&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;sortorder&#34;</span>: <span style="color:#ae81ff">0</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;color&#34;</span>: <span style="color:#e6db74">&#34;#00cc00&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><h3 id="-ids-15-are-reserved">⚠️ IDs 1–5 are reserved<a hidden class="anchor" aria-hidden="true" href="#-ids-15-are-reserved">#</a></h3>
-<p>This is not documented anywhere officially but has shown up consistently across deployments - IDs 1 through 5 are used by DomJudge&rsquo;s built-in system categories. You can see one of them in the Teams page: the <code>DOMjudge</code> team that sits in the &ldquo;System&rdquo; category. If you import a group with ID 1, 2, 3, 4, or 5, it either silently overwrites them.</p>
+<json-viewer value="&#34;[\n  {\n    \&#34;id\&#34;: \&#34;6\&#34;,\n    \&#34;name\&#34;: \&#34;University\&#34;,\n    \&#34;hidden\&#34;: false,\n    \&#34;sortorder\&#34;: 0,\n    \&#34;color\&#34;: \&#34;#00cc00\&#34;\n  }\n]&#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><h3 class="heading-element" id="-ids-15-are-reserved"><span>⚠️ IDs 1–5 are reserved</span>
+  <a href="#-ids-15-are-reserved" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>This is not documented anywhere officially but has shown up consistently across deployments - IDs 1 through 5 are used by DomJudge&rsquo;s built-in system categories. You can see one of them in the Teams page: the <code>DOMjudge</code> team that sits in the &ldquo;System&rdquo; category. If you import a group with ID 1, 2, 3, 4, or 5, it either silently overwrites them.</p>
 <p><strong>Always start your group IDs from 6.</strong></p>
 <blockquote>
 <p>If your teams appear in the jury interface but not on the public scoreboard, the first thing to check is whether the group has <code>&quot;hidden&quot;: true</code> or a conflicting ID.</p>
 </blockquote>
 <hr>
-<h2 id="4-organizationsjson">4. organizations.json<a hidden class="anchor" aria-hidden="true" href="#4-organizationsjson">#</a></h2>
-<p>Affiliations are the universities or organizations that teams represent. They show as text next to team names on the scoreboard, with country flags when a country code is set.</p>
-<h3 id="fields-reference">Fields reference:<a hidden class="anchor" aria-hidden="true" href="#fields-reference">#</a></h3>
-<ul>
+<h2 class="heading-element" id="4-organizationsjson"><span>4. organizations.json</span>
+  <a href="#4-organizationsjson" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Affiliations are the universities or organizations that teams represent. They show as text next to team names on the scoreboard, with country flags when a country code is set.</p>
+<h3 class="heading-element" id="fields-reference"><span>Fields reference:</span>
+  <a href="#fields-reference" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
 <li>
 <p><code>id</code>: the affiliation ID. Must be unique</p>
 </li>
@@ -354,44 +361,24 @@ problems/           -&gt; ZIP packages with test cases
 <p><code>country</code>: the country code in form of ISO 3166-1 alpha-3 (<code>PAK</code>, <code>NLD</code>, <code>USA</code>, etc.). DomJudge renders the flag automatically.</p>
 </li>
 </ul>
-<h3 id="file">File:<a hidden class="anchor" aria-hidden="true" href="#file">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;NUCES&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;NUCES&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;formal_name&#34;</span>: <span style="color:#e6db74">&#34;FAST National University of Computer and Emerging Sciences&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;country&#34;</span>: <span style="color:#e6db74">&#34;PAK&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;UU&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;UU&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;formal_name&#34;</span>: <span style="color:#e6db74">&#34;Utrecht University&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;country&#34;</span>: <span style="color:#e6db74">&#34;NLD&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><p>Use string IDs like <code>&quot;NUCES&quot;</code> instead of numbers - self-documenting and avoids the reserved-ID issue.
-<img alt="Affiliations" loading="lazy" src="/domjudgeBlog2-affiliations.png"></p>
+<h3 class="heading-element" id="file"><span>File:</span>
+  <a href="#file" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><json-viewer value="&#34;[\n  {\n    \&#34;id\&#34;: \&#34;NUCES\&#34;,\n    \&#34;name\&#34;: \&#34;NUCES\&#34;,\n    \&#34;formal_name\&#34;: \&#34;FAST National University of Computer and Emerging Sciences\&#34;,\n    \&#34;country\&#34;: \&#34;PAK\&#34;\n  },\n  {\n    \&#34;id\&#34;: \&#34;UU\&#34;,\n    \&#34;name\&#34;: \&#34;UU\&#34;,\n    \&#34;formal_name\&#34;: \&#34;Utrecht University\&#34;,\n    \&#34;country\&#34;: \&#34;NLD\&#34;\n  }\n]&#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><p>Use string IDs like <code>&quot;NUCES&quot;</code> instead of numbers - self-documenting and avoids the reserved-ID issue.
+<img loading="lazy" src='/domjudgeBlog2-affiliations.png' alt="Affiliations"></p>
 <hr>
-<h2 id="5-teamsjson">5. teams.json<a hidden class="anchor" aria-hidden="true" href="#5-teamsjson">#</a></h2>
-<p>A team is the entity that appears on the scoreboard and submits code. Important: <strong>a team by itself cannot log in.</strong> It&rsquo;s just a scoreboard record. It needs an account linked to it - that comes in the next section.</p>
+<h2 class="heading-element" id="5-teamsjson"><span>5. teams.json</span>
+  <a href="#5-teamsjson" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>A team is the entity that appears on the scoreboard and submits code. Important: <strong>a team by itself cannot log in.</strong> It&rsquo;s just a scoreboard record. It needs an account linked to it - that comes in the next section.</p>
 <p>From the demo contest: Red Coders and Protrainers, both under NUCES, both in the Participants group:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;group_ids&#34;</span>: [<span style="color:#e6db74">&#34;6&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Red Coders&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;display_name&#34;</span>: <span style="color:#e6db74">&#34;Red Coders&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;organization_id&#34;</span>: <span style="color:#e6db74">&#34;NUCES&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;4&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;group_ids&#34;</span>: [<span style="color:#e6db74">&#34;6&#34;</span>],
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Protrainers&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;organization_id&#34;</span>: <span style="color:#e6db74">&#34;NUCES&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><h3 id="field-reference">Field reference<a hidden class="anchor" aria-hidden="true" href="#field-reference">#</a></h3>
-<ul>
+<json-viewer value="&#34;[\n  {\n    \&#34;id\&#34;: \&#34;3\&#34;,\n    \&#34;group_ids\&#34;: [\&#34;6\&#34;],\n    \&#34;name\&#34;: \&#34;Red Coders\&#34;,\n    \&#34;display_name\&#34;: \&#34;Red Coders\&#34;,\n    \&#34;organization_id\&#34;: \&#34;NUCES\&#34;\n  },\n  {\n    \&#34;id\&#34;: \&#34;4\&#34;,\n    \&#34;group_ids\&#34;: [\&#34;6\&#34;],\n    \&#34;name\&#34;: \&#34;Protrainers\&#34;,\n    \&#34;organization_id\&#34;: \&#34;NUCES\&#34;\n  }\n]&#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><h3 class="heading-element" id="field-reference"><span>Field reference</span>
+  <a href="#field-reference" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
 <li>
 <p><code>id</code>: the team ID. Must be unique</p>
 </li>
@@ -423,45 +410,27 @@ problems/           -&gt; ZIP packages with test cases
 <blockquote>
 <p>The id field will be the ID used for the team and the <code>group_ids</code> and <code>organization_id</code> fields are the values as provided during the import of the other files listed above.</p>
 </blockquote>
-<h3 id="-ids-1-and-2-are-reserved">⚠️ IDs 1 and 2 are reserved<a hidden class="anchor" aria-hidden="true" href="#-ids-1-and-2-are-reserved">#</a></h3>
-<p>Team ID 1 is the built-in <code>DOMjudge</code> system team. Team ID 2 is <code>exteam</code> (the demo team). You can see both in the jury teams page. Start your custom teams from ID 3.</p>
+<h3 class="heading-element" id="-ids-1-and-2-are-reserved"><span>⚠️ IDs 1 and 2 are reserved</span>
+  <a href="#-ids-1-and-2-are-reserved" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Team ID 1 is the built-in <code>DOMjudge</code> system team. Team ID 2 is <code>exteam</code> (the demo team). You can see both in the jury teams page. Start your custom teams from ID 3.</p>
 <p>For larger contests (20+ teams) it&rsquo;s worth starting from 100 - it&rsquo;s immediately obvious which IDs are yours vs system.</p>
-<h2 id="teams"><img alt="Teams" loading="lazy" src="/domjudgeBlog2-teams.png"><a hidden class="anchor" aria-hidden="true" href="#teams">#</a></h2>
-<h2 id="6-accountsjson">6. accounts.json<a hidden class="anchor" aria-hidden="true" href="#6-accountsjson">#</a></h2>
-<p>Accounts are usernames and passwords. A team account links to exactly one team via <code>team_id</code>.</p>
+<h2 class="heading-element" id="teams"><span><img loading="lazy" src='/domjudgeBlog2-teams.png' alt="Teams"></span>
+  <a href="#teams" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h2 class="heading-element" id="6-accountsjson"><span>6. accounts.json</span>
+  <a href="#6-accountsjson" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Accounts are usernames and passwords. A team account links to exactly one team via <code>team_id</code>.</p>
 <p>From the demo contest: ramzan, hisam, and saif all link to Red Coders (team ID 3). hassananwar links to Protrainers (team ID 4).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>[
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;team&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;ramzan&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;ramzan_password&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;team_id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ramzan&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;team&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;hisam&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;hisam_password&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;team_id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Hisam&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;team&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;saif&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;saif_password&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;team_id&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Saif&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;team&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;username&#34;</span>: <span style="color:#e6db74">&#34;hassananwar&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;password&#34;</span>: <span style="color:#e6db74">&#34;hassan_password&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;team_id&#34;</span>: <span style="color:#e6db74">&#34;4&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Hassan Anwar&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>]
-</span></span></code></pre></div><h3 id="field-reference-1">Field reference<a hidden class="anchor" aria-hidden="true" href="#field-reference-1">#</a></h3>
-<ul>
+<json-viewer value="&#34;[\n  {\n    \&#34;type\&#34;: \&#34;team\&#34;,\n    \&#34;username\&#34;: \&#34;ramzan\&#34;,\n    \&#34;password\&#34;: \&#34;ramzan_password\&#34;,\n    \&#34;team_id\&#34;: \&#34;3\&#34;,\n    \&#34;name\&#34;: \&#34;Ramzan\&#34;\n  },\n  {\n    \&#34;type\&#34;: \&#34;team\&#34;,\n    \&#34;username\&#34;: \&#34;hisam\&#34;,\n    \&#34;password\&#34;: \&#34;hisam_password\&#34;,\n    \&#34;team_id\&#34;: \&#34;3\&#34;,\n    \&#34;name\&#34;: \&#34;Hisam\&#34;\n  },\n  {\n    \&#34;type\&#34;: \&#34;team\&#34;,\n    \&#34;username\&#34;: \&#34;saif\&#34;,\n    \&#34;password\&#34;: \&#34;saif_password\&#34;,\n    \&#34;team_id\&#34;: \&#34;3\&#34;,\n    \&#34;name\&#34;: \&#34;Saif\&#34;\n  },\n  {\n    \&#34;type\&#34;: \&#34;team\&#34;,\n    \&#34;username\&#34;: \&#34;hassananwar\&#34;,\n    \&#34;password\&#34;: \&#34;hassan_password\&#34;,\n    \&#34;team_id\&#34;: \&#34;4\&#34;,\n    \&#34;name\&#34;: \&#34;Hassan Anwar\&#34;\n  }\n]&#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><h3 class="heading-element" id="field-reference-1"><span>Field reference</span>
+  <a href="#field-reference-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
 <li>
 <p><code>id</code>: the account ID. Must be unique</p>
 </li>
@@ -484,75 +453,166 @@ problems/           -&gt; ZIP packages with test cases
 <p><code>ip</code> (optional): IP address to link to this account</p>
 </li>
 </ul>
-<h3 id="the-link-that-must-match">The link that must match<a hidden class="anchor" aria-hidden="true" href="#the-link-that-must-match">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">teams.json:</span>    <span style="color:#e6db74">&#34;id&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;3&#34;</span>    
-</span></span><span style="display:flex;"><span> <span style="color:#960050;background-color:#1e0010">accounts.json:</span> <span style="color:#e6db74">&#34;team_id&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;3&#34;</span>  
-</span></span></code></pre></div><blockquote>
+<h3 class="heading-element" id="the-link-that-must-match"><span>The link that must match</span>
+  <a href="#the-link-that-must-match" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><json-viewer value="&#34; teams.json:    \&#34;id\&#34;: \&#34;3\&#34;    \n accounts.json: \&#34;team_id\&#34;: \&#34;3\&#34;  &#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><blockquote>
 <p>both <strong>id</strong> and <strong>team_id</strong> must be same</p>
 </blockquote>
-<h3 id="offset-of-3-or-5">offset of 3 or 5<a hidden class="anchor" aria-hidden="true" href="#offset-of-3-or-5">#</a></h3>
-<p>If the exact team_id doesn&rsquo;t work, then check the exact team_id using GUI on domjudge, as sometimes domjudge adds 3 or 5 to each team_id. like team <code>Red Coders</code> have team_id &lsquo;3&rsquo;, but it can be &lsquo;6&rsquo; or &lsquo;8&rsquo; on domjudge due to offset matching.</p>
-<h3 id="-user-ids-02-are-reserved">⚠️ User IDs 0–2 are reserved<a hidden class="anchor" aria-hidden="true" href="#-user-ids-02-are-reserved">#</a></h3>
-<p>Internal accounts (admin, judgehost, etc.) occupy IDs 0, 1, and 2. It&rsquo;s good to start from 3 or 100.</p>
-<h2 id="users"><img alt="Users" loading="lazy" src="/domjudgeBlog2-users.png"><a hidden class="anchor" aria-hidden="true" href="#users">#</a></h2>
-<h2 id="7-problems">7. Problems<a hidden class="anchor" aria-hidden="true" href="#7-problems">#</a></h2>
-<h3 id="problemyaml">problem.yaml<a hidden class="anchor" aria-hidden="true" href="#problemyaml">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">id</span>: <span style="color:#ae81ff">hello</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">label</span>: <span style="color:#ae81ff">A</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Helloo World</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">color</span>: <span style="color:#e6db74">&#34;#32cd32&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rgb</span>: <span style="color:#e6db74">&#34;#32cd32&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">timelimit</span>: <span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><blockquote>
+<h3 class="heading-element" id="offset-of-3-or-5"><span>offset of 3 or 5</span>
+  <a href="#offset-of-3-or-5" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>If the exact team_id doesn&rsquo;t work, then check the exact team_id using GUI on domjudge, as sometimes domjudge adds 3 or 5 to each team_id. like team <code>Red Coders</code> have team_id &lsquo;3&rsquo;, but it can be &lsquo;6&rsquo; or &lsquo;8&rsquo; on domjudge due to offset matching.</p>
+<h3 class="heading-element" id="-user-ids-02-are-reserved"><span>⚠️ User IDs 0–2 are reserved</span>
+  <a href="#-user-ids-02-are-reserved" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Internal accounts (admin, judgehost, etc.) occupy IDs 0, 1, and 2. It&rsquo;s good to start from 3 or 100.</p>
+<h2 class="heading-element" id="users"><span><img loading="lazy" src='/domjudgeBlog2-users.png' alt="Users"></span>
+  <a href="#users" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h2 class="heading-element" id="7-problems"><span>7. Problems</span>
+  <a href="#7-problems" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><h3 class="heading-element" id="problemyaml"><span>problem.yaml</span>
+  <a href="#problemyaml" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-yaml"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">hello</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l">A</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Helloo World</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;#32cd32&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">rgb</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;#32cd32&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">timelimit</span><span class="p">:</span><span class="w"> </span><span class="m">1</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><blockquote>
 <p>import this file if you&rsquo;re just uploading a single problem without any test cases and problem statement. Then you have to separately update these using GUI.</p>
 </blockquote>
 <p>Generally, Problems are imported as ZIP archives instead of a single problem.yaml . DomJudge uses the ICPC Problem Package Format. Here&rsquo;s the structure for the <code>hello</code> problem (Problem A):</p>
-<pre tabindex="0"><code>hello/                          
-├── problem.yaml            # required
-├── domjudge-problem.ini    # DOMjudge-specific (optional)
-├── problem_statement/      # required
-│   └── problem.en.pdf
-│   └── problem.en.tex
-├── data/
-│   ├── sample/             #optional
-│   │   ├── 1.in
-│   │   ├── 1.ans
-│   │   └── 1.hint          
-│   └── secret/             # required
-│       ├── 1.in
-│       ├── 1.ans
-│       ├── 2.in
-│       └── 2.ans
-├── submissions/            # required
-│   ├── accepted/           # at least one required
-│   │   └── solution.cpp
-│   ├── wrong_answer/
-│   │   └── brute.cpp
-│   ├── time_limit_exceeded/
-│   │   └── slow.cpp
-│   └── run_time_error/
-│       └── crash.cpp
-└── input_validators/       # required
-    └── validator.cpp       # exits 42 on valid, anything else = invalid
-</code></pre><p>Use following <code>problem.yaml</code> if you&rsquo;re about to archive the folder</p>
-<h3 id="problemyaml-1">problem.yaml<a hidden class="anchor" aria-hidden="true" href="#problemyaml-1">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Hello World</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">author</span>: <span style="color:#ae81ff">System</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">source</span>: <span style="color:#ae81ff">Demo</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">rights_owner</span>: <span style="color:#ae81ff">System</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">license</span>: <span style="color:#ae81ff">cc0</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">pass-fail</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">limits</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">time_multiplier</span>: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">time_safety_margin</span>: <span style="color:#ae81ff">1.5</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memory</span>: <span style="color:#ae81ff">256</span>
-</span></span></code></pre></div><p><img alt="Problems" loading="lazy" src="/domjudgeBlog2-problems.png"></p>
-<h3 id="domjudge-problemini">domjudge-problem.ini<a hidden class="anchor" aria-hidden="true" href="#domjudge-problemini">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">name = Hello World</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">timelimit = 1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">color =</span> <span style="color:#75715e">#FF7109</span>
-</span></span></code></pre></div><h3 id="domjudge-problemini-fields">domjudge-problem.ini fields<a hidden class="anchor" aria-hidden="true" href="#domjudge-problemini-fields">#</a></h3>
-<ul>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hello/                          
+</span></span><span class="line"><span class="cl">├── problem.yaml            # required
+</span></span><span class="line"><span class="cl">├── domjudge-problem.ini    # DOMjudge-specific (optional)
+</span></span><span class="line"><span class="cl">├── problem_statement/      # required
+</span></span><span class="line"><span class="cl">│   └── problem.en.pdf
+</span></span><span class="line"><span class="cl">│   └── problem.en.tex
+</span></span><span class="line"><span class="cl">├── data/
+</span></span><span class="line"><span class="cl">│   ├── sample/             #optional
+</span></span><span class="line"><span class="cl">│   │   ├── 1.in
+</span></span><span class="line"><span class="cl">│   │   ├── 1.ans
+</span></span><span class="line"><span class="cl">│   │   └── 1.hint          
+</span></span><span class="line"><span class="cl">│   └── secret/             # required
+</span></span><span class="line"><span class="cl">│       ├── 1.in
+</span></span><span class="line"><span class="cl">│       ├── 1.ans
+</span></span><span class="line"><span class="cl">│       ├── 2.in
+</span></span><span class="line"><span class="cl">│       └── 2.ans
+</span></span><span class="line"><span class="cl">├── submissions/            # required
+</span></span><span class="line"><span class="cl">│   ├── accepted/           # at least one required
+</span></span><span class="line"><span class="cl">│   │   └── solution.cpp
+</span></span><span class="line"><span class="cl">│   ├── wrong_answer/
+</span></span><span class="line"><span class="cl">│   │   └── brute.cpp
+</span></span><span class="line"><span class="cl">│   ├── time_limit_exceeded/
+</span></span><span class="line"><span class="cl">│   │   └── slow.cpp
+</span></span><span class="line"><span class="cl">│   └── run_time_error/
+</span></span><span class="line"><span class="cl">│       └── crash.cpp
+</span></span><span class="line"><span class="cl">└── input_validators/       # required
+</span></span><span class="line"><span class="cl">    └── validator.cpp       # exits 42 on valid, anything else = invalid</span></span></code></pre></td></tr></table></div><div class="code-expand-btn" aria-label="Expand or collapse code block" role="button"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></div>
+</div>
+</div><p>Use following <code>problem.yaml</code> if you&rsquo;re about to archive the folder</p>
+<h3 class="heading-element" id="problemyaml-1"><span>problem.yaml</span>
+  <a href="#problemyaml-1" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-yaml"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Hello World</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">System</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">Demo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">rights_owner</span><span class="p">:</span><span class="w"> </span><span class="l">System</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">license</span><span class="p">:</span><span class="w"> </span><span class="l">cc0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">pass-fail</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">limits</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">time_multiplier</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">time_safety_margin</span><span class="p">:</span><span class="w"> </span><span class="m">1.5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="m">256</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p><img loading="lazy" src='/domjudgeBlog2-problems.png' alt="Problems"></p>
+<h3 class="heading-element" id="domjudge-problemini"><span>domjudge-problem.ini</span>
+  <a href="#domjudge-problemini" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-yaml"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">name = Hello World</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">timelimit = 1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="l">color =</span><span class="w"> </span><span class="c">#FF7109</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 class="heading-element" id="domjudge-problemini-fields"><span>domjudge-problem.ini fields</span>
+  <a href="#domjudge-problemini-fields" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
 <li>
 <p><code>name</code>: the problem displayed name</p>
 </li>
@@ -584,399 +644,424 @@ problems/           -&gt; ZIP packages with test cases
 <p><code>short-name</code>: the short name of the problem</p>
 </li>
 </ul>
-<h3 id="validatorcpp">validator.cpp<a hidden class="anchor" aria-hidden="true" href="#validatorcpp">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;iostream&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;string&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;vector&gt;
-</span></span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">fail</span>(<span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> msg){
-</span></span><span style="display:flex;"><span>    cerr<span style="color:#f92672">&lt;&lt;</span>msg<span style="color:#f92672">&lt;&lt;</span>endl;
-</span></span><span style="display:flex;"><span>    exit(<span style="color:#ae81ff">43</span>);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
-</span></span><span style="display:flex;"><span>    string s;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>(cin <span style="color:#f92672">&gt;&gt;</span> s)) fail(<span style="color:#e6db74">&#34;Empty input&#34;</span>);
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(s.length() <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> s.length() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span>) fail(<span style="color:#e6db74">&#34;Length constraint&#34;</span>);
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Check EOF
-</span></span></span><span style="display:flex;"><span>    string trash;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(cin <span style="color:#f92672">&gt;&gt;</span> trash) fail(<span style="color:#e6db74">&#34;Trailing garbage&#34;</span>);
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">42</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>An input validator verifies that test case input files conform(comply) to the problem constraints before judging. An input validator verifies that test case input files conform to the problem constraints before judging. It reads from <code>stdin</code> and must exit with code <code>42</code> if the input is <code>valid</code>, or any other code (conventionally <code>43</code>) if <code>invalid</code>.
+<h3 class="heading-element" id="validatorcpp"><span>validator.cpp</span>
+  <a href="#validatorcpp" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-cpp"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include&lt;iostream&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include&lt;string&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include&lt;vector&gt;
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">fail</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cerr</span><span class="o">&lt;&lt;</span><span class="n">msg</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">exit</span><span class="p">(</span><span class="mi">43</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">))</span> <span class="n">fail</span><span class="p">(</span><span class="s">&#34;Empty input&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">s</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="n">fail</span><span class="p">(</span><span class="s">&#34;Length constraint&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// Check EOF
+</span></span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">trash</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">trash</span><span class="p">)</span> <span class="n">fail</span><span class="p">(</span><span class="s">&#34;Trailing garbage&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">42</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table></div><div class="code-expand-btn" aria-label="Expand or collapse code block" role="button"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></div>
+</div>
+</div><p>An input validator verifies that test case input files conform(comply) to the problem constraints before judging. An input validator verifies that test case input files conform to the problem constraints before judging. It reads from <code>stdin</code> and must exit with code <code>42</code> if the input is <code>valid</code>, or any other code (conventionally <code>43</code>) if <code>invalid</code>.
 This validator checks three things: that input is not empty, that the string length is between 1 and 100, and that there is no trailing garbage after the expected input. DOMjudge runs it against every <code>.in</code> file in <code>data/sample/</code> and <code>data/secret/</code> - if any validator fails, the test case is rejected.</p>
-<h3 id="packaging">Packaging<a hidden class="anchor" aria-hidden="true" href="#packaging">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># From the root level</span>
-</span></span><span style="display:flex;"><span>cd hello
-</span></span><span style="display:flex;"><span>zip -r ../hello.zip .
-</span></span></code></pre></div><p>The ZIP filename becomes the problem&rsquo;s external ID. <code>hello.zip</code> -&gt; problem ID <code>hello</code>.</p>
+<h3 class="heading-element" id="packaging"><span>Packaging</span>
+  <a href="#packaging" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># From the root level</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> hello
+</span></span><span class="line"><span class="cl">zip -r ../hello.zip .</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>The ZIP filename becomes the problem&rsquo;s external ID. <code>hello.zip</code> -&gt; problem ID <code>hello</code>.</p>
 <hr>
-<h2 id="8-importing-everything">8. Importing everything<a hidden class="anchor" aria-hidden="true" href="#8-importing-everything">#</a></h2>
-<p>Two ways I&rsquo;ll use to do this. Pick the one that fits your situation.</p>
-<h3 id="method-1---gui-jury---import--export">Method 1 - GUI (Jury -&gt; Import / Export)<a hidden class="anchor" aria-hidden="true" href="#method-1---gui-jury---import--export">#</a></h3>
-<p>Easiest setup. Go to <strong>Jury -&gt; Import / Export</strong> and follow this order:</p>
+<h2 class="heading-element" id="8-importing-everything"><span>8. Importing everything</span>
+  <a href="#8-importing-everything" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Two ways I&rsquo;ll use to do this. Pick the one that fits your situation.</p>
+<h3 class="heading-element" id="method-1---gui-jury---import--export"><span>Method 1 - GUI (Jury -&gt; Import / Export)</span>
+  <a href="#method-1---gui-jury---import--export" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Easiest setup. Go to <strong>Jury -&gt; Import / Export</strong> and follow this order:</p>
 <p><strong>Note:</strong> For <code>groups</code>, <code>organizations</code>, <code>teams</code> and <code>accounts</code> don&rsquo;t select Import tab-separated as it requires <code>.tsv</code> files. Just select <code>Import JSON/YAML</code></p>
 <blockquote>
 <p>Follow steps 1 to 5 in order, then do either step 6 or 7. If you selected the step 6, then you need to upload test cases, etc separately.</p>
 </blockquote>
-<table>
-  <thead>
-      <tr>
-          <th>Step</th>
-          <th>File</th>
-          <th>Where</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td><code>contest.yaml</code></td>
-          <td>Contest → Import JSON/YAML → select and Import</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td><code>groups.json</code></td>
-          <td>Teams &amp; groups → Import JSON/YAML → Type:groups → select and Import</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td><code>organizations.json</code></td>
-          <td>Teams &amp; groups → Import JSON/YAML → Type:organizations → select and Import</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td><code>teams.json</code></td>
-          <td>Teams &amp; groups → Import JSON/YAML → Type:teams → select and Import</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td><code>accounts.json</code></td>
-          <td>Teams &amp; groups → Import JSON/YAML → Type:accounts → select and Import</td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td><code>problems.yaml</code></td>
-          <td>Problems → Import JSON/YAML → Select contest and then Import</td>
-      </tr>
-      <tr>
-          <td>7</td>
-          <td><code>hello.zip</code></td>
-          <td>Problems → Import archive →  select your contest, or Do not add/update contest data → select and Import problem</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h3 id="method-2---import-contest-one-shot">Method 2 - import-contest (one shot)<a hidden class="anchor" aria-hidden="true" href="#method-2---import-contest-one-shot">#</a></h3>
-<p>DomJudge ships a script that runs all the imports in the correct order automatically. If your directory has the standard layout, this is the cleanest approach, but problem.zip still needed to upload separately as <code>import-contest</code> handles metadata only:</p>
-<pre tabindex="0"><code>demo-contest/
-├── contest.yaml
-├── groups.json
-├── organizations.json
-├── teams.json
-├── accounts.json
-└── problems.yaml
-</code></pre><blockquote>
+<div class="table-wrapper">
+  <table>
+    <thead>
+        <tr>
+            <th>Step</th>
+            <th>File</th>
+            <th>Where</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><code>contest.yaml</code></td>
+            <td>Contest → Import JSON/YAML → select and Import</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><code>groups.json</code></td>
+            <td>Teams &amp; groups → Import JSON/YAML → Type:groups → select and Import</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><code>organizations.json</code></td>
+            <td>Teams &amp; groups → Import JSON/YAML → Type:organizations → select and Import</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><code>teams.json</code></td>
+            <td>Teams &amp; groups → Import JSON/YAML → Type:teams → select and Import</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><code>accounts.json</code></td>
+            <td>Teams &amp; groups → Import JSON/YAML → Type:accounts → select and Import</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><code>problems.yaml</code></td>
+            <td>Problems → Import JSON/YAML → Select contest and then Import</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><code>hello.zip</code></td>
+            <td>Problems → Import archive →  select your contest, or Do not add/update contest data → select and Import problem</td>
+        </tr>
+    </tbody>
+  </table>
+</div><hr>
+<h3 class="heading-element" id="method-2---import-contest-one-shot"><span>Method 2 - import-contest (one shot)</span>
+  <a href="#method-2---import-contest-one-shot" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>DomJudge ships a script that runs all the imports in the correct order automatically. If your directory has the standard layout, this is the cleanest approach, but problem.zip still needed to upload separately as <code>import-contest</code> handles metadata only:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">demo-contest/
+</span></span><span class="line"><span class="cl">├── contest.yaml
+</span></span><span class="line"><span class="cl">├── groups.json
+</span></span><span class="line"><span class="cl">├── organizations.json
+</span></span><span class="line"><span class="cl">├── teams.json
+</span></span><span class="line"><span class="cl">├── accounts.json
+</span></span><span class="line"><span class="cl">└── problems.yaml</span></span></code></pre></td></tr></table></div>
+</div>
+</div><blockquote>
 <p>Make sure team IDs in accounts.json match teams.json and also check team_id&rsquo;s on domjudge due to offset issue</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Copy the directory in</span>
-</span></span><span style="display:flex;"><span>docker cp demo-contest/ domserver:/tmp/demo-contest/
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run the all-in-one import</span>
-</span></span><span style="display:flex;"><span>docker exec -it domserver bash -c <span style="color:#e6db74">&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cd /tmp/demo-contest &amp;&amp; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  /opt/domjudge/domserver/bin/import-contest
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>&gt; Answer <span style="color:#e6db74">`</span>y<span style="color:#e6db74">`</span> to everything in order
-</span></span></code></pre></div><blockquote>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Copy the directory in</span>
+</span></span><span class="line"><span class="cl">docker cp demo-contest/ domserver:/tmp/demo-contest/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Run the all-in-one import</span>
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it domserver bash -c <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  cd /tmp/demo-contest &amp;&amp; \
+</span></span></span><span class="line"><span class="cl"><span class="s2">  /opt/domjudge/domserver/bin/import-contest
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&gt; Answer <span class="sb">`</span>y<span class="sb">`</span> to everything in order</span></span></code></pre></td></tr></table></div>
+</div>
+</div><blockquote>
 <p><strong>Note:</strong> DOMjudge auto-increments team IDs regardless of what <code>id</code> you set in <code>teams.json</code>, so the &ldquo;confirm team ID&rdquo; step is always necessary if accounts import fails - you can&rsquo;t predict the IDs in advance.</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># If anything fails like `accounts.json`, then run following commands:</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># recopy that file</span>
-</span></span><span style="display:flex;"><span>docker cp demo-contest/accounts.json domserver:/tmp/demo-contest/accounts.json 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># confirm team ID assigned by DOMjudge and then make sure `accounts.json id&#39;s` match `teams.json`</span>
-</span></span><span style="display:flex;"><span>docker exec domserver <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>  /opt/domjudge/domserver/webapp/bin/console <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span>  api:call teams | python3 -m json.tool | grep -E <span style="color:#e6db74">&#39;&#34;id&#34;|&#34;name&#34;&#39;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># then run import, but anwer &#39;N&#39; to those fields that you already did &#39;y&#39;. Just &#39;y&#39; to accounts.json field and fields after it.</span>
-</span></span><span style="display:flex;"><span>docker exec -it domserver bash -c <span style="color:#e6db74">&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  cd /tmp/demo-contest &amp;&amp; \
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  /opt/domjudge/domserver/bin/import-contest
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span>
-</span></span></code></pre></div><p>Problem ZIPs still need to be imported separately (GUI step 7) - as <code>import-contest</code> handles metadata only.</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># If anything fails like `accounts.json`, then run following commands:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># recopy that file</span>
+</span></span><span class="line"><span class="cl">docker cp demo-contest/accounts.json domserver:/tmp/demo-contest/accounts.json 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># confirm team ID assigned by DOMjudge and then make sure `accounts.json id&#39;s` match `teams.json`</span>
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> domserver <span class="se">\
+</span></span></span><span class="line"><span class="cl">  /opt/domjudge/domserver/webapp/bin/console <span class="se">\
+</span></span></span><span class="line"><span class="cl">  api:call teams <span class="p">|</span> python3 -m json.tool <span class="p">|</span> grep -E <span class="s1">&#39;&#34;id&#34;|&#34;name&#34;&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># then run import, but anwer &#39;N&#39; to those fields that you already did &#39;y&#39;. Just &#39;y&#39; to accounts.json field and fields after it.</span>
+</span></span><span class="line"><span class="cl">docker <span class="nb">exec</span> -it domserver bash -c <span class="s2">&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">  cd /tmp/demo-contest &amp;&amp; \
+</span></span></span><span class="line"><span class="cl"><span class="s2">  /opt/domjudge/domserver/bin/import-contest
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>Problem ZIPs still need to be imported separately (GUI step 7) - as <code>import-contest</code> handles metadata only.</p>
 <hr>
-<h2 id="9-dry-run-checklist">9. Dry run checklist<a hidden class="anchor" aria-hidden="true" href="#9-dry-run-checklist">#</a></h2>
-<p>Before you announce the URL to participants, go through this:</p>
+<h2 class="heading-element" id="9-dry-run-checklist"><span>9. Dry run checklist</span>
+  <a href="#9-dry-run-checklist" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h2><p>Before you announce the URL to participants, go through this:</p>
 <p><strong>Judgehosts</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Jury → Judgehosts - <code>judgehost-0</code> has a green tick and <code>last judging</code> is updating
-<img alt="Judgehosts" loading="lazy" src="/domjudgeBlog2-judgehosts.png"></li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Jury → Judgehosts - <code>judgehost-0</code> has a green tick and <code>last judging</code> is updating
+<img loading="lazy" src='/domjudgeBlog2-judgehosts.png' alt="Judgehosts"></li>
 </ul>
 <p><strong>Contest</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Jury → Contests - start/end times match your local timezone</li>
-<li><input disabled="" type="checkbox"> Freeze time is set correctly (you want the last N minutes hidden, not the first N)</li>
-<li><input disabled="" type="checkbox"> All problems appear with correct labels A, B, C&hellip;</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Jury → Contests - start/end times match your local timezone</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Freeze time is set correctly (you want the last N minutes hidden, not the first N)</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>All problems appear with correct labels A, B, C&hellip;</li>
 </ul>
 <p><strong>End-to-end test</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Log in as a team account at <code>http://localhost:8000/team</code></li>
-<li><input disabled="" type="checkbox"> Submit the hello problem with this:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;iostream&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;string&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
-</span></span><span style="display:flex;"><span>    string s;
-</span></span><span style="display:flex;"><span>    cin<span style="color:#f92672">&gt;&gt;</span>s;
-</span></span><span style="display:flex;"><span>    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;Hello &#34;</span><span style="color:#f92672">&lt;&lt;</span>s<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;!&#34;</span><span style="color:#f92672">&lt;&lt;</span>endl;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></li>
-<li><input disabled="" type="checkbox"> Verdict comes back <code>CORRECT</code> within ~30 seconds</li>
-<li><input disabled="" type="checkbox"> The team appears on the scoreboard with 1 solve</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Log in as a team account at <code>http://localhost:8000/team</code></li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Submit the hello problem with this:
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-cpp"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include&lt;iostream&gt;
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include&lt;string&gt;
+</span></span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;Hello &#34;</span><span class="o">&lt;&lt;</span><span class="n">s</span><span class="o">&lt;&lt;</span><span class="s">&#34;!&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div></li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Verdict comes back <code>CORRECT</code> within ~30 seconds</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>The team appears on the scoreboard with 1 solve</li>
 </ul>
 <p><strong>Config Checker</strong></p>
 <ul>
-<li><input disabled="" type="checkbox"> Jury sidebar -&gt; Config checker - no red errors. A &ldquo;no active contest&rdquo; warning is normal if the contest hasn&rsquo;t started yet.</li>
+<li data-task=" " title="Unchecked"><i class="checkbox-icon fa-regular fa-square" aria-hidden="true"></i>Jury sidebar -&gt; Config checker - no red errors. A &ldquo;no active contest&rdquo; warning is normal if the contest hasn&rsquo;t started yet.</li>
 </ul>
 <hr>
-<h2 id="10-going-live-with-cloudflare-tunnel">10. Going live with Cloudflare Tunnel<a hidden class="anchor" aria-hidden="true" href="#10-going-live-with-cloudflare-tunnel">#</a></h2>
-<p>Once everything works locally you&rsquo;ll want teams to connect from outside. The cleanest way to do this without exposing your machine directly or setting up a reverse proxy is Cloudflare Tunnel.</p>
-<h3 id="install-cloudflared">Install cloudflared<a hidden class="anchor" aria-hidden="true" href="#install-cloudflared">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Download and install</span>
-</span></span><span style="display:flex;"><span>curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
-</span></span><span style="display:flex;"><span>sudo dpkg -i cloudflared.deb
-</span></span></code></pre></div><h3 id="quick-tunnel-no-account-needed---temporary-url">Quick tunnel (no account needed - temporary URL)<a hidden class="anchor" aria-hidden="true" href="#quick-tunnel-no-account-needed---temporary-url">#</a></h3>
-<p>Good for a quick test or a single session:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cloudflared tunnel --url http://localhost:8000  <span style="color:#75715e"># keep this running in a terminal or run it in background or in tmux session then extract link using PID</span>
-</span></span></code></pre></div><p>This prints a randomly generated URL like <code>https://some-random-words.trycloudflare.com</code>. Share that with teams. The tunnel lives as long as the process runs.</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/docker/">Docker</a></li>
-      <li><a href="http://localhost:1313/tags/domjudge/">DomJudge</a></li>
-      <li><a href="http://localhost:1313/tags/mariadb/">MariaDB</a></li>
-      <li><a href="http://localhost:1313/tags/contest/">Contest</a></li>
-      <li><a href="http://localhost:1313/tags/linux/">Linux</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="http://localhost:1313/posts/domjudge1/">
-    <span class="title">« Prev</span>
-    <span>Part 1: Setting Up DomJudge with Docker</span>
+<h2 class="heading-element" id="10-going-live-with-cloudflare-tunnel"><span>10. Going live with Cloudflare Tunnel</span>
+  <a href="#10-going-live-with-cloudflare-tunnel" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-  <a class="next" href="http://localhost:1313/posts/git/">
-    <span class="title">Next »</span>
-    <span>Git and Github: A Comprehensive Guide</span>
+</h2><p>Once everything works locally you&rsquo;ll want teams to connect from outside. The cleanest way to do this without exposing your machine directly or setting up a reverse proxy is Cloudflare Tunnel.</p>
+<h3 class="heading-element" id="install-cloudflared"><span>Install cloudflared</span>
+  <a href="#install-cloudflared" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-</nav>
+</h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Download and install</span>
+</span></span><span class="line"><span class="cl">curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+</span></span><span class="line"><span class="cl">sudo dpkg -i cloudflared.deb</span></span></code></pre></td></tr></table></div>
+</div>
+</div><h3 class="heading-element" id="quick-tunnel-no-account-needed---temporary-url"><span>Quick tunnel (no account needed - temporary URL)</span>
+  <a href="#quick-tunnel-no-account-needed---temporary-url" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><p>Good for a quick test or a single session:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cloudflared tunnel --url http://localhost:8000  <span class="c1"># keep this running in a terminal or run it in background or in tmux session then extract link using PID</span></span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>This prints a randomly generated URL like <code>https://some-random-words.trycloudflare.com</code>. Share that with teams. The tunnel lives as long as the process runs.</p>
+</div><hr class="awesome-hr" />
+    <h2 id="see-also">Related Content</h2>
+    <ul><li>
+          <a href="/posts/domjudge1/" title="Part 1: Setting Up DomJudge With Docker">Part 1: Setting Up DomJudge With Docker</a></li><li>
+          <a href="/posts/kernel-compilation/" title="Compile and Build Linux Kernel">Compile and Build Linux Kernel</a></li><li>
+          <a href="/posts/grub-rescue-setup/" title="Grub Rescue Setup">Grub Rescue Setup</a></li></ul><div class="post-footer" id="post-footer">
+  <div class="post-info">
+    <div class="post-info-line">
+      <div class="post-info-mod"><span title="Updated on 2026-07-27 19:28:08">Updated on 2026-07-27&nbsp;</span>
+      </div><div class="post-info-license">
+            <span><a rel="license external nofollow noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></span>
+          </div></div><div class="post-info-line">
+        <div class="post-info-md"><span><a href="/posts/domjudge2/index.md" title="Read Markdown" class="link-to-markdown">Read Markdown</a></span><span><a href="vscode://file//home/ramzan/website/ramzan/content/posts/DomJudge2.md" title="Open in editor" target="_blank" rel="external nofollow noopener noreferrer" class="link-to-vscode">Open in editor</a></span></div>
+        <div class="post-info-share">
+          <span><a href="javascript:void(0);" title="Share on X" data-sharer="twitter" data-url="http://localhost:1313/posts/domjudge2/" data-title="Part 2: Running Your First Contest on DomJudge" data-hashtags="Docker,DomJudge,MariaDB,contest,Linux"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/domjudge2/" data-hashtag="Docker"><i class="fa-brands fa-facebook-square" aria-hidden="true"></i></a>
+  <a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/domjudge2/" data-title="Part 2: Running Your First Contest on DomJudge"><i class="fa-brands fa-weibo" aria-hidden="true"></i></a>
+  </span>
+        </div>
+      </div></div>
 
-
-<ul class="share-buttons">
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on x"
-            href="https://x.com/intent/tweet/?text=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f&amp;hashtags=Docker%2cDomJudge%2cMariaDB%2ccontest%2cLinux">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f&amp;title=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge&amp;summary=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge&amp;source=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f&title=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on whatsapp"
-            href="https://api.whatsapp.com/send?text=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge%20-%20http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f">
-            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on telegram"
-            href="https://telegram.me/share/url?text=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge&amp;url=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f">
-            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
-                <path
-                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
-            </svg>
-        </a>
-    </li>
-    <li>
-        <a target="_blank" rel="noopener noreferrer" aria-label="share Part 2: Running Your First Contest on DomJudge on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Part%202%3a%20Running%20Your%20First%20Contest%20on%20DomJudge&u=http%3a%2f%2flocalhost%3a1313%2fposts%2fdomjudge2%2f">
-            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
-                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-                <path
-                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
-            </svg>
-        </a>
-    </li>
-</ul>
-
-  </footer>
+  <div class="post-info-more">
+    <section class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href="/tags/docker/" class="post-tag" title="Tags - Docker">Docker</a><a href="/tags/domjudge/" class="post-tag" title="Tags - DomJudge">DomJudge</a><a href="/tags/mariadb/" class="post-tag" title="Tags - MariaDB">MariaDB</a><a href="/tags/contest/" class="post-tag" title="Tags - Contest">Contest</a><a href="/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a></section>
+    <section><span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+    </section>
+  </div><div class="post-nav"><a href="/posts/polygon/" class="post-nav-item" rel="prev" title="Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Setting Up a Codeforces Problem on Polygon: A Practical Walkthrough</a><a href="/posts/domjudge1/" class="post-nav-item" rel="next" title="Part 1: Setting Up DomJudge With Docker">Part 1: Setting Up DomJudge With Docker<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
+</div>
 </article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">Muhammad Ramzan</a></span> · 
 
-    
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-<script>
-    document.querySelectorAll('pre > code').forEach((codeblock) => {
-        const container = codeblock.parentNode.parentNode;
-
-        const copybutton = document.createElement('button');
-        copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
-
-        function copyingDone() {
-            copybutton.innerHTML = 'copied!';
-            setTimeout(() => {
-                copybutton.innerHTML = 'copy';
-            }, 2000);
-        }
-
-        copybutton.addEventListener('click', (cb) => {
-            if ('clipboard' in navigator) {
-                navigator.clipboard.writeText(codeblock.textContent);
-                copyingDone();
-                return;
-            }
-
-            const range = document.createRange();
-            range.selectNodeContents(codeblock);
-            const selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                copyingDone();
-            } catch (e) { };
-            selection.removeRange(range);
-        });
-
-        if (container.classList.contains("highlight")) {
-            container.appendChild(copybutton);
-        } else if (container.parentNode.firstChild == container) {
-            
-        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
-            
-            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
-        } else {
-            
-            codeblock.parentNode.appendChild(copybutton);
-        }
-    });
-</script>
-</body>
-
+  <aside class="toc" id="toc-auto" aria-label="Contents"><h2 class="toc-title">Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down" aria-hidden="true"></i></h2>
+      <div class="toc-content" id="toc-content-auto"></div></aside><dialog id="toc-dialog" aria-labelledby="toc-dialog-title" role="dialog">
+      <div class="toc">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-drawer"><nav >
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#repository-that-well-follow-domjudge-files">Repository that we’ll follow: domjudge-files</a></li>
+      </ul>
+    </li>
+    <li><a href="#1-how-domjudge-thinks-about-a-contest">1. How DomJudge thinks about a contest</a></li>
+    <li><a href="#2-contestyaml">2. contest.yaml</a>
+      <ul>
+        <li><a href="#fields-explained">Fields explained</a></li>
+        <li><a href="#the-timezone-trap---read-this-carefully">The timezone trap - read this carefully</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-groupsjson">3. groups.json</a>
+      <ul>
+        <li><a href="#-ids-15-are-reserved">⚠️ IDs 1–5 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-organizationsjson">4. organizations.json</a>
+      <ul>
+        <li><a href="#fields-reference">Fields reference:</a></li>
+        <li><a href="#file">File:</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-teamsjson">5. teams.json</a>
+      <ul>
+        <li><a href="#field-reference">Field reference</a></li>
+        <li><a href="#-ids-1-and-2-are-reserved">⚠️ IDs 1 and 2 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#teams"><img src="/domjudgeBlog2-teams.png" alt="Teams"></a></li>
+    <li><a href="#6-accountsjson">6. accounts.json</a>
+      <ul>
+        <li><a href="#field-reference-1">Field reference</a></li>
+        <li><a href="#the-link-that-must-match">The link that must match</a></li>
+        <li><a href="#offset-of-3-or-5">offset of 3 or 5</a></li>
+        <li><a href="#-user-ids-02-are-reserved">⚠️ User IDs 0–2 are reserved</a></li>
+      </ul>
+    </li>
+    <li><a href="#users"><img src="/domjudgeBlog2-users.png" alt="Users"></a></li>
+    <li><a href="#7-problems">7. Problems</a>
+      <ul>
+        <li><a href="#problemyaml">problem.yaml</a></li>
+        <li><a href="#problemyaml-1">problem.yaml</a></li>
+        <li><a href="#domjudge-problemini">domjudge-problem.ini</a></li>
+        <li><a href="#domjudge-problemini-fields">domjudge-problem.ini fields</a></li>
+        <li><a href="#validatorcpp">validator.cpp</a></li>
+        <li><a href="#packaging">Packaging</a></li>
+      </ul>
+    </li>
+    <li><a href="#8-importing-everything">8. Importing everything</a>
+      <ul>
+        <li><a href="#method-1---gui-jury---import--export">Method 1 - GUI (Jury -&gt; Import / Export)</a></li>
+        <li><a href="#method-2---import-contest-one-shot">Method 2 - import-contest (one shot)</a></li>
+      </ul>
+    </li>
+    <li><a href="#9-dry-run-checklist">9. Dry run checklist</a></li>
+    <li><a href="#10-going-live-with-cloudflare-tunnel">10. Going live with Cloudflare Tunnel</a>
+      <ul>
+        <li><a href="#install-cloudflared">Install cloudflared</a></li>
+        <li><a href="#quick-tunnel-no-account-needed---temporary-url">Quick tunnel (no account needed - temporary URL)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div>
+    </dialog></main><footer class="footer">
+    <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.164.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.4.5"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
+        </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright" aria-hidden="true"></i>
+            <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">
+              <a href="https://github.com/ramzanbhutto" target="_blank" rel="external nofollow noopener noreferrer">Muhammad Ramzan</a></span></div></div>
+  </footer></div><div class="widgets"><div class="fixed-buttons"><div class="fixed-button back-to-top animate__faster d-none" role="button" aria-label="Back to Top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></div><div id="toc-drawer-button" class="fixed-button toc-drawer-button d-none" role="button" aria-label="Contents"><i class="fa-solid fa-bars" aria-hidden="true"></i></div></div><div id="mask"></div><noscript>
+    <div class="noscript-warning">This website works best with JavaScript enabled.</div>
+  </noscript>
+</div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script src="/lib/autocomplete/autocomplete.min.js" defer></script><script src="/lib/fuse/fuse.min.js" defer></script><script src="/lib/json-viewer-element/json-viewer-element.umd.js" defer></script><script src="/lib/sharer/sharer.min.js" async defer></script><script src="/lib/cookieconsent/cookieconsent.min.js" defer></script><script src="/lib/cell-tooltip/cell-tooltip.umd.js" defer></script><script src="/js/config/2c9d35c01537071b29e9a0e3896afb40.js" defer></script><script src="/js/theme.min.js" defer></script></body>
 </html>
