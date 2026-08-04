@@ -1,10 +1,11 @@
 ---
 title: "Secure Shell (SSH)"
+cover: "/covers/ssh.jpg"
 date: "2026-02-09"
 draft: false
 showToc: true
 Author: "Muhammad Ramzan"
-tags: [ssh", "linux"]
+tags: ["ssh", "linux"]
 ---
 
 ## Overview

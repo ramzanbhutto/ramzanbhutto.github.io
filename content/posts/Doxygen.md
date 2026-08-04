@@ -1,5 +1,6 @@
 ---
 title: "Doxygen + PlantUML + Graphviz: Build Automated, Beautiful Project Documentation"
+cover: "/covers/doxygen.png"
 date: 2025-09-02
 tags: ["C++", "Documentation", "Doxygen", "PlantUML", "Graphviz", "Open Source"]
 author: "Muhammad Ramzan"
@@ -105,11 +106,11 @@ First, create a new file named `Doxyfile` in your project directory and open it 
 
 ### 1. Project Information
 The first section defines basic metadata about your project.
-```bash
-PROJECT_NAME           = "MyProject"
-PROJECT_BRIEF          = "A brief description of MyProject"
-PROJECT_LOGO           = "path/to/logo.png"
-OUTPUT_DIRECTORY       = docs
+```properties
+PROJECT_NAME = "MyProject"
+PROJECT_BRIEF = "A brief description of MyProject"
+PROJECT_LOGO = "path/to/logo.png"
+OUTPUT_DIRECTORY = docs
 ```
 - `PROJECT_NAME`: The name of your project.
 - `PROJECT_BRIEF`: A short description of your project.
@@ -118,10 +119,10 @@ OUTPUT_DIRECTORY       = docs
 
 ### 2. Input Sources
 This section specifies which files and directories to include in the documentation.
-```bash
-INPUT                  = .
-FILE_PATTERNS          = *.cpp *.h *.py 
-RECURSIVE              = YES
+```properties
+INPUT = .
+FILE_PATTERNS = *.cpp *.h *.py 
+RECURSIVE = YES
 ```
 - `INPUT`: The directories or files to scan for documentation.
 - `FILE_PATTERNS`: File extensions as per language used in the project.
@@ -129,12 +130,12 @@ RECURSIVE              = YES
 
 ### 3. Build Options
 This section controls how Doxygen processes the input files.
-```bash
-EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = YES
-EXTRACT_STATIC         = YES
-EXTRACT_LOCAL_CLASSES  = YES
-EXTRACT_LOCAL_METHODS  = YES
+```properties
+EXTRACT_ALL = YES
+EXTRACT_PRIVATE = YES
+EXTRACT_STATIC = YES
+EXTRACT_LOCAL_CLASSES = YES
+EXTRACT_LOCAL_METHODS = YES
 ```
 - `EXTRACT_ALL`: If `YES`, Doxygen will document all entities, even those without comments.
 - `EXTRACT_PRIVATE`: If `YES`, private class members will be included in the documentation.
@@ -144,25 +145,25 @@ EXTRACT_LOCAL_METHODS  = YES
 
 ### 4. Output Formats
 This section specifies which output formats to generate.
-```bash
-GENERATE_HTML          = YES
-GENERATE_LATEX         = NO 
+```properties
+GENERATE_HTML = YES
+GENERATE_LATEX = NO 
 ```
 - `GENERATE_HTML`: If `YES`, Doxygen will generate HTML documentation.
 - `GENERATE_LATEX`: If `YES`, Doxygen will generate LaTeX documentation (useful for creating PDFs). 
 
 ### 5. Graphs and Diagrams
 This section enables the generation of graphs and diagrams using Graphviz and PlantUML.
-```bash
-HAVE_DOT               = YES
-DOT_PATH              = 
-DOT_IMAGE_FORMAT       = svg
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
-CLASS_DIAGRAMS        = YES
-UML_LOOK               = YES
+```properties
+HAVE_DOT = YES
+DOT_PATH = 
+DOT_IMAGE_FORMAT = svg
+CALL_GRAPH = YES
+CALLER_GRAPH = YES
+CLASS_DIAGRAMS = YES
+UML_LOOK = YES
 DOT_GRAPH_MAX_NODES = 50
-INTERACTIVE_SVG     = YES
+INTERACTIVE_SVG = YES
 ```
 - `HAVE_DOT`: If `YES`, enables Graphviz support for generating graphs.
 - `DOT_PATH`: Path to the Graphviz `dot` executable (if not in your system PATH).
@@ -178,50 +179,50 @@ INTERACTIVE_SVG     = YES
 
 ### 6. PlantUML Integration
 To integrate PlantUML, you need to specify the path to the PlantUML jar file.
-```bash
-PLANTUML_JAR_PATH     = /path/to/plantuml.jar
+```properties
+PLANTUML_JAR_PATH = /path/to/plantuml.jar
 ```
 - `PLANTUML_JAR_PATH`: Path to the PlantUML jar file. This allows Doxygen to generate UML diagrams using PlantUML.
 
 ### 7. Complete Doxyfile Example
 Here’s a complete example of a simple Doxyfile with the above configurations:
-```bash
+```properties
 # --- Project Information ---
-PROJECT_NAME           = "MyProject"
-PROJECT_BRIEF          = "A brief description of MyProject"
-PROJECT_LOGO           = "path/to/logo.png"
-OUTPUT_DIRECTORY       = docs
+PROJECT_NAME = "MyProject"
+PROJECT_BRIEF = "A brief description of MyProject"
+PROJECT_LOGO = "path/to/logo.png"
+OUTPUT_DIRECTORY = docs
 
 # --- Input Sources ---
-INPUT                  = .
-FILE_PATTERNS          = *.cpp *.h *.hpp *.py *.java *.js *.ts *.go *.cs
-RECURSIVE              = YES
+INPUT = .
+FILE_PATTERNS = *.cpp *.h *.hpp *.py *.java *.js *.ts *.go *.cs
+RECURSIVE = YES
 
 # --- Build Options ---
-EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = YES
-EXTRACT_STATIC         = YES
-EXTRACT_LOCAL_CLASSES  = YES
-EXTRACT_LOCAL_METHODS  = YES
+EXTRACT_ALL = YES
+EXTRACT_PRIVATE = YES
+EXTRACT_STATIC = YES
+EXTRACT_LOCAL_CLASSES = YES
+EXTRACT_LOCAL_METHODS = YES
 
 # --- Documentation Output ---
-GENERATE_HTML          = YES
-GENERATE_LATEX         = NO
+GENERATE_HTML = YES
+GENERATE_LATEX = NO
 
 # --- Diagrams & Graphs ---
-HAVE_DOT               = YES
-DOT_PATH              = 
-DOT_IMAGE_FORMAT       = svg
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
-CLASS_DIAGRAMS        = YES
-UML_LOOK               = YES
+HAVE_DOT = YES
+DOT_PATH = 
+DOT_IMAGE_FORMAT = svg
+CALL_GRAPH = YES
+CALLER_GRAPH = YES
+CLASS_DIAGRAMS = YES
+UML_LOOK = YES
 DOT_GRAPH_MAX_NODES = 50
-INTERACTIVE_SVG     = YES
+INTERACTIVE_SVG = YES
 
 
 # --- PlantUML Integration ---
-PLANTUML_JAR_PATH      = /path/to/plantuml.jar
+PLANTUML_JAR_PATH = /path/to/plantuml.jar
 
 ```
 
@@ -263,7 +264,3 @@ Using Doxygen with PlantUML and Graphviz allows you to create **comprehensive, v
 - [Doxygen Official Documentation](https://www.doxygen.nl/manual/index.html)
 - [PlantUML Official Website](https://plantuml.com/)
 - [Graphviz Official Website](https://graphviz.org/)
-
----
-
-Happy Documenting! 🚀

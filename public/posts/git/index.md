@@ -1,9 +1,8 @@
-# Git and Github: A Comprehensive Guide
+# Git: A Comprehensive Guide
 
 
 ## Introduction
 
-![Git & GitHub](/git.png)
 Git is a version control system that tracks changes in code and helps developers collaborate efficiently. GitHub is an online platform that hosts Git repositories, making it easier to share code, manage projects, and work on open-source projects.
 
 ---

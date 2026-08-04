@@ -1,5 +1,6 @@
 +++
 title = 'Compile and Build Linux Kernel'
+cover = '/covers/kernel-compile.jpg'
 date = '2025-02-05T00:37:50+05:00'
 tags = ["Linux","Kernel","Arch"]
 +++
@@ -15,16 +16,17 @@ tags = ["Linux","Kernel","Arch"]
 Visit the [Official Kernel Website](https://www.kernel.org/) and download the latest kernel source code. The downloaded files contains a compressed source code that you need to extract it.
 
 ---
+> In each step, replace linux-6.13 with the actual version that you downloaded
 
 ### Step 2: Extract the Source Code
 
 After downloading, it is necessary to extract the source code. So, we will achieve this using **tar** command.
-~~~ 
+~~~bash 
  tar xvf linux-6.13.tar.xz
 ~~~
 If you don't have **tar**, then download it using command:
 
-~~~ 
+~~~bash
  sudo pacman -S tar  
 ~~~
  Note: It is recommended to download the latest kernel source code and write it's version correctly while using **tar** command.
@@ -35,7 +37,7 @@ If you don't have **tar**, then download it using command:
 
 Make sure you have additional packages to start compilation. To achieve this, you need to install the following **packages**:
 
-```python
+```bash
  sudo pacman -S git fakeroot ncurses xz bc flex bison base-devel kmod cpio perl binutils util-linux jfsutils e2fsprogs xfsprogs squashfs-tools quota-tools
 ``` 
 ---
@@ -44,32 +46,32 @@ Make sure you have additional packages to start compilation. To achieve this, yo
 
 1. Navigate to **linux-6.13** folder:
 
-~~~ 
+~~~bash
  cd linux-6.13
 ~~~
 2. Configue your kernel. It is recommended to use your current system's configuration as a base. So write the following commands in order:
 
   - Use the following commad if you have zcat:
 
-```python
+```zsh
 zcat /proc/config.gz > .config
 ```   
   - Else you have to use following commands to simply copying **config** file:
-   ~~~ 
+   ~~~zsh
     cp /proc/config.gz ./
     gunzip ./config.gz
     mv config .config
    ~~~
 3. Use the following commands to open a menu-driven interface to customize kernel options: 
-   ~~~
+   ~~~zsh
     make menuconfig
     make xconfig
-    `make oldconfig`
+    make oldconfig
    ~~~
 4. Make some changes in `.config` file: 
    
    - Open it using command(you can use vim, kate, nano or any other text editor):
-   ~~~
+   ~~~zsh
    sudo vim .config
    ~~~
    - Make following changes: 
@@ -82,14 +84,14 @@ zcat /proc/config.gz > .config
 
 1. Check for available processing CPU Cores using command: 
 
-~~~
+~~~zsh
  nproc
 ~~~
 *Note then `n` number of cores shown on the screen*
 
 2. Initiate the compilation process:
 
-~~~
+~~~zsh
  make -jn   
 ~~~
 **Replace *n* with number of cores that you found using `nproc` command**
@@ -97,9 +99,9 @@ zcat /proc/config.gz > .config
 
 ***And now your Kernel starts compiling***
 
-If any issue persists during or after running **make -jn**, then make a back up of **.config** file and run the command:
+> If any issue persists during or after running **make -jn**, then make a back up of **.config** file and run the command:
 
-~~~
+~~~zsh
  make mrproper 
 ~~~
 ***make mrproper** resets your entire broken tree back to the initial state.*
@@ -110,7 +112,7 @@ If any issue persists during or after running **make -jn**, then make a back up 
 
 Insalling Kernel Modules are mandatory and they enhances the kernel's capabilities, hardware support and other features while maintaining system stability and efficiency. You can install kernel modules using commad:
 
-```python
+```zsh
 sudo make modules_install
 ```
 
@@ -122,21 +124,21 @@ sudo make modules_install
 
 1. Directly install through one command:
 
-~~~
+~~~zsh
  sudo make install
 ~~~
 2. Use three commands properly and carefully: 
  
   - Copy the Kernel Image:
-```python
+```zsh
  sudo cp arch/x86/boot/bzImage  /boot/vmlinuz-linux-custom
 ```   
   - Copy the System.map file:
-```python
+```zsh
  sudo cp System.map  /boot/System.map-linux-custom
 ```  
   - Copy the configuration file:
-```python
+```zsh
  sudo cp .config  /boot/config-linux-custom
 ```  
 ---
@@ -147,16 +149,16 @@ Depending on your bootloader, you will need to add an entry for the new kernel. 
 
 1. Run the following command to know the UUID of your root partition (it will be in ext4 file system and have the mounting point as /) and copy it:
 
-~~~
+~~~zsh
  lsblk -f
 ~~~
 2. Open the file using command:
-```python
+```zsh
  sudo nvim /etc/grub.d/40_custom
 ```
 
 3. Add the following content to the above mentioned file at the end:
-```python
+```
   menuentry 'Custom Linux Kernel' {  
 linux    /boot/vmlinuz-linux-custom  
 root=UUID=paste-your-root-partition-uuid-here  
@@ -168,7 +170,7 @@ initrd /boot/initramfs-linux.img
 ### Step 9: Generate Initramfs 
 
 *Generating Initramfs is necessary as you have compiled a new custom kernel, installed kernel modules, updated kernel configuration and updated bootloader. It is crucial for boot system. Use the command and make sure to input the correct version as I mentioned **6.13**:*
-```python
+```zsh
 sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-custom.img
 ```
 ---
@@ -176,13 +178,9 @@ sudo mkinitcpio -k 6.13-custom -c /etc/mkinitcpio.conf -g /boot/initramfs-linux-
 ### Step 10: Update GRUB configuration
 
 **Use the following command to update it as it will detect our new custom kernel:**
-```python
+```zsh
  sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 ---
 
-**That's it. Configuration, you successfully build, compiled and installed your custom Kernel. Enjoy**
-
----
-
-
+**That's it. Configuration, you successfully build, compiled and installed your custom Kernel.**

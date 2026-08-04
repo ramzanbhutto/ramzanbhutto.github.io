@@ -10,7 +10,7 @@
 	<meta itemprop="description" content="Learn how to setup DomJudge to host competitive programming competitions using Docker on Linux">
 	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-07-27T19:42:52+05:00">
-	<meta itemprop="wordCount" content="3027">
+	<meta itemprop="wordCount" content="3029">
 	<meta itemprop="keywords" content="Docker,DomJudge,MariaDB,Contest,Linux"><meta property="og:url" content="http://localhost:1313/posts/domjudge1/">
 	<meta property="og:site_name" content="Technical Blogs">
 	<meta property="og:title" content="Part 1: Setting Up DomJudge with Docker">
@@ -43,7 +43,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/posts\/domjudge1\/"
-    },"genre": "posts","keywords": "Docker, DomJudge, MariaDB, contest, Linux","wordcount":  3027 ,
+    },"genre": "posts","keywords": "Docker, DomJudge, MariaDB, contest, Linux","wordcount":  3029 ,
     "url": "http:\/\/localhost:1313\/posts\/domjudge1\/","datePublished": "2026-07-27T00:00:00+00:00","dateModified": "2026-07-27T19:42:52+05:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -125,7 +125,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Part 1: Setting Up DomJudge With Docker</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-07-27 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="Updated on 2026-07-27 19:42:52"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="3027 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 3100 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>15 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-07-27 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="Updated on 2026-07-27 19:42:52"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="3029 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 3100 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>15 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -354,20 +354,20 @@
 </div>
 </div><p>This will show you a line that looks something like this:</p>
 <div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GRUB_CMDLINE_LINUX_DEFAULT=&#34;quiet splash&#34;</span></span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&#34;quiet splash&#34;</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p><strong>Step B: Add cgroup settings to that same line</strong></p>
 <p>You need to add three settings to the end of that line, inside the quotes. Do not delete what is already there, just add to it. So the line above would become:</p>
 <div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">GRUB_CMDLINE_LINUX_DEFAULT=&#34;quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0&#34;</span></span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&#34;quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0&#34;</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><p>Open the file and edit it:</p>
 <div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
@@ -523,7 +523,7 @@
 <li><code>--restart unless-stopped</code> tells Docker to automatically start this container again if your computer restarts, unless you stopped it yourself on purpose.</li>
 <li><code>--max-connections=1000</code> and <code>--innodb_snapshot_isolation=OFF</code> are settings that help MariaDB handle many judgehosts writing results at the same time during a real contest, without crashing or freezing.</li>
 </ul>
-<p>Sleep</p>
+<p>Sleep:</p>
 <div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
 <div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -531,7 +531,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sleep <span class="m">20</span></span></span></code></pre></td></tr></table></div>
 </div>
-</div><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+</div><p>Check logs:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
 <div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>

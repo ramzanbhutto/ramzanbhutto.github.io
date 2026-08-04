@@ -1,5 +1,6 @@
 ---
 title: "Part 1: Setting Up DomJudge with Docker"
+cover: "/covers/domjudge1.png"
 date: 2026-07-27
 tags: ["Docker", "DomJudge", "MariaDB", "contest", "Linux"]
 author: "Muhammad Ramzan"
@@ -169,7 +170,7 @@ cat /etc/default/grub | grep GRUB_CMDLINE_LINUX_DEFAULT
 
 This will show you a line that looks something like this:
 
-```
+```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 ```
 
@@ -177,7 +178,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 
 You need to add three settings to the end of that line, inside the quotes. Do not delete what is already there, just add to it. So the line above would become:
 
-```
+```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash cgroup_enable=memory swapaccount=1 systemd.unified_cgroup_hierarchy=0"
 ```
 
@@ -308,11 +309,11 @@ Let's go through every single part of this command, because it looks big but eac
 - `--restart unless-stopped` tells Docker to automatically start this container again if your computer restarts, unless you stopped it yourself on purpose.
 - `--max-connections=1000` and `--innodb_snapshot_isolation=OFF` are settings that help MariaDB handle many judgehosts writing results at the same time during a real contest, without crashing or freezing.
 
-Sleep
+Sleep:
 ```bash
 sleep 20
 ```
-
+Check logs:
 ```bash
 sudo docker logs mariadb 2>&1 | tail -5
 ```
@@ -438,7 +439,7 @@ If you see anything about cgroups in the error message, go back and double check
 
 Open your browser and go to:
 
-```
+```firefox
 http://localhost:8000
 ```
 > if you're using other port, then replace it with 8000 in the url 

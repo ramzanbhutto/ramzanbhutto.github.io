@@ -1,7 +1,8 @@
 +++
 date = '2025-02-08T23:28:37+05:00'
 title = 'Neovim Complete Setup and Integrating ChatGPT'
-tag = ["Neovim","Lua","ChatGPT"]
+cover = '/covers/neovim.png'
+tags = ["Neovim","Lua","ChatGPT"]
 +++
 ---
 
@@ -10,82 +11,82 @@ tag = ["Neovim","Lua","ChatGPT"]
 ### Step 1: Removing any previous configuration
 
 1. Linux/MacOS Users
-```python
+```bash
 rm -rf ~/.config/nvim
 rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
 ```
 2. Flatpak(Linux) Users
-```python
+```bash
 rm -rf ~/.var/app/io.neovim.nvim/config/nvim
 rm -rf ~/.var/app/io.neovim.nvim/data/nvim
 rm -rf ~/.var/app/io.neovim.nvim/.local/state/nvim
 ```
 3. Window Users
  - CMD
-    ```python
+    ```cmd
      rd -r ~\AppData\Local\nvim
      rd -r ~\AppData\Local\nvim-data
    ```
  - Powershell
-   ```python
+   ```powershell
    rm -Force ~\AppData\Local\nvim
    rm -Force ~\AppData\Local\nvim-data
    ```
 ### Step 2: Installing NVChad
 1. Clone the NVChad repository
  - Linux/MacOS:
- ```python
+ ```bash
    git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
  ```
  - Flatpak:
- ```python
+ ```bash
   git clone https://github.com/NvChad/starter ~/.var/app/io.neovim.nvim/config/nvim && flatpak run io.neovim.nvim
  ```
  - Windows (CMD):
- ```python
+ ```cmd
    git clone https://github.com/NvChad/starter %USERPROFILE%\AppData\Local\nvim && nvim
  ```
  - Windows (Powershell):
- ```python
+ ```powershell
    git clone https://github.com/NvChad/starter $ENV:USERPROFILE\AppData\Local\nvim && nvim
 ```
 ### Step 3: Basic Neovim commands to attempt further processes
  Type `nvim` or `neovim` on the terminal before any file name(optional) to enter into neovim environment.
 1. Enter editing mode:
-```python
+```vim
   i
 ```
 2. Escape the editing mode to save or exit:
 > Press the escape button
 3. Save file:
- ```python
+ ```vim
  :w
 ```
 4. Exit with saving:
-```python
+```vim
   :wq
 ```
 5. Exit without saving:
-```python
+```vim
   :q!
 ```
 
 ### Step 4: Essential processes after installing
  1. Run following command into nvim after lazy.nvim finishes downloading plugins:
- ```python
+ ```vim
   :MasonInstallAll
  ```
  2. Navigate to nvim directory in `.config` folder to the remove `.git` folder.
- ```python
+ ```bash
    rm -rf /home/username/.config/nvim/.git
 ```
  3. Learn customization of UI and base46 by using following command inside nvim:
- ```python
+ ```vim
  :h nvui
 ```
  4. Update the packages:
- ```python
+ ```vim
   :Lazy sync
 ```
 
@@ -169,7 +170,7 @@ lspconfig.pyright.setup({      --For Python
 
 ```
  5. Open nvim and install lsp for any language, I am doing for C/C++ and Python:
-  ```python
+  ```lua
    :MasonInstall clangd
    :MasonIntall python-lsp-server
    :MasonInstall pyright
@@ -201,26 +202,26 @@ lspconfig.pyright.setup({      --For Python
 ### Step 2: Save into your zsh or bash file
 
  1. Verify your terminal type by typing following command into your terminal:
-```lua
+```bash
 echo $0
 ```
 >if it indicates `/bin/zsh` or `zsh` then you're a zsh terminal user, if it indicates `/bin/bash` or `bash` then you're bash terminal user.
 
  2. If you're a zsh terminal user, open `.zshrc` file or if you're a bash terminal user, open `.bashrc` file into your home directory and add the following lines:
- ```lua
+ ```bash
   export OPENAI_API_KEY="paste_your_api_key_here"
 ```
 
  3. Source the file after making changes and pasting your OPENAI_API_KEY key, by running following command into terminal:
- ```lua
+ ```bash
   source .zshrc
 ```
 > or
-```lua
+```bash
 source .bashrc
 ```
  4. Verify your API key:
- ```lua
+ ```bash
  echo $OPENAI_API_KEY
 ```
 
@@ -293,4 +294,4 @@ Then, add the following beautiful text just after it:
 
 ---
 
->That's it. Finally the setup is over and chatgpt is working inside our terminal. If any issue persists like `Incorrect OPENAI_API_KEY` then you just have to source the bash or zsh file `source .zshrc` or `source.bashrc`. Happy coding 💟
+>That's it. Finally the setup is over and chatgpt is working inside our terminal. If any issue persists like `Incorrect OPENAI_API_KEY` then you just have to source the bash or zsh file `source .zshrc` or `source.bashrc`.

@@ -1,5 +1,6 @@
 +++
 title = 'Grub Rescue Setup'
+cover = '/covers/grub-rescue.png'
 date = '2025-02-05T00:37:50+05:00'
 tags = ["Linux","GRUB","boot"]
 +++
@@ -31,13 +32,13 @@ If you have access to the GRUB rescue prompt, try these steps:
 
 ### Step 1: Identify Partitions  
 List available partitions using:  
-~~~
-    ls
-~~~
+```bash
+ls
+```
 
 ### Step 2: Locate the Boot Partition
 Check each partition for the /boot/grub directory:
-```python
+```bash
 ls (hdX,msdosY)/boot/grub
 ```
 >Continue this process until you locate the /boot/grub directory. Then, replace X (disk number) and Y (partition number) based on your system.
@@ -45,38 +46,46 @@ ls (hdX,msdosY)/boot/grub
 
 ### Step 3: Set the Correct Root and Prefix
 Set the correct root and prefix:
-```python
+```bash
 set root=(hdX,msdosY)  
 ```
-```python
+```bash
 set prefix=(hdX,msdosY)/boot/grub
 ```
 
 ### Step 4: Load the Normal Modules
-~~~
+```bash
 insmod normal
-~~~
-~~~
+```
+```bash
 normal
-~~~
+```
 >This should bring up the standard GRUB menu, allowing you to boot into your operating system.
 
 
 ### Step 5: Reinstall GRUB
 Once booted, it's crucial to reinstall GRUB to prevent future issues:
-```python
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
-> It generated grub configuration file for arch-based distros, for debian based distros, you can use the following command: 
-~~~
+> It will generate grub configuration file for arch-based distros. For debian based distros, you can use the following command: 
+```bash
 sudo grub-update
-~~~
-Now reinstall the GRUB Bootloader to the specified disk:
-```python
+```
+Now reinstall the GRUB Bootloader to the specified disk(same for both distros):
+```bash
 sudo grub-install /dev/sdaX 
 ```
 >It is recommended to regenerate the grub configuration after this step.
 
+### Step 6: Reboot
+Reboot the system to apply changes and verify that GRUB is functioning correctly.
+```bash
+reboot
+```
+---
+
+If Method 1 doesn't work, then try Method 2.
 
 ---
 
@@ -92,19 +101,19 @@ This method involves booting into a Live USB environment, mounting the necessary
 
 ### **Step 2: Identify Partitions**  
 Use lsblk to list all disks and partitions:    
-~~~
+```bash
 lsblk
-~~~
+```
 
 ### **Step3: Mount the root partition**
 Mounts the root partition (/dev/nvme0n1p4) to the /mnt directory. Replace /dev/nvme0n1p4 with your actual root partition identifier.
-```python
+```bash
 sudo mount  /dev/nvme0n1p3 /mnt
 ```
 
 ### **Step 4: Mount the boot partition**
 Mounts the boot partition (/dev/nvme0n1p3) to /mnt/boot. Adjust /dev/nvme0n1p3 to match your boot partition.
-```python
+```bash
 sudo mount  /dev/nvme0n1p2 /mnt/boot
 ```
 
@@ -113,80 +122,80 @@ Bind /dev, /proc, /sys, and EFI variables to the chroot environment:
 
 #### **i:  /dev directory**
 Bind the /dev directory to /mnt/dev for device access in the chroot environment.
-```python
+```bash
 sudo mount --bind  /dev  /mnt/dev
 ```
 #### **ii:  /dev/pts (for archlinux and nvme/gpt file systems)**
 If your system uses the pts filesystem or you want a pseudo-terminal support.
-```python
+```bash
 sudo mount --bind /dev/pts /mnt/dev/pts
 ```
 #### **iii:  /proc directory**
 Bind the /proc directory to /mnt/proc for process information.
-```python
+```bash
 sudo mount --bind /proc /mnt/proc
 ```
 #### **iv:  /sys directory**
 Bind the /sys directory to /mnt/sys for system information.
-```python
+```bash
 sudo mount  --bind  /sys  /mnt/sys
 ```
 #### **v:  efi variables**
 Binds EFI variables to /mnt/sys/firmware/efi/efivars for UEFI systems.
-```python
+```bash
 sudo mount  --bind  /sys/firmware/efi/efivars  /mnt/sys/firmware/efi/efivars
 ```
 
 ### **Step 6: Chroot into the System**
 Switches the root directory to /mnt, allowing you to work on the installed system. Enter the chroot environment:
-```python
+```bash
 sudo chroot /mnt
 ```
 ### **Step 7: Reinstall GRUB**
 (Arch Based) Install the GRUB bootloader for UEFI systems, specifying the target architecture, EFI directory, and a bootloader identifier.
 
-```python
+```bash
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
 ### **Step 8: Generate GRUB Configuration file**
 Generate a new GRUB configuration file, detecting available operating systems and kernels.
-```python
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### **Step 9: Exit chroot Environment**
 Exits the chroot environment, returning to the Live USB session.
-~~~
+```bash
 exit
-~~~
+```
 
 ### **Step 9: Unmount Filesystems**
 Recursively unmounts all filesystems mounted under /mnt.
-```python
+```bash
 sudo umount -R /mnt
 ```
 
 ### **Step 10: Reboot the System**
 Restarts the system. Remove the Live USB to boot into your repaired system.
-~~~
+```bash
 reboot
-~~~
+```
 
 ### **Step 11: Reinstall GRUB and Regenerate GRUB Configuration File**
 After booting into your system, it's crucial to ensure that GRUB is properly installed and configured. Reinstall GRUB to the specified disk:
-```python
+```bash
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 ```
 
 Then regenerate the GRUB configuration file to ensure all operating systems are detected:
-```python
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### **Step 12: Reboot**
 Reboot the system to apply changes and verify that GRUB is functioning correctly.
-```python
+```bash
 reboot
 ```
 

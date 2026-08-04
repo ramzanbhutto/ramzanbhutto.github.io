@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Grub - Tag - Technical Blogs</title>
+    <title>GRUB - Tag - Technical Blogs</title>
     <link>http://localhost:1313/tags/grub/</link>
     <description>Technical Blogs</description>
     <generator>Hugo 0.164.0 &amp; FixIt v0.4.5</generator>

@@ -10,8 +10,8 @@
 	<meta itemprop="description" content="A comprehensive guide to setting up a multi-boot system with Ubuntu, Arch Linux, and Windows 11 on the same machine.">
 	<meta itemprop="datePublished" content="2026-02-09T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-02-10T01:39:50+05:00">
-	<meta itemprop="wordCount" content="1005">
-	<meta itemprop="keywords" content="Linux,Ubuntu,Arch-Linux,Windows,Multi-Boot,Grub"><meta property="og:url" content="http://localhost:1313/posts/multi-boot/">
+	<meta itemprop="wordCount" content="1040">
+	<meta itemprop="keywords" content="Linux,Ubuntu,Arch-Linux,Windows,Multi-Boot,GRUB"><meta property="og:url" content="http://localhost:1313/posts/multi-boot/">
 	<meta property="og:site_name" content="Technical Blogs">
 	<meta property="og:title" content="Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11">
 	<meta property="og:description" content="A comprehensive guide to setting up a multi-boot system with Ubuntu, Arch Linux, and Windows 11 on the same machine.">
@@ -25,7 +25,7 @@
 		<meta property="article:tag" content="Arch-Linux">
 		<meta property="article:tag" content="Windows">
 		<meta property="article:tag" content="Multi-Boot">
-		<meta property="article:tag" content="Grub">
+		<meta property="article:tag" content="GRUB">
 
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11">
@@ -33,7 +33,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#151b23" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/multi-boot/" title="Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11 - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/ssh/" title="Secure Shell (SSH)" /><link rel="next" type="text/html" href="http://localhost:1313/posts/git/" title="Git and Github: A Comprehensive Guide" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/multi-boot/index.md" title="Multi-Boot Setup: Ubuntu + Arch Linux + Windows 11 - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/multi-boot/" title="Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11 - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/ssh/" title="Secure Shell (SSH)" /><link rel="next" type="text/html" href="http://localhost:1313/posts/git/" title="Git: A Comprehensive Guide" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/multi-boot/index.md" title="Multi-Boot Setup: Ubuntu + Arch Linux + Windows 11 - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -44,7 +44,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/posts\/multi-boot\/"
-    },"genre": "posts","keywords": "linux, ubuntu, arch-linux, windows, multi-boot, grub","wordcount":  1005 ,
+    },"genre": "posts","keywords": "linux, ubuntu, arch-linux, windows, multi-boot, grub","wordcount":  1040 ,
     "url": "http:\/\/localhost:1313\/posts\/multi-boot\/","datePublished": "2026-02-09T00:00:00+00:00","dateModified": "2026-02-10T01:39:50+05:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -117,7 +117,7 @@
         <span class="related-title">Related Content</span><i class="details-icon fa-solid fa-angle-right" aria-hidden="true"></i></div>
       <div class="details-content related-content">
         <ul class="related-list"><li class="related-item">
-              <a href="/posts/git/" title="Git and Github: A Comprehensive Guide">Git and Github: A Comprehensive Guide</a></li><li class="related-item">
+              <a href="/posts/git/" title="Git: A Comprehensive Guide">Git: A Comprehensive Guide</a></li><li class="related-item">
               <a href="/posts/ssh/" title="Secure Shell (SSH)">Secure Shell (SSH)</a></li><li class="related-item">
               <a href="/posts/grub-rescue-setup/" title="Grub Rescue Setup">Grub Rescue Setup</a></li></ul>
       </div>
@@ -126,7 +126,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-02-09 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-02-09">2026-02-09</time></span>&nbsp;<span title="Updated on 2026-02-10 01:39:50"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-02-10">2026-02-10</time></span>&nbsp;<span title="1005 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 1100 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-02-09 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-02-09">2026-02-09</time></span>&nbsp;<span title="Updated on 2026-02-10 01:39:50"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-02-10">2026-02-10</time></span>&nbsp;<span title="1040 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 1100 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>5 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -141,6 +141,7 @@
     </li>
     <li><a href="#prerequisites">Prerequisites</a>
       <ul>
+        <li><a href="#you-must-have-these-on-your-disk">You must have these on your disk:</a></li>
         <li><a href="#before-you-start">Before You Start</a></li>
         <li><a href="#tools-needed">Tools Needed</a></li>
       </ul>
@@ -224,7 +225,15 @@
   <a href="#prerequisites" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-</h2><h3 class="heading-element" id="before-you-start"><span>Before You Start</span>
+</h2><h3 class="heading-element" id="you-must-have-these-on-your-disk"><span>You must have these on your disk:</span>
+  <a href="#you-must-have-these-on-your-disk" class="heading-mark">
+    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
+  </a>
+</h3><ul>
+<li>Two operating systems already installed (I have Arch Linux and Windows 11)</li>
+<li>Enough free space for Ubuntu (~25 GB)</li>
+</ul>
+<h3 class="heading-element" id="before-you-start"><span>Before You Start</span>
   <a href="#before-you-start" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
@@ -282,7 +291,7 @@
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-sh"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
@@ -293,14 +302,14 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">Device             Start        End   Sectors   Size Type
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p1      <span class="m">2048</span>  <span class="m">514091007</span> <span class="m">514088960</span> 245.1G Microsoft basic data
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p2 <span class="m">514091008</span>  <span class="m">515586047</span>   <span class="m">1495040</span>   730M Windows recovery environment
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p3 <span class="m">515588096</span>  <span class="m">517431295</span>   <span class="m">1843200</span>   900M EFI System
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p4 <span class="m">517431296</span>  <span class="m">811032575</span> <span class="m">293601280</span>   140G Linux filesystem
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p5 <span class="m">811032576</span>  <span class="m">833857535</span>  <span class="m">22824960</span>  10.9G Linux swap
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p6 <span class="m">833857536</span>  <span class="m">833890303</span>     <span class="m">32768</span>    16M Microsoft reserved
-</span></span><span class="line"><span class="cl">/dev/nvme0n1p7 <span class="m">833890304</span> <span class="m">1000214527</span> <span class="m">166324224</span>  79.3G Microsoft basic data</span></span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Device             Start        End   Sectors   Size Type
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p1      2048  514091007 514088960 245.1G Microsoft basic data
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p2 514091008  515586047   1495040   730M Windows recovery environment
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p3 515588096  517431295   1843200   900M EFI System
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p4 517431296  811032575 293601280   140G Linux filesystem
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p5 811032576  833857535  22824960  10.9G Linux swap
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p6 833857536  833890303     32768    16M Microsoft reserved
+</span></span><span class="line"><span class="cl">/dev/nvme0n1p7 833890304 1000214527 166324224  79.3G Microsoft basic data</span></span></code></pre></td></tr></table></div>
 </div>
 </div><hr>
 <h2 class="heading-element" id="step-1-prepare-disk-space"><span>Step 1: Prepare Disk Space</span>
@@ -477,7 +486,7 @@
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h4><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="2" style="--fi-max-shown-lines:15;--fi-line-digit:2;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
@@ -497,22 +506,22 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Root partition</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Root partition
 </span></span><span class="line"><span class="cl">Mount point: /
 </span></span><span class="line"><span class="cl">Type: ext4
 </span></span><span class="line"><span class="cl">Size: 30-50GB
 </span></span><span class="line"><span class="cl">Flag: -
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Home partition (optional but recommended)</span>
+</span></span><span class="line"><span class="cl"># Home partition (optional but recommended)
 </span></span><span class="line"><span class="cl">Mount point: /home
 </span></span><span class="line"><span class="cl">Type: ext4
-</span></span><span class="line"><span class="cl">Size: Remaining space <span class="o">(</span>or fixed size<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Size: Remaining space (or fixed size)
 </span></span><span class="line"><span class="cl">Flag: -
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Swap partition (if not already present)</span>
-</span></span><span class="line"><span class="cl">Mount point: <span class="o">[</span>none - swap area<span class="o">]</span>
+</span></span><span class="line"><span class="cl"># Swap partition (if not already present)
+</span></span><span class="line"><span class="cl">Mount point: [none - swap area]
 </span></span><span class="line"><span class="cl">Type: swap
-</span></span><span class="line"><span class="cl">Size: 2-8GB <span class="o">(</span>equal to RAM <span class="k">for</span> hibernation<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Size: 2-8GB (equal to RAM for hibernation)
 </span></span><span class="line"><span class="cl">Flag: swap</span></span></code></pre></td></tr></table></div><div class="code-expand-btn" aria-label="Expand or collapse code block" role="button"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></div>
 </div>
 </div><h4 class="heading-element" id="minimal-partition-scheme"><span>Minimal Partition Scheme:</span>
@@ -520,7 +529,7 @@
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h4><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-bash"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
@@ -528,7 +537,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Single root partition (simpler)</span>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># Single root partition (simpler)
 </span></span><span class="line"><span class="cl">Mount point: /
 </span></span><span class="line"><span class="cl">Type: ext4
 </span></span><span class="line"><span class="cl">Size: All available space
@@ -607,7 +616,7 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># Enable os-prober in GRUB</span>
 </span></span><span class="line"><span class="cl">sudo nvim /etc/default/grub
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Add or uncomment this line:</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Add or uncomment this line in that file:</span>
 </span></span><span class="line"><span class="cl"><span class="nv">GRUB_DISABLE_OS_PROBER</span><span class="o">=</span><span class="nb">false</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Save and exit </span>
@@ -686,10 +695,12 @@
 </span><span class="lnt">12
 </span><span class="lnt">13
 </span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Edit GRUB configuration</span>
-</span></span><span class="line"><span class="cl">sudo nano /etc/default/grub
+</span></span><span class="line"><span class="cl">sudo nvim /etc/default/grub
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Change default entry (0 = first, 1 = second, etc.)</span>
 </span></span><span class="line"><span class="cl"><span class="nv">GRUB_DEFAULT</span><span class="o">=</span><span class="m">0</span>
@@ -700,8 +711,10 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># Change timeout (seconds)</span>
 </span></span><span class="line"><span class="cl"><span class="nv">GRUB_TIMEOUT</span><span class="o">=</span><span class="m">10</span>
 </span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Save and exit</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># Update GRUB</span>
-</span></span><span class="line"><span class="cl">sudo update-grub</span></span></code></pre></td></tr></table></div>
+</span></span><span class="line"><span class="cl">sudo update-grub</span></span></code></pre></td></tr></table></div><div class="code-expand-btn" aria-label="Expand or collapse code block" role="button"><i class="fa-solid fa-angles-down" aria-hidden="true"></i></div>
 </div>
 </div><h3 class="heading-element" id="install-grub-customizer-gui"><span>Install GRUB Customizer (GUI)</span>
   <a href="#install-grub-customizer-gui" class="heading-mark">
@@ -734,7 +747,7 @@
 </div><hr class="awesome-hr" />
     <h2 id="see-also">Related Content</h2>
     <ul><li>
-          <a href="/posts/git/" title="Git and Github: A Comprehensive Guide">Git and Github: A Comprehensive Guide</a></li><li>
+          <a href="/posts/git/" title="Git: A Comprehensive Guide">Git: A Comprehensive Guide</a></li><li>
           <a href="/posts/ssh/" title="Secure Shell (SSH)">Secure Shell (SSH)</a></li><li>
           <a href="/posts/grub-rescue-setup/" title="Grub Rescue Setup">Grub Rescue Setup</a></li></ul><div class="post-footer" id="post-footer">
   <div class="post-info">
@@ -753,10 +766,10 @@
       </div></div>
 
   <div class="post-info-more">
-    <section class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href="/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a><a href="/tags/ubuntu/" class="post-tag" title="Tags - Ubuntu">Ubuntu</a><a href="/tags/arch-linux/" class="post-tag" title="Tags - Arch-Linux">Arch-Linux</a><a href="/tags/windows/" class="post-tag" title="Tags - Windows">Windows</a><a href="/tags/multi-boot/" class="post-tag" title="Tags - Multi-Boot">Multi-Boot</a><a href="/tags/grub/" class="post-tag" title="Tags - Grub">Grub</a></section>
+    <section class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href="/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a><a href="/tags/ubuntu/" class="post-tag" title="Tags - Ubuntu">Ubuntu</a><a href="/tags/arch-linux/" class="post-tag" title="Tags - Arch-Linux">Arch-Linux</a><a href="/tags/windows/" class="post-tag" title="Tags - Windows">Windows</a><a href="/tags/multi-boot/" class="post-tag" title="Tags - Multi-Boot">Multi-Boot</a><a href="/tags/grub/" class="post-tag" title="Tags - GRUB">GRUB</a></section>
     <section><span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/ssh/" class="post-nav-item" rel="prev" title="Secure Shell (SSH)"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Secure Shell (SSH)</a><a href="/posts/git/" class="post-nav-item" rel="next" title="Git and Github: A Comprehensive Guide">Git and Github: A Comprehensive Guide<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/ssh/" class="post-nav-item" rel="prev" title="Secure Shell (SSH)"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Secure Shell (SSH)</a><a href="/posts/git/" class="post-nav-item" rel="next" title="Git: A Comprehensive Guide">Git: A Comprehensive Guide<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article>
 
@@ -773,6 +786,7 @@
     </li>
     <li><a href="#prerequisites">Prerequisites</a>
       <ul>
+        <li><a href="#you-must-have-these-on-your-disk">You must have these on your disk:</a></li>
         <li><a href="#before-you-start">Before You Start</a></li>
         <li><a href="#tools-needed">Tools Needed</a></li>
       </ul>

@@ -6,9 +6,7 @@
     <meta name="robots" content="noodp" />
     <title>Posts - Technical Blogs</title><meta name="author" content="Muhammad Ramzan">
 <meta name="description" content="">
-	<meta itemprop="name" content="Posts">
-	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
-	<meta itemprop="dateModified" content="2026-07-27T19:42:52+05:00"><meta property="og:url" content="http://localhost:1313/posts/">
+	<meta itemprop="name" content="Posts"><meta property="og:url" content="http://localhost:1313/posts/">
 	<meta property="og:site_name" content="Technical Blogs">
 	<meta property="og:title" content="Posts">
 	<meta property="og:locale" content="en">
@@ -84,52 +82,43 @@
     <div class="header">
       <h1 class="single-title animate__animated animate__pulse animate__faster"><i class="fa-solid fa-feather me-1" aria-hidden="true"></i>Posts <sup>10</sup>
       </h1>
-    </div><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/domjudge1/">Part 1: Setting Up DomJudge With Docker</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2026-07-27 00:00:00'>published on <time datetime="2026-07-27">2026-07-27</time></span></div><div class="content"><p>If you run a coding club or want to host your own programming contest, DomJudge is the tool for it. It is the same judge used in ICPC contests around the world.</p>
-<p>In this post, I will show you how to set it up on your own computer using Docker. I will also show you two problems I faced (port conflicts and cgroups) and how I fixed them.</p>
-<p>This guide is based on my own setup on Arch Linux. I also used this blog as a starting reference: <a href="https://medium.com/@TrainedPro/setting-up-domjudge-with-docker-a-complete-guide-0c4fdf24bb7d" target="_blank" rel="external nofollow noopener noreferrer">Setting up DomJudge with Docker</a></p></div><div class="post-footer">
-    <a href="/posts/domjudge1/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/docker/' class="post-tag">Docker</a><a href='/tags/domjudge/' class="post-tag">DomJudge</a><a href='/tags/mariadb/' class="post-tag">MariaDB</a><a href='/tags/contest/' class="post-tag">Contest</a><a href='/tags/linux/' class="post-tag">Linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/domjudge2/">Part 2: Running Your First Contest on DomJudge</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2026-07-27 00:00:00'>published on <time datetime="2026-07-27">2026-07-27</time></span></div><div class="content"><blockquote>
-<p><strong>Prerequisite</strong>: This is Part 2 of the DomJudge Docker series. If you haven&rsquo;t set up DomJudge yet, start with <a href="https://ramzanbhutto.github.io/domjudge1" target="_blank" rel="external nofollow noopener noreferrer">Part 1 — Setting Up DomJudge with Docker</a> first.</p>
-</blockquote>
-<h4 class="heading-element" id="repository-that-well-follow-domjudge-files"><span>Repository that we&rsquo;ll follow: <a href="https://github.com/TrainedPro/domjudge-files.git" target="_blank" rel="external nofollow noopener noreferrer">domjudge-files</a></span>
-  <a href="#repository-that-well-follow-domjudge-files" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h4><p><strong>TL;DR</strong> - DomJudge is running. Now we make it actually host a contest. By the end of this post you&rsquo;ll have teams registered, problems uploaded, a live scoreboard, and the whole thing accessible from the internet via Cloudflare Tunnel.</p></div><div class="post-footer">
-    <a href="/posts/domjudge2/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/docker/' class="post-tag">Docker</a><a href='/tags/domjudge/' class="post-tag">DomJudge</a><a href='/tags/mariadb/' class="post-tag">MariaDB</a><a href='/tags/contest/' class="post-tag">Contest</a><a href='/tags/linux/' class="post-tag">Linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/git/">Git and Github: A Comprehensive Guide</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2026-02-09 00:00:00'>published on <time datetime="2026-02-09">2026-02-09</time></span></div><div class="content"><h3 class="heading-element" id="introduction"><span>Introduction</span>
-  <a href="#introduction" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p><img loading="lazy" src='/git.png' alt="Git &amp; GitHub">
-Git is a version control system that tracks changes in code and helps developers collaborate efficiently. GitHub is an online platform that hosts Git repositories, making it easier to share code, manage projects, and work on open-source projects.</p></div><div class="post-footer">
-    <a href="/posts/git/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/git/' class="post-tag">Git</a><a href='/tags/github/' class="post-tag">Github</a><a href='/tags/version-control/' class="post-tag">Version Control</a><a href='/tags/collaboration/' class="post-tag">Collaboration</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/multi-boot/">Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2026-02-09 00:00:00'>published on <time datetime="2026-02-09">2026-02-09</time></span></div><div class="content"><hr>
-<h3 class="heading-element" id="introduction"><span>Introduction</span>
-  <a href="#introduction" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p>Multi-booting allows you to run multiple operating systems on a single computer, giving you the flexibility to switch between different environments. This guide will walk you through setting up Ubuntu on a laptop that already has Arch Linux and Windows 11 installed.</p></div><div class="post-footer">
-    <a href="/posts/multi-boot/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a><a href='/tags/ubuntu/' class="post-tag">Ubuntu</a><a href='/tags/arch-linux/' class="post-tag">Arch-Linux</a><a href='/tags/windows/' class="post-tag">Windows</a><a href='/tags/multi-boot/' class="post-tag">Multi-Boot</a><a href='/tags/grub/' class="post-tag">Grub</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/ssh/">Secure Shell (SSH)</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2026-02-09 00:00:00'>published on <time datetime="2026-02-09">2026-02-09</time></span></div><div class="content"><h3 class="heading-element" id="overview"><span>Overview</span>
-  <a href="#overview" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p>SSH (Secure Shell) allows you to securely connect to a remote computer over the internet. It encrypts your connection, letting you execute commands safely on another machine without physical access. SSH enables remote management, secure file transfers, and automation. It encrypts communication to prevent unauthorized access.</p></div><div class="post-footer">
-    <a href="/posts/ssh/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/ssh/' class="post-tag">Ssh&#34;</a><a href='/tags/linux/' class="post-tag">Linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/doxygen/">Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2025-09-02 00:00:00'>published on <time datetime="2025-09-02">2025-09-02</time></span></div><div class="content"><h3 class="heading-element" id="-what-is-doxygen"><span>🔹 What is Doxygen?</span>
-  <a href="#-what-is-doxygen" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p><a href="https://www.doxygen.nl/" target="_blank" rel="external nofollow noopener noreferrer">Doxygen</a> is a documentation generator tool that:</p></div><div class="post-footer">
-    <a href="/posts/doxygen/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/c&#43;&#43;/' class="post-tag">C&#43;&#43;</a><a href='/tags/documentation/' class="post-tag">Documentation</a><a href='/tags/doxygen/' class="post-tag">Doxygen</a><a href='/tags/plantuml/' class="post-tag">PlantUML</a><a href='/tags/graphviz/' class="post-tag">Graphviz</a><a href='/tags/open-source/' class="post-tag">Open Source</a></div></div>
-</article><ul class="pagination"><li class="page-item active">
+    </div><div class="posts-grid"><a class="posts-grid-card" href="/posts/domjudge1/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/domjudge1.png" alt="Part 1: Setting Up DomJudge with Docker" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Part 1: Setting Up DomJudge with Docker</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>15 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Docker</span><span class="posts-grid-tag">DomJudge</span><span class="posts-grid-tag">MariaDB</span><span class="posts-grid-tag">contest</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/domjudge2/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/domjudge2.png" alt="Part 2: Running Your First Contest on DomJudge" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Part 2: Running Your First Contest on DomJudge</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>12 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Docker</span><span class="posts-grid-tag">DomJudge</span><span class="posts-grid-tag">MariaDB</span><span class="posts-grid-tag">contest</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/git/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/git.png" alt="Git: A Comprehensive Guide" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Git: A Comprehensive Guide</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>8 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">git</span><span class="posts-grid-tag">github</span><span class="posts-grid-tag">version control</span><span class="posts-grid-tag">collaboration</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/multi-boot/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/multiboot.png" alt="Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Multi-Boot Setup: Ubuntu &#43; Arch Linux &#43; Windows 11</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>5 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">linux</span><span class="posts-grid-tag">ubuntu</span><span class="posts-grid-tag">arch-linux</span><span class="posts-grid-tag">windows</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/ssh/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/ssh.jpg" alt="Secure Shell (SSH)" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Secure Shell (SSH)</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>3 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">ssh</span><span class="posts-grid-tag">linux</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/doxygen/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/doxygen.png" alt="Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Doxygen &#43; PlantUML &#43; Graphviz: Build Automated, Beautiful Project Documentation</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>6 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">C&#43;&#43;</span><span class="posts-grid-tag">Documentation</span><span class="posts-grid-tag">Doxygen</span><span class="posts-grid-tag">PlantUML</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/neovim-plugins/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/neovim.png" alt="Neovim Complete Setup and Integrating ChatGPT" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Neovim Complete Setup and Integrating ChatGPT</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>6 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Neovim</span><span class="posts-grid-tag">Lua</span><span class="posts-grid-tag">ChatGPT</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/auto-audio-switching/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/audio.png" alt="Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>2 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Arch</span><span class="posts-grid-tag">Pipewire</span><span class="posts-grid-tag">Pulseaudio</span></div></div>
+        </a><a class="posts-grid-card" href="/posts/kernel-compilation/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/kernel-compile.jpg" alt="Compile and Build Linux Kernel" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Compile and Build Linux Kernel</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>4 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Linux</span><span class="posts-grid-tag">Kernel</span><span class="posts-grid-tag">Arch</span></div></div>
+        </a></div><ul class="pagination"><li class="page-item active">
           <span class="page-link">
             <a href="/posts/">1</a>
           </span>
@@ -137,7 +126,82 @@ Git is a version control system that tracks changes in code and helps developers
           <span class="page-link">
             <a href="/posts/page/2/">2</a>
           </span>
-        </li></ul></div></main><footer class="footer">
+        </li></ul></div>
+
+  <style>
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+    .posts-grid-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--fi-global-background-color, #fff);
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s cubic-bezier(.2,.8,.2,1);
+     } 
+    .posts-grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .posts-grid-cover {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #3a3a5c, #1f1f38);
+    }
+    .posts-grid-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .posts-grid-cover-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+    .posts-grid-body {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+    .posts-grid-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .posts-grid-meta {
+      font-size: 0.8rem;
+      opacity: 0.65;
+      margin-bottom: 0.6rem;
+    }
+    .posts-grid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .posts-grid-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color, rgba(255,255,255,0.15));
+      opacity: 0.75;
+    }
+  </style></main><footer class="footer">
     <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.164.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.4.5"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">

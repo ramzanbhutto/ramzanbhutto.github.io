@@ -16,7 +16,7 @@ sudo pacman -S pavucontrol
 
 
 ### Step 2: Launch **pavucontrol**:
-~~~
+~~~bash
 pavucontrol
 ~~~
 
@@ -40,23 +40,23 @@ For those who prefer the command line, you can achieve automatic switching by fo
 
 ### Step 1: Ensure you have `Pulseaudio` or `Pipewire` installed, if not then achieve it using:
 
-~~~
+~~~bash
 sudo pacman -S pulseaudio
 ~~~
 **or**
-~~~
+~~~bash
 sudo pacman -S pipewire
 ~~~
 
 ### Step 2: Identify available audio sinks
 First, list all available audio sinks (output devices) to determine the identifiers for your loudspeaker and headphones:
-~~~
+~~~zsh
 pactl list short sinks
 ~~~
 
 ### Step 3: Set Default Sink to Headphones
 Once you have identified the sink name for your headphones(e.g, ***bluez_output.56_66_98_EX_56_9X.2***), set it as default sink:
-~~~
+~~~zsh
 pactl set-default-sink bluez_output.56_66_98_EX_56_9X.2
 ~~~
 Replace ***bluez_output.56_66_98_EX_56_9X.2*** with the actual sink name of your headphones.
@@ -64,7 +64,7 @@ Replace ***bluez_output.56_66_98_EX_56_9X.2*** with the actual sink name of your
 ### Step 4: Move Existing Audio Streams:
 To redirect current audio streams to the newly selected default sink (headphones), execute the following script in terminal that will move all active sudio streams to the default sink you set in the previous step.
 
-```cpp 
+```bash 
 for stream in $(pactl list short sink-inputs | awk '{print $1}'); do
     pactl move-sink-input $stream $(pactl get-default-sink)
 done

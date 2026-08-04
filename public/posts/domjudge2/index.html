@@ -10,7 +10,7 @@
 	<meta itemprop="description" content="Learn how to run and host competitive programming contests">
 	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-07-27T19:28:08+05:00">
-	<meta itemprop="wordCount" content="2477">
+	<meta itemprop="wordCount" content="2488">
 	<meta itemprop="keywords" content="Docker,DomJudge,MariaDB,Contest,Linux"><meta property="og:url" content="http://localhost:1313/posts/domjudge2/">
 	<meta property="og:site_name" content="Technical Blogs">
 	<meta property="og:title" content="Part 2: Running Your First Contest on DomJudge">
@@ -32,7 +32,7 @@
 <meta name="application-name" content="FixIt">
 <meta name="apple-mobile-web-app-title" content="FixIt"><meta name="theme-color" data-light="#f8f8f8" data-dark="#151b23" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/domjudge2/" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/git/" title="Git and Github: A Comprehensive Guide" /><link rel="next" type="text/html" href="http://localhost:1313/posts/domjudge1/" title="Part 1: Setting Up DomJudge with Docker" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/domjudge2/index.md" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" type="text/html" href="http://localhost:1313/posts/domjudge2/" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs" /><link rel="prev" type="text/html" href="http://localhost:1313/posts/git/" title="Git: A Comprehensive Guide" /><link rel="next" type="text/html" href="http://localhost:1313/posts/domjudge1/" title="Part 1: Setting Up DomJudge with Docker" /><link rel="alternate" type="text/markdown" href="http://localhost:1313/posts/domjudge2/index.md" title="Part 2: Running Your First Contest on DomJudge - Technical Blogs"><link rel="stylesheet" href="/css/config.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.removeAttribute('onload');this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
   {
@@ -43,7 +43,7 @@
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "http:\/\/localhost:1313\/posts\/domjudge2\/"
-    },"genre": "posts","keywords": "Docker, DomJudge, MariaDB, contest, Linux","wordcount":  2477 ,
+    },"genre": "posts","keywords": "Docker, DomJudge, MariaDB, contest, Linux","wordcount":  2488 ,
     "url": "http:\/\/localhost:1313\/posts\/domjudge2\/","datePublished": "2026-07-27T00:00:00+00:00","dateModified": "2026-07-27T19:28:08+05:00","publisher": {
       "@type": "Organization",
       "name": ""},"author": {
@@ -125,7 +125,7 @@
   <article class="page single">
     <div class="header"><h1 class="single-title animate__animated animate__flipInX"><span>Part 2: Running Your First Contest on DomJudge</span>
       </h1></div><div class="post-meta">
-      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-07-27 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="Updated on 2026-07-27 19:28:08"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="2477 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 2500 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>12 minutes</span>&nbsp;</div>
+      <div class="post-meta-line"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span></div><div class="post-meta-line"><span title="published on 2026-07-27 00:00:00"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="Updated on 2026-07-27 19:28:08"><i class="fa-regular fa-calendar-check me-1" aria-hidden="true"></i><time datetime="2026-07-27">2026-07-27</time></span>&nbsp;<span title="2488 words"><i class="fa-solid fa-pencil-alt me-1" aria-hidden="true"></i>About 2500 words</span>&nbsp;<span><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>12 minutes</span>&nbsp;</div>
     </div><div class="details toc" id="toc-static" data-kept="false">
         <div class="details-summary toc-title">
           <span>Contents</span>
@@ -457,8 +457,24 @@
   <a href="#the-link-that-must-match" class="heading-mark">
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
-</h3><json-viewer value="&#34; teams.json:    \&#34;id\&#34;: \&#34;3\&#34;    \n accounts.json: \&#34;team_id\&#34;: \&#34;3\&#34;  &#34;" expand-depth="1" boxed copyable="{&#34;copiedText&#34;:&#34;Copied&#34;,&#34;copyText&#34;:&#34;Copy&#34;}"></json-viewer><blockquote>
-<p>both <strong>id</strong> and <strong>team_id</strong> must be same</p>
+</h3><p>teams.json:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;id&#34;: &#34;3&#34;</span></span></code></pre></td></tr></table></div>
+</div>
+</div><p>accounts.json:</p>
+<div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
+<div class="code-header language-fallback"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#34;team_id&#34;: &#34;3&#34;  </span></span></code></pre></td></tr></table></div>
+</div>
+</div><blockquote>
+<p>both <strong>id</strong> and <strong>team_id</strong> must be same in both files</p>
 </blockquote>
 <h3 class="heading-element" id="offset-of-3-or-5"><span>offset of 3 or 5</span>
   <a href="#offset-of-3-or-5" class="heading-mark">
@@ -598,15 +614,15 @@
     <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
   </a>
 </h3><div class="code-block highlight" data-mode="classic" data-copyable="true"><div class="chroma">
-<div class="code-header language-yaml"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
+<div class="code-header language-ini"><span class="code-title"><i class="arrow fa-solid fa-chevron-down" aria-hidden="true"></i></span><span class="ellipses-btn" aria-label="Show more options" role="button"><i class="fa-solid fa-ellipsis-h" aria-hidden="true"></i></span><span class="action-btn line-nos-btn" aria-label="Toggle line numbers" role="button" title="Toggle line numbers" data-ct-tooltip><i class="fa-solid fa-list-ol" aria-hidden="true"></i></span><span class="action-btn line-wrap-btn" aria-label="Toggle code wrap" role="button" title="Toggle code wrap" data-ct-tooltip><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="action-btn copy-btn" aria-label="Copy to clipboard" role="button" title="Copy to clipboard" data-copied-text="Copied" data-ct-tooltip><i class="fa-regular fa-clone" aria-hidden="true"></i></span><span class="action-btn fullscreen-btn" aria-label="Toggle code block fullscreen" role="button" title="Toggle code block fullscreen" data-ct-tooltip><i class="fa-solid fa-expand" aria-hidden="true"></i></span></div><div class="code-wrapper" data-max="15" data-line-digit="1" style="--fi-max-shown-lines:15;--fi-line-digit:1;--fi-line-start:1;"><table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">name = Hello World</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="l">timelimit = 1</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="l">color =</span><span class="w"> </span><span class="c">#FF7109</span></span></span></code></pre></td></tr></table></div>
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="na">name</span> <span class="o">=</span> <span class="s">Hello World</span>
+</span></span><span class="line"><span class="cl"><span class="na">timelimit</span> <span class="o">=</span> <span class="s">1</span>
+</span></span><span class="line"><span class="cl"><span class="na">color</span> <span class="o">=</span> <span class="s">#FF7109</span></span></span></code></pre></td></tr></table></div>
 </div>
 </div><h3 class="heading-element" id="domjudge-problemini-fields"><span>domjudge-problem.ini fields</span>
   <a href="#domjudge-problemini-fields" class="heading-mark">
@@ -980,7 +996,7 @@ This validator checks three things: that input is not empty, that the string len
     <section class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href="/tags/docker/" class="post-tag" title="Tags - Docker">Docker</a><a href="/tags/domjudge/" class="post-tag" title="Tags - DomJudge">DomJudge</a><a href="/tags/mariadb/" class="post-tag" title="Tags - MariaDB">MariaDB</a><a href="/tags/contest/" class="post-tag" title="Tags - Contest">Contest</a><a href="/tags/linux/" class="post-tag" title="Tags - Linux">Linux</a></section>
     <section><span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
     </section>
-  </div><div class="post-nav"><a href="/posts/git/" class="post-nav-item" rel="prev" title="Git and Github: A Comprehensive Guide"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Git and Github: A Comprehensive Guide</a><a href="/posts/domjudge1/" class="post-nav-item" rel="next" title="Part 1: Setting Up DomJudge With Docker">Part 1: Setting Up DomJudge With Docker<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
+  </div><div class="post-nav"><a href="/posts/git/" class="post-nav-item" rel="prev" title="Git: A Comprehensive Guide"><i class="fa-solid fa-angle-left" aria-hidden="true"></i>Git: A Comprehensive Guide</a><a href="/posts/domjudge1/" class="post-nav-item" rel="next" title="Part 1: Setting Up DomJudge With Docker">Part 1: Setting Up DomJudge With Docker<i class="fa-solid fa-angle-right" aria-hidden="true"></i></a></div>
 </div>
 </article>
 

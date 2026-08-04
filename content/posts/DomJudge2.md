@@ -1,5 +1,6 @@
 ---
 title: "Part 2: Running Your First Contest on DomJudge"
+cover: "/covers/domjudge2.png"
 date: 2026-07-27
 tags: ["Docker", "DomJudge", "MariaDB", "contest", "Linux"]
 author: "Muhammad Ramzan"
@@ -258,11 +259,15 @@ From the demo contest: ramzan, hisam, and saif all link to Red Coders (team ID 3
 - `ip` (optional): IP address to link to this account
 
 ### The link that must match
-```json
- teams.json:    "id": "3"    
- accounts.json: "team_id": "3"  
+teams.json:
 ```
-> both **id** and **team_id** must be same
+"id": "3"
+```
+accounts.json:
+```
+"team_id": "3"  
+```
+> both **id** and **team_id** must be same in both files
 
 ### offset of 3 or 5 
 If the exact team_id doesn't work, then check the exact team_id using GUI on domjudge, as sometimes domjudge adds 3 or 5 to each team_id. like team `Red Coders` have team_id '3', but it can be '6' or '8' on domjudge due to offset matching.
@@ -336,7 +341,7 @@ limits:
 ![Problems](/domjudgeBlog2-problems.png)
 
 ### domjudge-problem.ini
-```yaml
+```ini
 name = Hello World
 timelimit = 1
 color = #FF7109

@@ -6,9 +6,7 @@
     <meta name="robots" content="noodp" />
     <title>Posts - Technical Blogs</title><meta name="author" content="Muhammad Ramzan">
 <meta name="description" content="">
-	<meta itemprop="name" content="Posts">
-	<meta itemprop="datePublished" content="2026-07-27T00:00:00+00:00">
-	<meta itemprop="dateModified" content="2026-07-27T19:42:52+05:00"><meta property="og:url" content="http://localhost:1313/posts/">
+	<meta itemprop="name" content="Posts"><meta property="og:url" content="http://localhost:1313/posts/">
 	<meta property="og:site_name" content="Technical Blogs">
 	<meta property="og:title" content="Posts">
 	<meta property="og:locale" content="en">
@@ -84,42 +82,11 @@
     <div class="header">
       <h1 class="single-title animate__animated animate__pulse animate__faster"><i class="fa-solid fa-feather me-1" aria-hidden="true"></i>Posts <sup>10</sup>
       </h1>
-    </div><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/neovim-plugins/">Neovim Complete Setup and Integrating ChatGPT</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2025-02-08 23:28:37'>published on <time datetime="2025-02-08">2025-02-08</time></span></div><div class="content"><hr>
-<h3 class="heading-element" id="part-1-setting-up-nvchad"><span>Part 1: Setting Up NVChad</span>
-  <a href="#part-1-setting-up-nvchad" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><blockquote>
-<p>Note: I am using Arch Linux. So, use terminal commands as per your Distro.</p></div><div class="post-footer">
-    <a href="/posts/neovim-plugins/">Read More</a></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/auto-audio-switching/">Auto-Switch Audio in Arch Linux(LARBS): Speakers to Headphones</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2025-02-08 00:49:53'>published on <time datetime="2025-02-08">2025-02-08</time></span></div><div class="content"><h4 class="heading-element" id="automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide"><span>Automatically Switching Audio Output Between Speakers and Headphones on Arch Linux: A Comprehensive Guide</span>
-  <a href="#automatically-switching-audio-output-between-speakers-and-headphones-on-arch-linux-a-comprehensive-guide" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h4><hr>
-<h3 class="heading-element" id="method-1using-pavucontrolgraphical-method"><span>Method 1:Using Pavucontrol(Graphical Method)</span>
-  <a href="#method-1using-pavucontrolgraphical-method" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p>If you prefer a more user friendly environment, then go for pavucontrol.</p></div><div class="post-footer">
-    <a href="/posts/auto-audio-switching/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/arch/' class="post-tag">Arch</a><a href='/tags/pipewire/' class="post-tag">Pipewire</a><a href='/tags/pulseaudio/' class="post-tag">Pulseaudio</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/kernel-compilation/">Compile and Build Linux Kernel</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2025-02-05 00:37:50'>published on <time datetime="2025-02-05">2025-02-05</time></span></div><div class="content"><h3 class="heading-element" id="building-linux-kernel"><span>Building Linux Kernel</span>
-  <a href="#building-linux-kernel" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p><strong>The process of building a Linux Kernel can be performed in several steps, but it may take time as per your hardware capabilities.</strong></p></div><div class="post-footer">
-    <a href="/posts/kernel-compilation/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a><a href='/tags/kernel/' class="post-tag">Kernel</a><a href='/tags/arch/' class="post-tag">Arch</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h2 class="single-title" itemprop="name headline"><a href="/posts/grub-rescue-setup/">Grub Rescue Setup</a>
-  </h2><div class="post-meta"><span class="post-author"><a href="https://github.com/ramzanbhutto" title="Author" target="_blank" rel="external nofollow noopener noreferrer author" class="author"><img class="avatar" src='/pic2.jpeg' alt="Muhammad Ramzan" height="16" width="16">&nbsp;Muhammad Ramzan</a></span>&nbsp;<span class="post-publish" title='2025-02-05 00:37:50'>published on <time datetime="2025-02-05">2025-02-05</time></span></div><div class="content"><h3 class="heading-element" id="understanding-grub-rescue-and-how-to-fix-it" data-decreased><span>Understanding GRUB Rescue and How to Fix It</span>
-  <a href="#understanding-grub-rescue-and-how-to-fix-it" class="heading-mark">
-    <svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg>
-  </a>
-</h3><p><em>(A Guide to Diagnosing and Resolving Boot Errors)</em></p></div><div class="post-footer">
-    <a href="/posts/grub-rescue-setup/">Read More</a><div class="post-tags"><i class="fa-solid fa-tags me-1" aria-hidden="true"></i><a href='/tags/linux/' class="post-tag">Linux</a><a href='/tags/grub/' class="post-tag">Grub</a><a href='/tags/boot/' class="post-tag">Boot</a></div></div>
-</article><ul class="pagination"><li class="page-item">
+    </div><div class="posts-grid"><a class="posts-grid-card" href="/posts/grub-rescue-setup/"><div class="posts-grid-cover"><img src="http://localhost:1313/covers/grub-rescue.png" alt="Grub Rescue Setup" loading="lazy"></div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">Grub Rescue Setup</h3>
+            <div class="posts-grid-meta"><i class="fa-regular fa-clock me-1" aria-hidden="true"></i>5 minutes</div><div class="posts-grid-tags"><span class="posts-grid-tag">Linux</span><span class="posts-grid-tag">GRUB</span><span class="posts-grid-tag">boot</span></div></div>
+        </a></div><ul class="pagination"><li class="page-item">
           <span class="page-link">
             <a href="/posts/">1</a>
           </span>
@@ -127,7 +94,82 @@
           <span class="page-link">
             <a href="/posts/page/2/">2</a>
           </span>
-        </li></ul></div></main><footer class="footer">
+        </li></ul></div>
+
+  <style>
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+    .posts-grid-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--fi-global-background-color, #fff);
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s cubic-bezier(.2,.8,.2,1);
+     } 
+    .posts-grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .posts-grid-cover {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #3a3a5c, #1f1f38);
+    }
+    .posts-grid-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .posts-grid-cover-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+    .posts-grid-body {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+    .posts-grid-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .posts-grid-meta {
+      font-size: 0.8rem;
+      opacity: 0.65;
+      margin-bottom: 0.6rem;
+    }
+    .posts-grid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .posts-grid-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color, rgba(255,255,255,0.15));
+      opacity: 0.75;
+    }
+  </style></main><footer class="footer">
     <div class="footer-container"><div class="footer-line powered">Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreferrer" title="Hugo 0.164.0"><img class="hugo-icon" src="/images/hugo.min.svg" alt="Hugo logo" /> Hugo</a> | Theme - <a href="https://github.com/hugo-fixit/FixIt" target="_blank" rel="external" title="FixIt v0.4.5"><img class="fixit-icon" src="/images/fixit.min.svg" alt="FixIt logo" /> FixIt</a>
         </div><div class="footer-line copyright" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright" aria-hidden="true"></i>
             <span itemprop="copyrightYear">2026</span><span class="author" itemprop="copyrightHolder">

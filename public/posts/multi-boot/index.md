@@ -19,6 +19,11 @@ Multi-booting allows you to run multiple operating systems on a single computer,
 
 ## Prerequisites
 
+### You must have these on your disk:
+
+- Two operating systems already installed (I have Arch Linux and Windows 11)
+- Enough free space for Ubuntu (~25 GB)
+
 ### Before You Start
 
 - **Backup your data**: Always backup important files before partitioning
@@ -56,7 +61,7 @@ Get-Partition
 
 ### Typical Multi-Boot Layout
 
-```sh
+```
 Device             Start        End   Sectors   Size Type
 /dev/nvme0n1p1      2048  514091007 514088960 245.1G Microsoft basic data
 /dev/nvme0n1p2 514091008  515586047   1495040   730M Windows recovery environment
@@ -176,7 +181,7 @@ Create the following partitions in the free space:
 
 #### Recommended Partition Scheme:
 
-```bash
+```
 # Root partition
 Mount point: /
 Type: ext4
@@ -198,7 +203,7 @@ Flag: swap
 
 #### Minimal Partition Scheme:
 
-```bash
+```
 # Single root partition (simpler)
 Mount point: /
 Type: ext4
@@ -243,7 +248,7 @@ sudo apt install os-prober
 # Enable os-prober in GRUB
 sudo nvim /etc/default/grub
 
-# Add or uncomment this line:
+# Add or uncomment this line in that file:
 GRUB_DISABLE_OS_PROBER=false
 
 # Save and exit 
@@ -287,7 +292,7 @@ sudo update-grub
 
 ```bash
 # Edit GRUB configuration
-sudo nano /etc/default/grub
+sudo nvim /etc/default/grub
 
 # Change default entry (0 = first, 1 = second, etc.)
 GRUB_DEFAULT=0
@@ -297,6 +302,8 @@ GRUB_DEFAULT="Ubuntu"
 
 # Change timeout (seconds)
 GRUB_TIMEOUT=10
+
+# Save and exit
 
 # Update GRUB
 sudo update-grub

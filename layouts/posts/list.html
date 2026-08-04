@@ -12,16 +12,118 @@
     </div>
 
     {{- $pages := .Pages -}}
-    {{- with .Site.Params.home.posts.paginate | default .Site.Params.paginate -}}
-      {{- $pages = $.Paginate $pages . -}}
-    {{- else -}}
-      {{- $pages = .Paginate $pages -}}
+    {{- $paginate := 9 -}}
+    {{- with .Site.Params.postsGrid.paginate -}}
+      {{- $paginate = . -}}
     {{- end -}}
+    {{- $pages = $.Paginate $pages $paginate -}}
 
-    {{- range $pages.Pages -}}
-      {{- .Render "summary" -}}
-    {{- end -}}
+    <div class="posts-grid">
+      {{- range $pages.Pages -}}
+        <a class="posts-grid-card" href="{{ .RelPermalink }}">
+          {{- $cover := .Params.cover -}}
+          <div class="posts-grid-cover">
+            {{- if $cover -}}
+              <img src="{{ $cover | absURL }}" alt="{{ .Title }}" loading="lazy">
+            {{- else -}}
+              <div class="posts-grid-cover-fallback">
+                {{- dict "Class" "fa-solid fa-file-lines" | partial "plugin/icon.html" -}}
+              </div>
+            {{- end -}}
+          </div>
+          <div class="posts-grid-body">
+            <h3 class="posts-grid-title">{{ .Title }}</h3>
+            <div class="posts-grid-meta">
+              {{- dict "Class" "fa-regular fa-clock me-1" | partial "plugin/icon.html" -}}
+              {{- T "single.readingTime" .ReadingTime -}}
+            </div>
+            {{- with .Params.tags -}}
+              <div class="posts-grid-tags">
+                {{- range first 4 . -}}
+                  <span class="posts-grid-tag">{{ . }}</span>
+                {{- end -}}
+              </div>
+            {{- end -}}
+          </div>
+        </a>
+      {{- end -}}
+    </div>
 
     {{- partial "paginator.html" . -}}
   </div>
+
+  <style>
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+    .posts-grid-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--fi-global-background-color, #fff);
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s cubic-bezier(.2,.8,.2,1);
+     } 
+    .posts-grid-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .posts-grid-cover {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #3a3a5c, #1f1f38);
+    }
+    .posts-grid-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .posts-grid-cover-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+    .posts-grid-body {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+    .posts-grid-title {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .posts-grid-meta {
+      font-size: 0.8rem;
+      opacity: 0.65;
+      margin-bottom: 0.6rem;
+    }
+    .posts-grid-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .posts-grid-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color, rgba(255,255,255,0.15));
+      opacity: 0.75;
+    }
+  </style>
 {{- end -}}
