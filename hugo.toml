@@ -707,7 +707,7 @@ disclaimer = ""
 
 # Home page posts
 [params.home.posts]
-enable = true
+enable = false
 # special amount of posts in each home posts page
 paginate = 6
 
@@ -1662,14 +1662,15 @@ name = ""
 logoUrl = ""
 
 [[menu.main]]
+  name = "Posts"
+  weight = 100
+  url = "/posts/"
+
+[[menu.main]]
   name = "Tags"
   identifier = "tags"
   weight = 300
   url = "/tags/"
-
-[[menu.main]]
-  name = "Search"
-  url = "/search"
 
 [[menu.main]]
   name = "Archives"
