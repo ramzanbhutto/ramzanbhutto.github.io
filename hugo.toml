@@ -1650,6 +1650,11 @@ name = ""
 logoUrl = ""
 
 [[menu.main]]
+  name = "Me"
+  weight = 50
+  url = "/me/"
+
+[[menu.main]]
   name = "Posts"
   weight = 100
   url = "/posts/"

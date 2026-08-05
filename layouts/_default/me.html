@@ -1,0 +1,335 @@
+{{- define "title" -}}
+  {{- .Title }}{{ if .Site.Params.withSiteTitle }} {{ .Site.Params.titleDelimiter }} {{ .Site.Title }}{{ end -}}
+{{- end -}}
+
+{{- define "content" -}}
+  <div class="page me-page">
+
+    <div class="header">
+      <h1 class="single-title">Muhammad Ramzan</h1>
+      {{- with .Params.tagline -}}
+        <p class="me-tagline">{{ . }}</p>
+      {{- end -}}
+    </div>
+
+    {{- with .Params.skills -}}
+      <section class="me-section">
+        <h2 class="me-section-title">
+          {{- dict "Class" "fa-solid fa-code me-2" | partial "plugin/icon.html" -}}Skills
+        </h2>
+        <div class="me-skills">
+          {{- range . -}}
+            <div class="me-skill-row">
+              <span class="me-skill-label">{{ .category }}</span>
+              <div class="me-skill-tags">
+                {{- range .items -}}
+                  <span class="me-skill-tag">{{ . }}</span>
+                {{- end -}}
+              </div>
+            </div>
+          {{- end -}}
+        </div>
+      </section>
+    {{- end -}}
+
+    {{- with .Params.projects -}}
+      <section class="me-section">
+        <h2 class="me-section-title">
+          {{- dict "Class" "fa-solid fa-diagram-project me-2" | partial "plugin/icon.html" -}}Projects
+        </h2>
+        <div class="me-projects">
+          {{- range . -}}
+            <a class="me-project-card" href="{{ .link }}" target="_blank" rel="noopener noreferrer">
+              <div class="me-project-head">
+                <span class="me-project-name">{{ .name }}</span>
+                {{- dict "Class" "fa-brands fa-github" | partial "plugin/icon.html" -}}
+              </div>
+              <div class="me-project-stack">{{ .stack }}</div>
+              <ul class="me-project-points">
+                {{- range .points -}}
+                  <li>{{ . }}</li>
+                {{- end -}}
+              </ul>
+            </a>
+          {{- end -}}
+        </div>
+      </section>
+    {{- end -}}
+
+    {{- with .Params.education -}}
+      <section class="me-section">
+        <h2 class="me-section-title">
+          {{- dict "Class" "fa-solid fa-graduation-cap me-2" | partial "plugin/icon.html" -}}Education
+        </h2>
+        <div class="me-timeline">
+          {{- range . -}}
+            <div class="me-timeline-item">
+              <div class="me-timeline-dot"></div>
+              <div class="me-timeline-content">
+                <div class="me-timeline-head">
+                  <span class="me-timeline-title">{{ .school }}</span>
+                  <span class="me-timeline-date">{{ .date }}</span>
+                </div>
+                <div class="me-timeline-sub">{{ .degree }}</div>
+                {{- with .detail -}}<div class="me-timeline-detail">{{ . }}</div>{{- end -}}
+              </div>
+            </div>
+          {{- end -}}
+        </div>
+      </section>
+    {{- end -}}
+
+    {{- with .Params.achievements -}}
+      <section class="me-section">
+        <h2 class="me-section-title">
+          {{- dict "Class" "fa-solid fa-trophy me-2" | partial "plugin/icon.html" -}}Achievements
+        </h2>
+        <div class="me-achievements">
+          {{- range . -}}
+            <div class="me-achievement">
+              {{- dict "Class" "fa-solid fa-medal me-achievement-icon" | partial "plugin/icon.html" -}}
+              <div class="me-achievement-body">
+                <div class="me-achievement-title">{{ .title }}</div>
+                <div class="me-achievement-detail">{{ .detail }}</div>
+              </div>
+              <span class="me-achievement-date">{{ .date }}</span>
+            </div>
+          {{- end -}}
+        </div>
+      </section>
+    {{- end -}}
+
+    {{- with .Params.contact -}}
+      <section class="me-section">
+        <h2 class="me-section-title">
+          {{- dict "Class" "fa-solid fa-address-card me-2" | partial "plugin/icon.html" -}}Contact
+        </h2>
+        <div class="me-contact">
+          {{- range . -}}
+            <a class="me-contact-link" href="{{ .url }}" title="{{ .label }}" {{ if not (in .url "mailto:") }}target="_blank" rel="noopener noreferrer"{{ end }}>
+              {{- dict "Class" .icon | partial "plugin/icon.html" -}}
+              <span>{{ .label }}</span>
+            </a>
+          {{- end -}}
+        </div>
+      </section>
+    {{- end -}}
+
+  </div>
+
+  <style>
+    .me-page {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .me-page .header {
+      margin-bottom: 2rem;
+    }
+    .me-page .single-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .me-tagline {
+      margin: 0.6rem 0 0;
+      max-width: 620px;
+      opacity: 0.65;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-wrap: pretty;
+    }
+    .me-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .me-contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.1));
+      font-size: 0.82rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .me-contact-link:hover {
+      border-color: var(--fi-primary, #1677ff);
+      color: var(--fi-primary, #1677ff);
+    }
+
+    .me-section {
+      margin-bottom: 2.75rem;
+    }
+    .me-section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+    }
+
+    /* Skills */
+    .me-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .me-skill-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0.75rem;
+      align-items: start;
+    }
+    @media (max-width: 600px) {
+      .me-skill-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+    .me-skill-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      opacity: 0.6;
+      padding-top: 0.3rem;
+    }
+    .me-skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .me-skill-tag {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.1));
+      background: var(--fi-global-background-color, transparent);
+    }
+
+    /* Education timeline */
+    .me-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .me-timeline-item {
+      display: flex;
+      gap: 0.9rem;
+    }
+    .me-timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--fi-primary, #1677ff);
+      margin-top: 0.4rem;
+      flex-shrink: 0;
+    }
+    .me-timeline-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .me-timeline-title {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .me-timeline-date {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+    .me-timeline-sub {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 0.15rem;
+    }
+    .me-timeline-detail {
+      font-size: 0.82rem;
+      opacity: 0.6;
+      margin-top: 0.2rem;
+    }
+
+    /* Projects */
+    .me-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .me-project-card {
+      display: block;
+      padding: 1.1rem 1.3rem;
+      border-radius: 10px;
+      border: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .me-project-card:hover {
+      border-color: var(--fi-primary, #1677ff);
+      box-shadow: 0 6px 18px -8px rgba(0,0,0,0.25);
+    }
+    .me-project-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .me-project-name {
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+    .me-project-stack {
+      font-size: 0.78rem;
+      opacity: 0.55;
+      margin: 0.2rem 0 0.6rem;
+    }
+    .me-project-points {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-size: 0.87rem;
+      opacity: 0.85;
+      line-height: 1.55;
+    }
+    .me-project-points li + li {
+      margin-top: 0.3rem;
+    }
+
+    /* Achievements */
+    .me-achievements {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .me-achievement {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--fi-global-border-color-light, rgba(0,0,0,0.06));
+    }
+    .me-achievement:last-child {
+      border-bottom: none;
+    }
+    .me-achievement-icon {
+      color: var(--fi-primary, #1677ff);
+      font-size: 1.05rem;
+      margin-top: 0.2rem;
+    }
+    .me-achievement-body {
+      flex: 1;
+    }
+    .me-achievement-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .me-achievement-detail {
+      font-size: 0.83rem;
+      opacity: 0.65;
+      margin-top: 0.1rem;
+    }
+    .me-achievement-date {
+      font-size: 0.82rem;
+      opacity: 0.55;
+      white-space: nowrap;
+    }
+  </style>
+{{- end -}}
