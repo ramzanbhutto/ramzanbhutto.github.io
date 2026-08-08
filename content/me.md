@@ -6,6 +6,11 @@ summary: "About Muhammad Ramzan"
 
 tagline: "BS Software Engineering student, competitive programmer, backend engineer and embedded systems enthusiast"
 
+portfolio:
+  - label: "ramzan.vercel.com"
+    url: "https://portfolio-nu-five-gsqnm7i6e2.vercel.app/"
+    icon: "fa-solid fa-globe"
+
 contact:
   - label: "mr.ramzan.bhutto@gmail.com"
     url: "mailto:mr.ramzan.bhutto@gmail.com"

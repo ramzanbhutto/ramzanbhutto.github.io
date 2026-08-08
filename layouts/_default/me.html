@@ -12,6 +12,25 @@
       {{- end -}}
     </div>
 
+    {{- with .Params.portfolio -}}
+      <div class="me-section me-portfolio">
+        <div class="me-skill-row">
+          <span class="me-skill-label">
+            {{- dict "Class" "fa-solid fa-briefcase me-1" | partial "plugin/icon.html" -}}
+            Portfolio
+          </span>
+          <div class="me-skill-tags">
+            {{- range . -}}
+              <a class="me-contact-link" href="{{ .url }}" title="{{ .label }}" target="_blank" rel="noopener noreferrer">
+                {{- dict "Class" .icon | partial "plugin/icon.html" -}}
+                <span>{{ .label }}</span>
+              </a>
+            {{- end -}}
+          </div>
+        </div>
+      </div>
+    {{- end -}}
+
     {{- with .Params.skills -}}
       <section class="me-section">
         <h2 class="me-section-title">
@@ -138,7 +157,12 @@
       line-height: 1.5;
       text-wrap: pretty;
     }
-    .me-contact {
+    .me-portfolio {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid var(--fi-global-border-color, rgba(0,0,0,0.08));
+    }
+     .me-contact {
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
