@@ -405,7 +405,7 @@ sudo docker run -d \
     -e DOMSERVER_BASEURL=http://domserver/ \
     -e JUDGEDAEMON_PASSWORD=$JUDGE_PASS \
     --restart unless-stopped \
-    domjudge/judgehost:latest
+    domjudge/judgehost:8.3.1
 ```
 
 **Quick reminder if you are on cgroup v1:** remove the `--cgroupns=host` line from the command below. Everything else stays the same.
